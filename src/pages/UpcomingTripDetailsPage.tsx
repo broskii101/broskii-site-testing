@@ -2,11 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import UpcomingTripCard from '../components/UpcomingTripCard';
+import { Helmet } from 'react-helmet-async';
+
 import { 
   Calendar, 
   MapPin, 
   Mountain, 
-  ArrowLeft,
   CheckCircle,
   X,
   Users, // Added for waitlist icon
@@ -98,235 +99,243 @@ const UpcomingTripDetailsPage = () => {
 
   return (
     <div className="pt-20 min-h-screen bg-gray-50">
+
+<Helmet>
+        <title>
+          Muslim Brothers Ski Trip to Tignes | April 2026 – Broskii
+        </title>
+
+        <meta
+          name="description"
+          content="Join Broskii on a Muslim brothers ski trip to Tignes in the French Alps this April, staying ski-in ski-out at one of Europe’s highest resorts, known for snow-sure conditions and incredible terrain."
+        />
+
+        <link
+          rel="canonical"
+          href="https://broskii.com/upcoming-trip"
+        />
+      </Helmet>
+
       {/* Header Section */}
-      <section className="relative py-12 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="/IMG-20250125-WA0048.webp"
-            alt="Skiing adventure background"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          {/* Overlay for text readability */}
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-white relative z-10"
-          >
-            {/* Back Button */}
-            <Link
-              to="/"
-              className="inline-flex items-center space-x-2 text-primary-200 hover:text-white transition-colors mb-6"
-            >
-              <ArrowLeft className="h-5 w-5" />
-              <span>Back to Home</span>
-            </Link>
+<section className="relative py-10 overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src="/IMG-20250125-WA0048.webp"
+      alt="Skiing in the Alps"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+    {/* Cinematic overlay (lighter than before) */}
+    <div className="absolute inset-0 bg-black/35"></div>
 
-            <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">
-                Our Next Adventure
-              </h1>
-              <p className="text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed">
-                Ready for the ultimate skiing experience? Join us on our next epic journey to the French Alps.
-              </p>
+    {/* Subtle vignette for premium depth */}
+    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30"></div>
+  </div>
 
-              <p className="text-xl max-w-3xl mx-auto mt-4 text-primary-100">
-  <span className="bg-white/10 text-white font-semibold px-3 py-1 rounded shadow-sm inline-block">
-    Secure your spot today with just a £300 deposit.
-  </span>
-</p>
+  <div className="max-w-7xl mx-auto px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-white relative z-10 text-center"
+    >
+      <h1 className="text-4xl md:text-6xl font-serif font-bold mb-2">
+        The Next Broskii Trip
+      </h1>
 
-              
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <p className="text-lg text-primary-100 mb-3">
+        Limited spaces
+      </p>
+
+      <p className="text-sm text-primary-100/90">
+        Secure your place with a £300 deposit
+      </p>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* Trip Details Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Quick Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
-          >
-            {[{
-              icon: Calendar,
-              label: 'Dates',
-              value: upcomingTrip.dates
-            }, {
-              icon: MapPin,
-              label: 'Location',
-              value: upcomingTrip.location
-            }].map(({ icon: Icon, label, value }) => (
-              <div
-                key={label}
-                className="bg-white border border-primary-100 rounded-2xl p-6 shadow-lg text-center transition-transform duration-300 hover:shadow-xl hover:-translate-y-1"
-              >
-                <Icon className="h-6 w-6 md:h-8 md:w-8 text-primary-600 mx-auto mb-3" />
-                <div className="font-bold text-lg md:text-xl text-gray-900">{value}</div>
-                <div className="text-gray-600 text-sm md:text-base">{label}</div>
-              </div>
-            ))}
-          </motion.div>
+<section className="py-12">
+  <div className="max-w-7xl mx-auto px-6">
+    {/* APRIL 2026 — TIGNES */}
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.05 }}
+      className="text-center mb-8"
+    >
+      <p className="text-xs tracking-widest uppercase text-primary-600 font-semibold mb-2">
+        April 2026
+      </p>
+      <h2 className="text-3xl font-serif font-bold text-gray-900">
+        Tignes, French Alps
+      </h2>
+    </motion.div>
 
-          {/* Two Column Layout on Desktop */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
-            {/* Left Column - Trip Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <UpcomingTripCard trip={upcomingTrip} isHomepage={true} onImageClick={openFullScreenImage} />
-            </motion.div>
+    {/* Date + Location row ABOVE poster */}
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.1 }}
+      className="flex flex-wrap items-center justify-center gap-3 mb-6"
+    >
+      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 shadow-sm ring-1 ring-black/5">
+        <Calendar className="h-4 w-4 text-primary-600" />
+        <span className="text-sm font-medium text-gray-900">
+          10–17 April 2026
+        </span>
+      </div>
 
-            {/* Right Column - Trip Description */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    staggerChildren: 0.15,
-                    delayChildren: 0.2,
-                    duration: 0.6,
-                  },
-                },
-              }}
-              className="mt-12 lg:mt-0 bg-white border border-primary-100 rounded-2xl p-8 shadow-lg transition-transform duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <div className="space-y-5 mb-10 border-l-4 border-primary-600 pl-5">
-                {[
-                  'Return flights with BA from LHR to GVA',
-                  'Full 3 Valleys Ski pass (Worth £370)',
-                  "4★ Luxury Hotel (L'Oxalys)",
-                  'Private Coach Transfer',
-                  'Ski in/out access',
-                  'Spa Facilities',
-                ].map((text) => (
-                  <motion.div
-                    key={text}
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                    className="flex items-center space-x-3"
-                  >
-                    <CheckCircle className="h-6 w-6 text-primary-600 flex-shrink-0" />
-                    <span className="text-gray-900 font-semibold">{text}</span>
-                  </motion.div>
-                ))}
-              </div>
+      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 shadow-sm ring-1 ring-black/5">
+        <MapPin className="h-4 w-4 text-primary-600" />
+        <span className="text-sm font-medium text-gray-900">
+          Tignes, French Alps
+        </span>
+      </div>
+    </motion.div>
 
-              <div className="text-center">
-                {isSoldOut ? (
-                  <motion.div
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.95 },
-                      visible: { opacity: 1, scale: 1 },
-                    }}
-                    className="inline-block"
-                  >
-                    <div className="bg-red-600 text-white px-10 py-5 rounded-full text-lg font-bold shadow-lg">
-                      Sold Out
-                    </div>
-                    <p className="text-gray-700 mt-4 mb-2">This trip is currently full.</p>
-                    <button
-                      onClick={() => setShowWaitlistModal(true)}
-                      className="inline-flex items-center space-x-3 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg transition-transform duration-300 transform hover:scale-105"
-                    >
-                      <Users className="h-6 w-6" />
-                      <span>Join Waitlist</span>
-                    </button>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.95 },
-                      visible: { opacity: 1, scale: 1 },
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    className="inline-block"
-                  >
-                    <Link
-                      to="/booking"
-                      className="inline-flex items-center space-x-3 bg-primary-600 hover:bg-primary-700 text-white px-10 py-5 rounded-full text-lg font-bold shadow-lg transition-transform duration-300"
-                    >
-                      <Calendar className="h-6 w-6" />
-                      <span>Book Now</span>
-                    </Link>
-                  </motion.div>
-                )}
-             
-              </div>
-            </motion.div>
-          </div>
+    {/* April poster (clickable) */}
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.15 }}
+      className="max-w-xl mx-auto"
+    >
+      <div className="relative">
+        <img
+          src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766105151/April_26_Tignes_Poster_erkrcb.jpg"
+          alt="April 2026 Tignes Ski Trip Poster"
+          onClick={() =>
+            openFullScreenImage(
+              "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766105151/April_26_Tignes_Poster_erkrcb.jpg"
+            )
+          }
+          className="w-full rounded-2xl shadow-xl cursor-pointer transition-transform duration-300 hover:scale-[1.01] ring-1 ring-black/5"
+        />
 
-          {/* Additional Information */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-16"
-          >
-            {/* Why Val Thorens - Full Width */}
-            <div className="bg-white border border-primary-100 rounded-2xl p-8 shadow-lg">
-              <div className="flex items-center space-x-3 mb-6">
-                <Mountain className="h-8 w-8 text-primary-600" />
-                <h3 className="text-2xl font-serif font-bold text-gray-900">Why Val Thorens?</h3>
-              </div>
-              <div className="space-y-4 text-gray-600">
-                <p>
-                  Val Thorens sits at 2,300m altitude, making it Europe's highest ski resort. 
-                  This means guaranteed snow conditions and an extended ski season.
-                </p>
-                <p>
-                  As part of Les 3 Vallées, you'll have access to 600km of pistes - 
-                  the world's largest ski area. From gentle beginner slopes to challenging 
-                  off-piste terrain, there's something for every skill level.
-                </p>
-                <p>
-                  The resort offers true ski-in/ski-out convenience, meaning you can 
-                  step out of your accommodation and onto the slopes within minutes.
-                </p>
-              </div>
-              
-              {/* Mobile-only "Got questions?" section */}
-              <div className="lg:hidden mt-8 pt-8 border-t border-gray-200">
-                <p className="text-gray-700 mb-6 text-center">
-                  Got questions? Check out our detailed FAQs or send us a message—we're happy to help.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    to="/faq"
-                    className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-full font-semibold transition-colors"
-                  >
-                    <span>FAQs</span>
-                  </Link>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center space-x-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3 rounded-full font-semibold transition-colors"
-                  >
-                    <span>Contact Us</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+        {/* Subtle “New” tag (premium + small) */}
+        <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-white/90 text-gray-900 shadow-sm ring-1 ring-black/5">
+          NEW
         </div>
-      </section>
+      </div>
+    </motion.div>
+
+    {/* April details */}
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      className="mt-10 max-w-2xl mx-auto"
+    >
+      {/* Why Tignes (short, premium) */}
+      <div className="mb-8">
+        <h3 className="text-xl font-serif font-bold text-gray-900 mb-3">
+          Why Tignes?
+        </h3>
+        <div className="space-y-2 text-gray-700">
+          <p>
+            High-altitude terrain and reliable late-season conditions make Tignes a strong choice for April skiing.
+          </p>
+          <p>
+            Expect big, varied slopes with a great mix for different ability levels — plus a lively alpine resort feel.
+          </p>
+        </div>
+      </div>
+
+      {/* What’s included (lightweight list — not a bulky card) */}
+      <div className="mb-10">
+        <h3 className="text-xl font-serif font-bold text-gray-900 mb-4">
+          What’s included
+        </h3>
+
+        <div className="space-y-3">
+          {[
+            "Return flights from London Heathrow",
+            "Ski-in / ski-out accommodation",
+            "4★ accommodation with spa facilities",
+            "Lift pass included",
+            "Private transfers",
+          ].map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-primary-600 flex-shrink-0 mt-0.5" />
+              <span className="text-gray-800 font-medium">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* April CTA */}
+      <div className="text-center">
+        <Link
+          to="/booking"
+          className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-primary-600 text-white font-bold text-lg shadow-lg transition-transform duration-300 hover:bg-primary-700 hover:scale-105"
+        >
+          Book Now
+        </Link>
+
+        <p className="text-sm text-gray-600 mt-3">
+          £300 deposit option available at checkout.
+        </p>
+      </div>
+    </motion.div>
+
+    {/* Divider */}
+    <div className="mt-20 mb-10">
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+    </div>
+
+    {/* JAN 2026 — SOLD OUT (poster only) */}
+    <div className="max-w-xl mx-auto">
+      <div className="text-center mb-6">
+        <p className="text-xs tracking-widest uppercase text-gray-500 font-semibold mb-2">
+          January 2026
+        </p>
+        <h3 className="text-2xl font-serif font-bold text-gray-900">
+          Sold Out
+        </h3>
+      </div>
+
+      <div className="relative">
+        <img
+          src="/1000088456.jpg"
+          alt="January 2026 Val Thorens Ski Trip Poster – Sold Out"
+          onClick={() => openFullScreenImage("/1000088456.jpg")}
+          className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95"
+        />
+
+        {/* Sold out banner/badge */}
+        <div className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+          SOLD OUT
+        </div>
+      </div>
+    </div>
+
+    {/* Got questions (footer-style support block) */}
+    <div className="mt-20 text-center">
+      <p className="text-gray-800 mb-6 text-lg">
+        Got questions?
+      </p>
+
+      <div className="flex justify-center gap-4">
+        <Link
+          to="/faq"
+          className="px-6 py-3 rounded-full bg-gray-100 text-gray-900 font-medium transition hover:bg-gray-200"
+        >
+          FAQs
+        </Link>
+
+        <Link
+          to="/contact"
+          className="px-6 py-3 rounded-full bg-gray-100 text-gray-900 font-medium transition hover:bg-gray-200"
+        >
+          Contact Us
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Full Screen Image Modal */}
       {fullScreenImage && (

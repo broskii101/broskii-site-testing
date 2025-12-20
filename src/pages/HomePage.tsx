@@ -22,15 +22,103 @@ interface Testimonial {
   featured?: boolean;
 }
 
-/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH — LOCKED) ===================== */
+/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH + PREMIUM MOTION) ===================== */
 function OnTheMountainSection() {
+  const posterRef = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  
+
+  useEffect(() => {
+    const posterEl = posterRef.current;
+    const imageEl = imageRef.current;
+  
+    if (!posterEl || !imageEl) return;
+  
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  
+    // Initial fade state
+    if (!reduceMotion) {
+      posterEl.style.opacity = "0";
+      posterEl.style.transform = "translateY(10px)";
+    }
+  
+    let hasRevealed = false;
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+  
+        if (entry.isIntersecting && !hasRevealed) {
+          hasRevealed = true;
+  
+          if (!reduceMotion) {
+            posterEl.style.transition =
+              "opacity 900ms ease-out, transform 900ms ease-out";
+            posterEl.style.opacity = "1";
+            posterEl.style.transform = "translateY(0px)";
+          } else {
+            posterEl.style.opacity = "1";
+            posterEl.style.transform = "none";
+          }
+        }
+      },
+      { threshold: 0.25 }
+    );
+  
+    observer.observe(posterEl);
+  
+    let ticking = false;
+  
+    const updateParallax = () => {
+      ticking = false;
+  
+      if (reduceMotion) {
+        imageEl.style.transform = "translateY(0px)";
+        return;
+      }
+  
+      const rect = posterEl.getBoundingClientRect();
+      const vh = window.innerHeight || 0;
+  
+      const progress = (vh - rect.top) / (vh + rect.height);
+      const clamped = Math.max(0, Math.min(1, progress));
+  
+      // Subtle range: -10px to +10px
+      const y = (clamped - 0.5) * 20;
+      imageEl.style.transform = `translateY(${y.toFixed(2)}px)`;
+    };
+  
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateParallax);
+    };
+  
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  
+    updateParallax();
+  
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+  
+
   return (
     <section className="bg-[#f7fbff]">
-      <div className="relative w-full max-w-[420px] mx-auto">
+      <div ref={posterRef} className="relative w-full max-w-[420px] mx-auto">
         {/* Poster */}
         <div className="relative w-full h-[500px] overflow-hidden">
           {/* Image */}
           <img
+            ref={imageRef}
             src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
             alt="Nothing brings people together like the mountains"
             loading="lazy"
@@ -41,33 +129,33 @@ function OnTheMountainSection() {
               object-center
               brightness-[1.02]
               contrast-[1.02]
+              will-change-transform
             "
           />
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
 
-          {/* Headline — fixed, 2 lines, above people */}
+          {/* Headline (keep your tuned version) */}
           <h2
-  className="
-    absolute top-20 left-1/2 -translate-x-1/2
-    text-center text-white
-    font-serif font-semibold
-    text-[30px]
-    leading-[1.15]
-    max-w-none
-    whitespace-nowrap
-    drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
-  "
->
-  Nothing brings people together
-  <br />
-  like the mountains.
-</h2>
+            className="
+              absolute top-20 left-1/2 -translate-x-1/2
+              text-center text-white
+              font-serif font-semibold
+              text-[30px]
+              leading-[1.15]
+              max-w-[34ch]
+              drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
+              px-4
+            "
+          >
+            Nothing brings people together
+            <br />
+            like the mountains.
+          </h2>
 
-
-          {/* CTA — slim, sandbox-sized */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+          {/* CTA (your “View Trip Details / Read Our Story” style) */}
+          <div className="absolute bottom-14 left-1/2 -translate-x-1/2">
             <Link
               to="/upcoming-trip"
               className="
@@ -75,8 +163,8 @@ function OnTheMountainSection() {
                 px-7 py-3
                 rounded-full
                 bg-white/90 backdrop-blur-sm
-                text-gray-900 font-semibold text-[14px]
-                shadow-lg
+                text-gray-900 font-medium text-[14px]
+                shadow-md
                 hover:bg-white
                 transition-all
               "
@@ -90,6 +178,7 @@ function OnTheMountainSection() {
     </section>
   );
 }
+
 
 
 

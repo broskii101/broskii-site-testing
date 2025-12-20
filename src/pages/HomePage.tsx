@@ -22,14 +22,13 @@ interface Testimonial {
   featured?: boolean;
 }
 
-/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH — SYMMETRICAL) ===================== */
+/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH — FINAL) ===================== */
 function OnTheMountainSection() {
   return (
-    <section className="bg-[#f7fbff] pt-8 pb-14">
-      {/* Poster Wrapper */}
-      <div className="relative mx-auto w-full max-w-[420px] px-4">
-        {/* Poster Frame – controls sandbox-like height */}
-        <div className="relative w-full h-[510px] overflow-hidden">
+    <section className="bg-[#f7fbff]">
+      {/* Poster Frame – full-width visual divider */}
+      <div className="relative w-full max-w-[420px] mx-auto">
+        <div className="relative w-full h-[500px] overflow-hidden">
           {/* Image */}
           <img
             src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
@@ -40,57 +39,60 @@ function OnTheMountainSection() {
               w-full h-full
               object-cover
               object-center
-              brightness-[1.03]
-              contrast-[1.03]
+              brightness-[1.02]
+              contrast-[1.02]
             "
           />
 
-          {/* Overlay – matches sandbox tone */}
+          {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
 
-          {/* Content */}
-          <div className="absolute inset-0 text-white text-center px-6">
-            {/* Headline — positioned above people */}
-            <h2
+          {/* Headline */}
+          <h2
+            className="
+              absolute top-[34%] left-1/2 -translate-x-1/2
+              text-center text-white
+              font-serif font-semibold
+              text-[30px]
+              leading-[1.15]
+              max-w-[26ch]
+              drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
+              px-4
+            "
+          >
+            Nothing brings people together
+            <br />
+            like the mountains.
+          </h2>
+
+          {/* CTA */}
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+            <Link
+              to="/upcoming-trip"
               className="
-                absolute top-[38%] left-1/2 -translate-x-1/2
-                font-serif font-semibold
-                text-[30px]
-                leading-[1.15]
-                max-w-[22ch]
-                drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
+                inline-flex items-center gap-2
+                px-7 py-3.5
+                rounded-full
+                bg-white/90 backdrop-blur-sm
+                text-gray-900 font-semibold text-[15px]
+                shadow-lg
+                hover:bg-white
+                transition-all
               "
             >
-              Nothing brings people together
-              <br />
-              like the mountains.
-            </h2>
-
-            {/* CTA — anchored near bottom */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-              <Link
-                to="/upcoming-trip"
-                className="
-                  inline-flex items-center gap-2
-                  px-8 py-4
-                  rounded-full
-                  bg-white/85 backdrop-blur-sm
-                  text-gray-900 font-semibold text-base
-                  shadow-lg
-                  hover:bg-white
-                  transition-all
-                "
-              >
-                Join the Next Trip
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+              Join the Next Trip
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </div>
+
+      {/* Spacing after poster (matches sandbox rhythm) */}
+      <div className="h-12" />
     </section>
   );
 }
+
 
 
 

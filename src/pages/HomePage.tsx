@@ -49,21 +49,22 @@ function OnTheMountainSection() {
 
           {/* Headline — fixed, 2 lines, above people */}
           <h2
-            className="
-              absolute top-20 left-1/2 -translate-x-1/2
-              text-center text-white
-              font-serif font-semibold
-              text-[30px]
-              leading-[1.15]
-              max-w-[30ch]
-              drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
-              px-4
-            "
-          >
-            Nothing brings people together
-            <br />
-            like the mountains.
-          </h2>
+  className="
+    absolute top-20 left-1/2 -translate-x-1/2
+    text-center text-white
+    font-serif font-semibold
+    text-[30px]
+    leading-[1.15]
+    max-w-none
+    whitespace-nowrap
+    drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
+  "
+>
+  Nothing brings people together
+  <br />
+  like the mountains.
+</h2>
+
 
           {/* CTA — slim, sandbox-sized */}
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2">

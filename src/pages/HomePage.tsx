@@ -607,9 +607,24 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* VIDEO */}
-      <div ref={videoSectionRef} className="flex justify-center lg:justify-end px-4 sm:px-0 mt-10 sm:mt-14">
+      <div
+  ref={videoSectionRef}
+  className="flex justify-center lg:justify-end px-4 sm:px-0 mt-10 mb-10 sm:mt-14 sm:mb-14"
+>
 
-      <div className="bg-white/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-sm border border-gray-200/70 w-full max-w-[320px] sm:max-w-sm">
+
+<div className="
+  bg-white/80
+  backdrop-blur-md
+  rounded-2xl
+  overflow-hidden
+  shadow-[0_20px_60px_rgba(0,0,0,0.18)]
+  border border-gray-200/60
+  w-full
+  max-w-[320px]
+  sm:max-w-sm
+">
+
 
 
 

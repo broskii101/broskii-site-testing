@@ -29,7 +29,7 @@ function OnTheMountainSection() {
       {/* Poster Wrapper */}
       <div className="relative mx-auto w-full max-w-[420px] px-4">
         {/* Poster Frame – controls sandbox-like height */}
-        <div className="relative w-full h-[560px] overflow-hidden">
+        <div className="relative w-full h-[510px] overflow-hidden">
           {/* Image */}
           <img
             src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
@@ -49,16 +49,16 @@ function OnTheMountainSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
 
           {/* Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-end pb-10 text-center text-white px-6">
-            {/* Headline */}
+          <div className="absolute inset-0 text-white text-center px-6">
+            {/* Headline — positioned above people */}
             <h2
               className="
+                absolute top-[38%] left-1/2 -translate-x-1/2
                 font-serif font-semibold
                 text-[30px]
                 leading-[1.15]
                 max-w-[22ch]
                 drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
-                mb-6
               "
             >
               Nothing brings people together
@@ -66,29 +66,32 @@ function OnTheMountainSection() {
               like the mountains.
             </h2>
 
-            {/* CTA */}
-            <Link
-              to="/upcoming-trip"
-              className="
-                inline-flex items-center gap-2
-                px-8 py-4
-                rounded-full
-                bg-white/85 backdrop-blur-sm
-                text-gray-900 font-semibold text-base
-                shadow-lg
-                hover:bg-white
-                transition-all
-              "
-            >
-              Join the Next Trip
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            {/* CTA — anchored near bottom */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+              <Link
+                to="/upcoming-trip"
+                className="
+                  inline-flex items-center gap-2
+                  px-8 py-4
+                  rounded-full
+                  bg-white/85 backdrop-blur-sm
+                  text-gray-900 font-semibold text-base
+                  shadow-lg
+                  hover:bg-white
+                  transition-all
+                "
+              >
+                Join the Next Trip
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 
 

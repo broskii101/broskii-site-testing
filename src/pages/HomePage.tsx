@@ -24,48 +24,44 @@ interface Testimonial {
 
 /* ===================== ON THE MOUNTAIN SECTION ===================== */
 function OnTheMountainSection() {
-  // Micro parallax based on scroll position (subtle, premium)
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 400], [0, -12]);
+  const y = useTransform(scrollY, [0, 400], [0, -10]);
 
   return (
-    <section className="relative py-28 sm:py-32 md:py-40 overflow-hidden">
-      {/* Background with micro parallax + controlled zoom */}
+    <section
+      className="
+        relative overflow-hidden
+        py-28 sm:py-32 md:py-40
+        max-h-[78vh] sm:max-h-none   /* 👈 KEY: limits height on mobile */
+      "
+    >
+      {/* Background */}
       <motion.div
         style={{ y }}
         initial={{ scale: 1 }}
-        animate={{ scale: 1.04 }}   // 👈 reduced zoom to match sandbox
+        animate={{ scale: 1.03 }}     /* 👈 calmer zoom */
         transition={{ duration: 10, ease: 'easeOut' }}
         className="absolute inset-0"
       >
         <img
           src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
-          width={1500}
-          height={900}
           alt="Skiers on the mountain"
           loading="lazy"
           className="
-            w-full h-full object-cover
-            object-[50%_72%] sm:object-center
+            w-full h-full
+            object-cover
+            object-[50%_75%]          /* 👈 pulls people fully into view */
           "
         />
 
-        {/* Core contrast overlay (sandbox-like) */}
+        {/* Contrast + framing */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/45" />
-
-        {/* Soft atmospheric texture */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_60%)] pointer-events-none" />
-
-        {/* Lower framing fade — anchors CTA without moving it */}
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-black/20 to-black/45 pointer-events-none" />
-
-        {/* Cinematic vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.45))] pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-black/45" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.45))]" />
       </motion.div>
 
-      {/* Content Layer */}
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-        {/* MAIN HEADLINE */}
+      {/* Content */}
+      <div className="relative h-full flex flex-col justify-center max-w-4xl mx-auto px-4 text-center text-white">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,11 +69,10 @@ function OnTheMountainSection() {
           viewport={{ once: true }}
           className="
             font-serif font-semibold
-            text-[30px] leading-[1.1]     /* 👈 sandbox mobile size */
+            text-[28px] leading-[1.12]   /* 👈 smaller, sandbox-accurate */
             sm:text-5xl md:text-6xl
-            max-w-[22ch] mx-auto          /* 👈 forces 2 lines */
+            max-w-[26ch] mx-auto         /* 👈 FORCES 2 LINES */
             drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]
-            mt-0 sm:mt-4 md:mt-10
           "
         >
           Nothing brings people together like the mountains.
@@ -95,23 +90,14 @@ function OnTheMountainSection() {
             to="/upcoming-trip"
             className="
               inline-flex items-center space-x-3
-              px-8 py-4                    /* 👈 smaller mobile pill */
+              px-8 py-4
               rounded-full
-
               bg-white/85
-              backdrop-blur-sm
               border border-white/30
-
-              text-gray-900
-              text-[16px] sm:text-2xl      /* 👈 sandbox mobile size */
-              font-semibold
-
+              text-gray-900 text-[16px] sm:text-2xl font-semibold
               shadow-lg
-              hover:bg-white/95
-              hover:shadow-[0_0_35px_rgba(255,255,255,0.6)]
-
               active:scale-[0.97]
-              transition-all duration-300 ease-out
+              transition
             "
           >
             <span>Join the Next Trip</span>
@@ -122,6 +108,7 @@ function OnTheMountainSection() {
     </section>
   );
 }
+
 
 const HomePage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

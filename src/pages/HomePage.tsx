@@ -244,19 +244,19 @@ const HomePage: React.FC = () => {
         alt: "A bro sitting on the snow overlooking a mountain resort in the Alps",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-salah-prayer-ski-trip-french-alps.webp",
-        alt: "The Broskii group praying salah together during a ski trip in the French Alps",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261594/broskii-salah-prayer-ski-trip-french-alps_vlbwxr.webp",
+        alt: "The Broskii group praying salah together during a bros ski trip in the French Alps",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-snow-trike-astronaut-suit-alps.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261597/broskii-snow-trike-astronaut-suit-alps_xw9pjb.webp",
         alt: "A bro riding a snow trike in the Alps while wearing an astronaut suit",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-snowboarder-group-alps.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261594/broskii-snowboarder-group-alps_v5duwe.webp",
         alt: "A snowboarder in green posing with the Broskii group on the slopes in the Alps",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-skiing-action-shot-alps.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261595/broskii-skiing-action-shot-alps_xlr1lc.webp",
         alt: "A bro skiing downhill on a groomed slope in the Alps",
       },
     ];
@@ -398,7 +398,8 @@ const HomePage: React.FC = () => {
   'px-8 py-4 sm:px-10 sm:py-5 ' +
   'text-base sm:text-xl font-semibold ' +
   'rounded-full ' +
-  'bg-[#0092D1] text-white ' +
+  'bg-[#0092D1]/85 backdrop-blur-sm text-white ' +
+
   'shadow-lg hover:shadow-[0_0_40px_rgba(0,146,209,0.6)] ' +
   'hover:scale-[1.06] active:scale-[0.97] ' +
   'transition-all duration-300 ease-out';

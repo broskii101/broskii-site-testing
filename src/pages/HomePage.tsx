@@ -22,12 +22,12 @@ interface Testimonial {
   featured?: boolean;
 }
 
-/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH — FINAL) ===================== */
+/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH — LOCKED) ===================== */
 function OnTheMountainSection() {
   return (
     <section className="bg-[#f7fbff]">
-      {/* Poster Frame – full-width visual divider */}
       <div className="relative w-full max-w-[420px] mx-auto">
+        {/* Poster */}
         <div className="relative w-full h-[500px] overflow-hidden">
           {/* Image */}
           <img
@@ -47,15 +47,15 @@ function OnTheMountainSection() {
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
 
-          {/* Headline */}
+          {/* Headline — fixed, 2 lines, above people */}
           <h2
             className="
-              absolute top-[34%] left-1/2 -translate-x-1/2
+              absolute top-20 left-1/2 -translate-x-1/2
               text-center text-white
               font-serif font-semibold
               text-[30px]
               leading-[1.15]
-              max-w-[26ch]
+              max-w-[30ch]
               drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
               px-4
             "
@@ -65,16 +65,16 @@ function OnTheMountainSection() {
             like the mountains.
           </h2>
 
-          {/* CTA */}
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+          {/* CTA — slim, sandbox-sized */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
             <Link
               to="/upcoming-trip"
               className="
                 inline-flex items-center gap-2
-                px-7 py-3.5
+                px-7 py-3
                 rounded-full
                 bg-white/90 backdrop-blur-sm
-                text-gray-900 font-semibold text-[15px]
+                text-gray-900 font-semibold text-[14px]
                 shadow-lg
                 hover:bg-white
                 transition-all
@@ -86,12 +86,10 @@ function OnTheMountainSection() {
           </div>
         </div>
       </div>
-
-      {/* Spacing after poster (matches sandbox rhythm) */}
-      <div className="h-12" />
     </section>
   );
 }
+
 
 
 

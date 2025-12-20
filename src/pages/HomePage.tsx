@@ -535,7 +535,8 @@ const HomePage: React.FC = () => {
       <>
 
            {/* VISION */}
-           <section className="py-16 bg-[#f7fbff]">
+           <section className="py-12 sm:py-16 bg-[#f7fbff]">
+
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <motion.div
             initial="hidden"
@@ -553,15 +554,18 @@ const HomePage: React.FC = () => {
               }}
               className="text-center text-gray-900"
             >
-              <p className="text-4xl md:text-5xl uppercase tracking-[0.12em] font-bold text-[#0092D1] mb-4">
-                Our Vision
-              </p>
+              <p className="text-3xl sm:text-4xl md:text-5xl uppercase tracking-[0.1em] font-bold text-[#0092D1] mb-3">
+  Our Vision
+</p>
 
-              <h2 className="text-3xl md:text-4xl font-serif font-semibold">
+
+<h2 className="text-[26px] sm:text-3xl md:text-4xl font-serif font-semibold leading-tight">
+
                 Bringing Muslims to the mountains.
               </h2>
 
-              <div className="w-20 h-[2px] bg-gradient-to-r from-[#0092D1] to-[#00A8E8] mt-4 mx-auto" />
+              <div className="w-16 sm:w-20 h-[2px] bg-gradient-to-r from-[#0092D1] to-[#00A8E8] mt-3 mx-auto" />
+
             </motion.div>
 
             {/* BODY TEXT */}
@@ -570,7 +574,8 @@ const HomePage: React.FC = () => {
                 hidden: { opacity: 0, y: 22 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: 'easeOut' } }
               }}
-              className="text-xl md:text-2xl text-gray-700 leading-relaxed text-center"
+              className="text-base sm:text-xl md:text-2xl text-gray-700 leading-relaxed text-center max-w-[36rem] mx-auto"
+
             >
               A future where Muslims explore the mountains with ease, purpose, and confidence — 
               where winter adventure becomes a natural, spiritually mindful, and inspiring part of our lives.
@@ -585,11 +590,13 @@ const HomePage: React.FC = () => {
               className="flex justify-center"
             >
               <Link
-                to="/about"
-                className="rounded-full px-8 py-5 bg-[#0092D1] text-white text-lg sm:text-xl font-semibold
-                           flex items-center gap-3 transition-transform duration-200
-                           hover:scale-[1.04] active:scale-[0.96] hover:bg-[#007bb2]"
-              >
+  to="/about"
+  className="rounded-full px-6 py-4 sm:px-8 sm:py-5
+             bg-[#0092D1] text-white text-base sm:text-xl font-semibold
+             flex items-center gap-3 transition-transform duration-200
+             hover:scale-[1.04] active:scale-[0.96] hover:bg-[#007bb2]"
+>
+
                 <span>Read our story</span>
                 <ArrowRight className="h-6 w-6" />
               </Link>

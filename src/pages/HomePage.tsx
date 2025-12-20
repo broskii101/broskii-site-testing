@@ -428,43 +428,49 @@ const HomePage: React.FC = () => {
       <section className="relative h-[90vh] min-h-[540px] flex items-center justify-center overflow-hidden bg-black">
 
        {/* Background */}
-<motion.div className="absolute inset-0" style={{ y: heroBgY, scale: heroBgScale }}>
+<div className="absolute inset-0">
+  <motion.div
+    className="absolute inset-0"
+    style={{ y: heroBgY, scale: heroBgScale }}
+  >
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={currentSlide}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1.3, ease: 'easeInOut' }}
+        className="absolute inset-0"
+      >
+        <img
+          src={heroImages[currentSlide].src}
+          alt={heroImages[currentSlide].alt}
+          width={1500}
+          height={1000}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/70" />
+      </motion.div>
+    </AnimatePresence>
+  </motion.div>
+</div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.3, ease: 'easeInOut' }}
-              className="absolute inset-0"
-            >
-              <img
-               src={heroImages[currentSlide].src}
-               alt={heroImages[currentSlide].alt}
-               
-                width={1500}
-                height={1000}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/70" />
-            </motion.div>
-          </AnimatePresence>
-          </motion.div>
+{/* Dots */}
+<div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+  {heroImages.map((_, index) => (
+    <button
+      key={index}
+      onClick={() => setCurrentSlide(index)}
+      className={`w-3 h-3 rounded-full border border-white/40 transition-all duration-300 ${
+        index === currentSlide
+          ? 'bg-white scale-125 shadow-md'
+          : 'bg-white/25 hover:bg-white/60'
+      }`}
+      aria-label={`Go to slide ${index + 1}`}
+    />
+  ))}
+</div>
 
-
-        {/* Dots */}
-        <div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
-          {heroImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full border border-white/40 transition-all duration-300 ${
-                index === currentSlide ? 'bg-white scale-125 shadow-md' : 'bg-white/25 hover:bg-white/60'
-              }`}
-            />
-          ))}
-        </div>
 
         
 {/* Hero Content */}

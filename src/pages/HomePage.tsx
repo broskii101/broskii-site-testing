@@ -607,8 +607,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* VIDEO */}
-      <div ref={videoSectionRef} className="flex justify-center lg:justify-end">
-        <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 max-w-sm w-full">
+      <div ref={videoSectionRef} className="flex justify-center lg:justify-end px-4 sm:px-0 mt-10 sm:mt-14">
+
+      <div className="bg-white/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-sm border border-gray-200/70 w-full max-w-[320px] sm:max-w-sm">
+
+
 
           {!videoError ? (
             <iframe
@@ -616,7 +619,8 @@ const HomePage: React.FC = () => {
               onClick={handleVideoClick}
               src="https://www.youtube.com/embed/4B4TGO_qZrU?vq=hd1080&enablejsapi=1&mute=1"
               title="Broskii - Muslim ski & snowboarding trips"
-              className="w-full aspect-[9/16] min-h-[420px]"
+              className="w-full aspect-[9/16] min-h-[380px] sm:min-h-[420px]"
+
               allowFullScreen
               referrerPolicy="strict-origin-when-cross-origin"
               onError={() => setVideoError(true)}

@@ -481,7 +481,7 @@ const HomePage: React.FC = () => {
     <div
       className="
         mx-auto cursor-pointer 
-        max-w-[340px] sm:max-w-[420px]
+        max-w-[290px] sm:max-w-[420px]
         rounded-3xl overflow-hidden 
         shadow-xl border border-white/60
       "
@@ -504,14 +504,19 @@ const HomePage: React.FC = () => {
       <Link
         to="/upcoming-trip"
         className="
-          rounded-full px-10 py-5 
-          bg-[#0092D1] text-white 
-          text-lg sm:text-xl font-semibold 
-          flex items-center gap-3
-          transition-transform duration-200
-          hover:scale-[1.04] active:scale-[0.96]
-          shadow-md
-        "
+  rounded-full
+  px-8 py-4
+  sm:px-10 sm:py-5
+  bg-[#0092D1] text-white
+  text-base sm:text-xl
+  font-semibold
+  flex items-center gap-3
+  transition-transform duration-200
+  hover:scale-[1.04] active:scale-[0.96]
+  shadow-md
+"
+
+
       >
         <span>View Trip Details</span>
         <ArrowRight className="h-6 w-6" />

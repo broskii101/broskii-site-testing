@@ -72,26 +72,32 @@ function OnTheMountainSection() {
     observer.observe(posterEl);
   
     let ticking = false;
+    let lastY = 9999;
+
   
     const updateParallax = () => {
       ticking = false;
-  
+    
       if (reduceMotion) {
         imageEl.style.transform = "translateY(0px)";
         return;
       }
-  
+    
       const rect = posterEl.getBoundingClientRect();
       const vh = window.innerHeight || 0;
-  
+    
       const progress = (vh - rect.top) / (vh + rect.height);
       const clamped = Math.max(0, Math.min(1, progress));
-  
-      // Subtle range: -10px to +10px
-      const y = (clamped - 0.5) * 40;
-      imageEl.style.transform = `translateY(${Math.round(y)}px)`;
-
+    
+      // Premium but stable: quantized + no micro-updates at rest
+      const targetY = Math.round((clamped - 0.5) * 42);
+    
+      if (targetY === lastY) return;
+      lastY = targetY;
+    
+      imageEl.style.transform = `translateY(${targetY}px)`;
     };
+    
   
     const onScroll = () => {
       if (ticking) return;
@@ -146,15 +152,20 @@ function OnTheMountainSection() {
     font-serif font-semibold
     text-[30px]
     leading-[1.15]
-    max-w-[36ch]
-    drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
+    w-full
+    max-w-[420px]
     px-6
+    drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
   "
 >
-  Nothing brings people together
-  <br />
-  like the mountains.
+  <span className="block">
+    Nothing brings people together
+  </span>
+  <span className="block">
+    like the mountains.
+  </span>
 </h2>
+
 
 
 

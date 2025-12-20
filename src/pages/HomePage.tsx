@@ -670,7 +670,8 @@ const HomePage: React.FC = () => {
 
       
 {/* ===================== THE BROSKII EXPERIENCE ===================== */}
-<section className="py-16 bg-gradient-to-b from-[#F3FAFF] via-white to-white overflow-hidden">
+<section className="py-12 sm:py-16 bg-gradient-to-b from-[#F3FAFF] via-white to-white overflow-hidden">
+
 
   {/* HEADER + SUBHEADER */}
   <motion.div
@@ -680,21 +681,25 @@ const HomePage: React.FC = () => {
     transition={{ duration: 0.9, ease: "easeOut" }}
     className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
   >
-    <p className="text-4xl md:text-5xl tracking-[0.12em] uppercase font-bold text-[#0092D1] mt-2">
+    <p className="text-3xl sm:text-4xl md:text-5xl tracking-[0.1em] uppercase font-bold text-[#0092D1] mt-1">
+
       THE BROSKII EXPERIENCE
     </p>
 
-    <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mt-3 mb-6">
+    <h2 className="text-[26px] sm:text-3xl md:text-4xl font-serif font-semibold leading-tight text-gray-900 mt-3 mb-5">
+
       Why hundreds of Muslim skiers & snowboarders choose us
     </h2>
 
     {/* Divider */}
-    <div className="w-24 h-[3px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto rounded-full mb-10" />
+    <div className="w-16 sm:w-24 h-[3px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto rounded-full mb-8 sm:mb-10" />
+
   </motion.div>
 
   {/* ICON GRID */}
   <motion.div
-    className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14 mt-2"
+    className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-14 mt-2"
+
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
@@ -743,14 +748,17 @@ const HomePage: React.FC = () => {
         className="text-center"
       >
         <div className="flex justify-center mb-4">
-          <item.Icon className="h-12 w-12 text-[#0092D1]" strokeWidth={2.2} />
+        <item.Icon className="h-10 w-10 sm:h-12 sm:w-12 text-[#0092D1]" strokeWidth={2.2} />
+
         </div>
 
-        <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 mb-2">
+
           {item.title}
         </h3>
 
-        <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+        <p className="text-base sm:text-xl md:text-2xl text-gray-700 leading-relaxed max-w-[22rem] mx-auto">
+
           {item.desc}
         </p>
       </motion.div>

@@ -311,7 +311,22 @@ const HomePage: React.FC = () => {
 
 
       {/* HERO */}
-      <section className="relative h-[90vh] min-h-[540px] flex items-center justify-center overflow-hidden bg-black">
+
+      <section
+  className="
+    relative
+    min-h-[85svh]
+    max-h-[820px]
+    sm:min-h-screen
+    flex
+    items-center
+    justify-center
+    overflow-hidden
+    bg-black
+  "
+>
+
+      
        {/* Background */}
 <motion.div className="absolute inset-0" style={{ y: heroBgY, scale: heroBgScale }}>
 

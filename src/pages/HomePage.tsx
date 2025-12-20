@@ -88,7 +88,7 @@ function OnTheMountainSection() {
       const clamped = Math.max(0, Math.min(1, progress));
   
       // Subtle range: -10px to +10px
-      const y = (clamped - 0.5) * 20;
+      const y = (clamped - 0.5) * 30;
       imageEl.style.transform = `translateY(${y.toFixed(2)}px)`;
     };
   
@@ -138,40 +138,43 @@ function OnTheMountainSection() {
 
           {/* Headline (keep your tuned version) */}
           <h2
-            className="
-              absolute top-20 left-1/2 -translate-x-1/2
-              text-center text-white
-              font-serif font-semibold
-              text-[30px]
-              leading-[1.15]
-              max-w-[34ch]
-              drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
-              px-4
-            "
-          >
-            Nothing brings people together
-            <br />
-            like the mountains.
-          </h2>
+  className="
+    absolute top-20 left-1/2 -translate-x-1/2
+    text-center text-white
+    font-serif font-semibold
+    text-[30px]
+    leading-[1.15]
+    max-w-none
+    whitespace-nowrap
+    drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
+    px-4
+  "
+>
+  Nothing brings people together
+  <br />
+  like the mountains.
+</h2>
+
 
           {/* CTA (your “View Trip Details / Read Our Story” style) */}
-          <div className="absolute bottom-14 left-1/2 -translate-x-1/2">
-            <Link
-              to="/upcoming-trip"
-              className="
-                inline-flex items-center gap-2
-                px-7 py-3
-                rounded-full
-                bg-white/90 backdrop-blur-sm
-                text-gray-900 font-medium text-[14px]
-                shadow-md
-                hover:bg-white
-                transition-all
-              "
-            >
-              Join the Next Trip
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          <div className="absolute bottom-18 left-1/2 -translate-x-1/2">
+          <Link
+  to="/upcoming-trip"
+  className="
+    inline-flex items-center gap-2
+    px-7 py-3
+    rounded-full
+    bg-white/90 backdrop-blur-sm
+    text-gray-900 font-medium text-[14px]
+    shadow-md
+    hover:bg-white
+    transition-all
+  "
+>
+  Join the Next Trip
+  <ArrowRight className="h-4 w-4" />
+</Link>
+
           </div>
         </div>
       </div>

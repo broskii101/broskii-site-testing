@@ -30,11 +30,11 @@ function OnTheMountainSection() {
 
   return (
     <section className="relative py-28 sm:py-32 md:py-40 overflow-hidden">
-      {/* Background with micro parallax + cinematic zoom */}
+      {/* Background with micro parallax + controlled zoom */}
       <motion.div
         style={{ y }}
         initial={{ scale: 1 }}
-        animate={{ scale: 1.08 }}
+        animate={{ scale: 1.04 }}   // 👈 reduced zoom to match sandbox
         transition={{ duration: 10, ease: 'easeOut' }}
         className="absolute inset-0"
       >
@@ -44,23 +44,23 @@ function OnTheMountainSection() {
           height={900}
           alt="Skiers on the mountain"
           loading="lazy"
-          className="w-full h-full object-cover object-[50%_60%] sm:object-center scale-[1.02] sm:scale-100"
-
-
+          className="
+            w-full h-full object-cover
+            object-[50%_72%] sm:object-center
+          "
         />
 
-        {/* Soft atmospheric overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40" />
+        {/* Core contrast overlay (sandbox-like) */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/45" />
 
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center, rgba(255,255,255,0.12), transparent_60%)] pointer-events-none" />
+        {/* Soft atmospheric texture */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_60%)] pointer-events-none" />
 
-{/* Lower framing fade (anchors CTA + smoother into next section) */}
-<div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent via-black/20 to-black/45 pointer-events-none" />
-
+        {/* Lower framing fade — anchors CTA without moving it */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-black/20 to-black/45 pointer-events-none" />
 
         {/* Cinematic vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.45))] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.45))] pointer-events-none" />
       </motion.div>
 
       {/* Content Layer */}
@@ -72,52 +72,50 @@ function OnTheMountainSection() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: true }}
           className="
-  text-4xl sm:text-5xl md:text-6xl 
-  font-serif font-semibold 
-  leading-[1.05]
-  max-w-[20ch] mx-auto
-  drop-shadow-[0_10px_35px_rgba(0,0,0,1)]
-  mt-0 sm:mt-4 md:mt-10
-"
-
+            font-serif font-semibold
+            text-[30px] leading-[1.1]     /* 👈 sandbox mobile size */
+            sm:text-5xl md:text-6xl
+            max-w-[22ch] mx-auto          /* 👈 forces 2 lines */
+            drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]
+            mt-0 sm:mt-4 md:mt-10
+          "
         >
           Nothing brings people together like the mountains.
         </motion.h2>
 
-        {/* CTA (Updated Frosted White Button) */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
           viewport={{ once: true }}
-          className="mt-52 sm:mt-60 md:mt-72 mb-10"
+          className="mt-52 sm:mt-60 md:mt-72 mb-12"
         >
           <Link
             to="/upcoming-trip"
             className="
-              inline-flex items-center space-x-3 
-              px-12 py-5 
-              rounded-full 
+              inline-flex items-center space-x-3
+              px-8 py-4                    /* 👈 smaller mobile pill */
+              rounded-full
 
-              bg-white/80 
+              bg-white/85
               backdrop-blur-sm
               border border-white/30
 
-              text-gray-900 
-              text-xl sm:text-2xl font-semibold 
+              text-gray-900
+              text-[16px] sm:text-2xl      /* 👈 sandbox mobile size */
+              font-semibold
 
-              shadow-xl 
-              hover:shadow-[0_0_45px_rgba(255,255,255,0.7)]
+              shadow-lg
               hover:bg-white/95
+              hover:shadow-[0_0_35px_rgba(255,255,255,0.6)]
 
-              hover:scale-[1.07]
               active:scale-[0.97]
-
               transition-all duration-300 ease-out
             "
           >
             <span>Join the Next Trip</span>
-            <ArrowRight className="h-6 w-6" />
+            <ArrowRight className="h-5 w-5" />
           </Link>
         </motion.div>
       </div>

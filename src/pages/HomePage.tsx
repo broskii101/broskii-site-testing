@@ -22,68 +22,74 @@ interface Testimonial {
   featured?: boolean;
 }
 
-/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH — FIXED) ===================== */
+/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH — SYMMETRICAL) ===================== */
 function OnTheMountainSection() {
   return (
     <section className="bg-[#f7fbff] pt-8 pb-14">
       {/* Poster Wrapper */}
       <div className="relative mx-auto w-full max-w-[420px] px-4">
-        {/* Image */}
-        <img
-          src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
-          alt="Nothing brings people together like the mountains"
-          loading="lazy"
-          className="
-            w-full
-            h-auto
-            brightness-[1.05]
-            contrast-[1.02]
-          "
-        />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
-
-        {/* Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-end pb-10 text-center text-white px-6">
-          {/* Headline */}
-          <h2
+        {/* Poster Frame – controls sandbox-like height */}
+        <div className="relative w-full h-[560px] overflow-hidden">
+          {/* Image */}
+          <img
+            src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
+            alt="Nothing brings people together like the mountains"
+            loading="lazy"
             className="
-              font-serif font-semibold
-              text-[30px]
-              leading-[1.15]
-              max-w-[22ch]
-              drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
-              mb-6
+              absolute inset-0
+              w-full h-full
+              object-cover
+              object-center
+              brightness-[1.03]
+              contrast-[1.03]
             "
-          >
-            Nothing brings people together
-            <br />
-            like the mountains.
-          </h2>
+          />
 
-          {/* CTA */}
-          <Link
-            to="/upcoming-trip"
-            className="
-              inline-flex items-center gap-2
-              px-8 py-4
-              rounded-full
-              bg-white/85 backdrop-blur-sm
-              text-gray-900 font-semibold text-base
-              shadow-lg
-              hover:bg-white
-              transition-all
-            "
-          >
-            Join the Next Trip
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+          {/* Overlay – matches sandbox tone */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
+
+          {/* Content */}
+          <div className="absolute inset-0 flex flex-col items-center justify-end pb-10 text-center text-white px-6">
+            {/* Headline */}
+            <h2
+              className="
+                font-serif font-semibold
+                text-[30px]
+                leading-[1.15]
+                max-w-[22ch]
+                drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
+                mb-6
+              "
+            >
+              Nothing brings people together
+              <br />
+              like the mountains.
+            </h2>
+
+            {/* CTA */}
+            <Link
+              to="/upcoming-trip"
+              className="
+                inline-flex items-center gap-2
+                px-8 py-4
+                rounded-full
+                bg-white/85 backdrop-blur-sm
+                text-gray-900 font-semibold text-base
+                shadow-lg
+                hover:bg-white
+                transition-all
+              "
+            >
+              Join the Next Trip
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 
 

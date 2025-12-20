@@ -8,7 +8,8 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
-const isHeroTop = isHome && !isScrolled && !isMobileMenuOpen;
+// Header is always light and independent (no transparent overlay state)
+
 
 
   useEffect(() => {
@@ -172,22 +173,25 @@ const isHeroTop = isHome && !isScrolled && !isMobileMenuOpen;
   );
 
   return (
+    <>
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isHeroTop
-          ? 'bg-transparent shadow-none'
-          : 'bg-white/85 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.08)] border-b border-black/5'
-      }`}
-      
-    >
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.25, ease: 'easeOut' }}
+  className={`sticky top-0 z-50 bg-white border-b border-black/10 transition-shadow duration-300 ${
+    isScrolled ? 'shadow-sm' : 'shadow-none'
+  }`}
+>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center h-16 sm:h-20">
+      <div className="flex justify-between items-center h-[80px] sm:h-[88px]">
+
 
           {/* Logo Only - Bigger Size and Vertically Flipped - Moved Left */}
-          <Link to="/" className="flex items-center group -ml-4">
-          <CompanyLogo className="h-14 w-14 sm:h-16 sm:w-16 transition-all duration-300 group-hover:scale-110" />
+          <Link to="/" className="flex items-center -ml-2">
+
+          <CompanyLogo className="h-[70px] w-[70px] sm:h-[76px] sm:w-[76px]" />
+
 
           </Link>
 
@@ -200,18 +204,18 @@ const isHeroTop = isHome && !isScrolled && !isMobileMenuOpen;
       <Link
         key={item.name}
         to={item.href}
-        className={`relative px-3 py-2 text-[13px] font-medium tracking-[0.08em] uppercase transition-colors duration-200 ${
-          isActive
-            ? 'text-[#0092D1]'
-            : 'text-gray-800 hover:text-[#0092D1]'
+        className={`relative px-3 py-2 text-sm font-medium transition-opacity duration-200 ${
+          isActive ? 'text-gray-900 opacity-100' : 'text-gray-700 opacity-80 hover:opacity-100'
         }`}
+        
       >
         {item.name}
 
         {isActive && (
           <motion.div
             layoutId="activeTab"
-            className="absolute -bottom-1 left-3 right-3 h-[2px] bg-[#0092D1] rounded-full"
+            className="absolute -bottom-[1px] left-3 right-3 h-px bg-gray-900"
+
           />
         )}
       </Link>
@@ -233,101 +237,96 @@ const isHeroTop = isHome && !isScrolled && !isMobileMenuOpen;
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2.5 rounded-xl transition-colors duration-200 ${
-              isHeroTop
-                ? 'text-white hover:bg-white/10'
-                : 'text-gray-900 hover:bg-black/5'
-            }`}
-            
-          >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+<button
+  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+  className="md:hidden flex items-center justify-center h-11 w-11 rounded-full bg-black/5 hover:bg-black/10 transition-colors duration-200 text-gray-900"
+>
+  {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+</button>
+
+
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      
+
+    </motion.header>
+
+{/* Mobile Menu (premium in-flow panel, does not overlay hero) */}
 <AnimatePresence>
   {isMobileMenuOpen && (
-    <>
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px]"
-        onClick={() => setIsMobileMenuOpen(false)}
-      />
-
-      {/* Slide-in sheet */}
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%' }}
-        transition={{ type: 'tween', duration: 0.28, ease: 'easeOut' }}
-        className="fixed top-0 right-0 bottom-0 z-50 w-[88%] max-w-[380px] bg-white shadow-[0_20px_80px_rgba(0,0,0,0.25)]"
-      >
-        {/* Sheet header */}
-        <div className="h-16 sm:h-20 px-5 flex items-center justify-between border-b border-black/5">
-          <span className="text-sm tracking-[0.16em] uppercase text-gray-500">
-            Menu
+    <motion.div
+      key="mobileMenu"
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: 'calc(100vh - 80px)', opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.28, ease: 'easeOut' }}
+      className="md:hidden bg-white border-b border-black/10 overflow-hidden"
+    >
+      <div className="h-[calc(100vh-80px)] overflow-y-auto px-5 py-6">
+        {/* Menu header */}
+        <div className="mb-8 flex items-center justify-between">
+          <span className="text-xs font-medium tracking-[0.18em] text-gray-500">
+            MENU
           </span>
 
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="p-2.5 rounded-xl hover:bg-black/5 transition-colors"
-            aria-label="Close menu"
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-black/5 hover:bg-black/10 transition-colors duration-200 text-gray-900"
           >
-            <X className="h-6 w-6 text-gray-900" />
+            <X className="h-6 w-6" />
           </button>
         </div>
 
-        {/* Navigation */}
-        <div className="px-5 py-6">
-          <div className="space-y-2">
-            {navigation.map((item) => {
-              const active = location.pathname === item.href;
+        {/* Links */}
+        <nav className="flex flex-col gap-5">
+          {navigation.map((item) => {
+            const active = location.pathname === item.href;
 
-              return (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={
-                    'block rounded-2xl px-4 py-4 transition-colors ' +
-                    (active
-                      ? 'bg-[#0092D1]/10 text-[#0092D1]'
-                      : 'text-gray-900 hover:bg-black/5')
-                  }
+            return (
+              <Link
+                key={item.name}
+                to={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="group"
+              >
+                <div
+                  className={`inline-flex items-baseline gap-3 font-serif text-[24px] leading-tight ${
+                    active ? 'text-gray-900' : 'text-gray-700'
+                  }`}
                 >
-                  <span className="text-[20px] font-serif">
+                  <span className="border-b border-transparent group-hover:border-gray-900/30 transition-colors">
                     {item.name}
                   </span>
-                </Link>
-              );
-            })}
-          </div>
 
-          {/* CTA */}
-          <div className="mt-7">
-            <Link
-              to="/upcoming-trip"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-3 bg-[#0092D1] hover:bg-[#0088c4] text-white px-6 py-4 rounded-2xl text-lg font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)]"
-            >
-              <Calendar className="h-5 w-5" />
-              <span>Book Now</span>
-            </Link>
-          </div>
+                  {active && (
+                    <span className="h-[6px] w-[6px] rounded-full bg-[#0092D1]" />
+                  )}
+                </div>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* CTA */}
+        <div className="mt-10">
+          <Link
+            to="/upcoming-trip"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center gap-3 bg-[#0092D1] hover:bg-[#0088c4] text-white px-6 py-4 rounded-full text-base font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)]"
+          >
+            <Calendar className="h-5 w-5" />
+            <span>Book Now</span>
+          </Link>
         </div>
-      </motion.div>
-    </>
+      </div>
+    </motion.div>
   )}
 </AnimatePresence>
 
-    </motion.header>
-  );
-};
-
-export default Header;
+     </>
+   );
+   };
+   
+   export default Header;
+   

@@ -411,55 +411,68 @@ const HomePage: React.FC = () => {
 {/* ===================== NEXT TRIP SECTION ===================== */}
 <section className="
   relative 
-  pt-20 pb-20 
+  pt-14 pb-16 
+  sm:pt-20 sm:pb-20
   bg-gradient-to-b 
   from-[#cfe4f0] 
   via-white 
   to-[#cfe4f0]
 ">
+
+
   <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
     {/* LABEL */}
     <p className="
-      text-center 
-      text-4xl md:text-5xl 
-      uppercase tracking-[0.15em] 
-      font-bold text-[#0092D1] 
-      mb-6
-    ">
-      NEXT STOP:
-    </p>
+  text-center
+  text-3xl
+  sm:text-4xl md:text-5xl
+  uppercase
+  tracking-[0.12em]
+  font-bold
+  text-[#0092D1]
+  mb-5
+">
+  NEXT STOP:
+</p>
+
 
     {/* HEADER + DATE */}
     <div className="text-center mb-8">
-      <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mb-2">
+    <h2 className="text-[26px] sm:text-3xl md:text-4xl font-serif font-semibold leading-tight text-gray-900 mb-2">
+
         Tignes, French Alps
       </h2>
 
       <p className="
-  text-2xl md:text-3xl 
-  font-semibold 
-  text-[#0092D1] 
-  tracking-wide 
-  font-sans 
+  text-lg sm:text-2xl md:text-3xl
+  font-semibold
+  text-[#0092D1]
+  tracking-wide
+  font-sans
   mt-1
 ">
+
+
   APRIL 11–18, 2026
 </p>
 
 
-      <div className="w-20 h-[2px] bg-[#0092D1] mt-5 mx-auto" />
+<div className="w-16 sm:w-20 h-[2px] bg-[#0092D1] mt-4 mx-auto" />
+
     </div>
 
     {/* SUBTEXT */}
     <p className="
-      text-xl md:text-2xl 
-      text-gray-700 
-      leading-relaxed 
-      text-center 
-      max-w-2xl mx-auto 
-      mb-10
-    ">
+  text-base sm:text-xl md:text-2xl
+  text-gray-700
+  leading-relaxed
+  text-center
+  max-w-[36rem]
+  mx-auto
+  mb-8 sm:mb-10
+">
+
       Part of a 300km alpine playground built for real mountain days — wide pistes, 
       high views and an atmosphere made for switching off and reconnecting.
     </p>
@@ -468,7 +481,7 @@ const HomePage: React.FC = () => {
     <div
       className="
         mx-auto cursor-pointer 
-        max-w-[365px] sm:max-w-[420px]
+        max-w-[340px] sm:max-w-[420px]
         rounded-3xl overflow-hidden 
         shadow-xl border border-white/60
       "
@@ -486,7 +499,8 @@ const HomePage: React.FC = () => {
     </div>
 
     {/* CTA */}
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center mt-8 sm:mt-10">
+
       <Link
         to="/upcoming-trip"
         className="

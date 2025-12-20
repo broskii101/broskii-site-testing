@@ -89,12 +89,16 @@ posterEl.style.opacity = "1";
       const clamped = Math.max(0, Math.min(1, progress));
     
       // Premium but stable: quantized + no micro-updates at rest
-      const targetY = Math.round((clamped - 0.5) * 36);
-    
-      if (targetY === lastY) return;
-      lastY = targetY;
-    
-      imageEl.style.transform = `translateY(${targetY}px)`;
+      const targetY = Math.round((clamped - 0.5) * 28);
+
+// Subtle scale settle for premium depth (safe on mobile)
+const scale = 1.03 - clamped * 0.03;
+
+if (targetY === lastY) return;
+lastY = targetY;
+
+imageEl.style.transform = `translateY(${targetY}px) scale(${scale.toFixed(3)})`;
+
     };
     
   
@@ -124,8 +128,10 @@ posterEl.style.opacity = "1";
         <div className="relative w-full h-[500px] overflow-hidden">
           {/* Image */}
           <div
+  
   ref={imageRef}
-  className="absolute inset-0 will-change-transform"
+className="absolute inset-0 will-change-transform transition-transform duration-[1200ms] ease-out"
+
 >
   <img
     src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"

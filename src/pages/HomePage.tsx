@@ -240,7 +240,7 @@ const HomePage: React.FC = () => {
 
     const heroImages = [
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-bro-mountain-view-alps.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261594/broskii-bro-mountain-view-alps_czxoyo.webp",
         alt: "A bro sitting on the snow overlooking a mountain resort in the Alps",
       },
       {

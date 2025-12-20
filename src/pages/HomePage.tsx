@@ -44,13 +44,20 @@ function OnTheMountainSection() {
           height={900}
           alt="Skiers on the mountain"
           loading="lazy"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[50%_60%] sm:object-center scale-[1.02] sm:scale-100"
+
+
         />
 
         {/* Soft atmospheric overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/15 via-transparent to-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/45" />
+
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center, rgba(255,255,255,0.12), transparent_60%)] pointer-events-none" />
+
+{/* Lower framing fade (anchors CTA + smoother into next section) */}
+<div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent via-black/20 to-black/45 pointer-events-none" />
+
 
         {/* Cinematic vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.45))] pointer-events-none" />
@@ -65,12 +72,14 @@ function OnTheMountainSection() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: true }}
           className="
-            text-4xl sm:text-5xl md:text-6xl 
-            font-serif font-semibold 
-            leading-tight
-            drop-shadow-[0_10px_35px_rgba(0,0,0,1)]
-            mt-0 sm:mt-4 md:mt-10
-          "
+  text-4xl sm:text-5xl md:text-6xl 
+  font-serif font-semibold 
+  leading-[1.05]
+  max-w-[20ch] mx-auto
+  drop-shadow-[0_10px_35px_rgba(0,0,0,1)]
+  mt-0 sm:mt-4 md:mt-10
+"
+
         >
           Nothing brings people together like the mountains.
         </motion.h2>

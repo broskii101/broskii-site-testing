@@ -89,7 +89,7 @@ posterEl.style.opacity = "1";
       const clamped = Math.max(0, Math.min(1, progress));
     
       // Premium but stable: quantized + no micro-updates at rest
-      const targetY = Math.round((clamped - 0.5) * 42);
+      const targetY = Math.round((clamped - 0.5) * 36);
     
       if (targetY === lastY) return;
       lastY = targetY;
@@ -123,21 +123,18 @@ posterEl.style.opacity = "1";
         {/* Poster */}
         <div className="relative w-full h-[500px] overflow-hidden">
           {/* Image */}
-          <img
-            ref={imageRef}
-            src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
-            alt="Nothing brings people together like the mountains"
-            loading="lazy"
-            className="
-              absolute inset-0
-              w-full h-full
-              object-cover
-              object-center
-              brightness-[1.02]
-              contrast-[1.02]
-              will-change-transform
-            "
-          />
+          <div
+  ref={imageRef}
+  className="absolute inset-0 will-change-transform"
+>
+  <img
+    src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
+    alt="Nothing brings people together like the mountains"
+    loading="lazy"
+    className="w-full h-full object-cover object-center"
+  />
+</div>
+
 
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
@@ -156,10 +153,10 @@ posterEl.style.opacity = "1";
   "
 >
   <span className="block whitespace-nowrap">
-    Nothing brings people together
+    Nothing brings people
   </span>
   <span className="block whitespace-nowrap">
-    like the mountains.
+    together like the mountains.
   </span>
 </h2>
 

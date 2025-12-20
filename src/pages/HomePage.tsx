@@ -88,7 +88,7 @@ function OnTheMountainSection() {
       const clamped = Math.max(0, Math.min(1, progress));
   
       // Subtle range: -10px to +10px
-      const y = (clamped - 0.5) * 30;
+      const y = (clamped - 0.5) * 40;
       imageEl.style.transform = `translateY(${y.toFixed(2)}px)`;
     };
   
@@ -157,23 +157,25 @@ function OnTheMountainSection() {
 
 
           {/* CTA (your “View Trip Details / Read Our Story” style) */}
-          <div className="absolute bottom-18 left-1/2 -translate-x-1/2">
+          <div className="absolute bottom-14 left-1/2 -translate-x-1/2">
           <Link
   to="/upcoming-trip"
   className="
-    inline-flex items-center gap-2
-    px-7 py-3
     rounded-full
-    bg-white/90 backdrop-blur-sm
-    text-gray-900 font-medium text-[14px]
+    px-6 py-4
+    bg-white text-gray-900
+    text-base font-semibold
+    flex items-center gap-3
     shadow-md
-    hover:bg-white
-    transition-all
+    transition-transform duration-200
+    hover:scale-[1.04]
+    active:scale-[0.96]
   "
 >
   Join the Next Trip
   <ArrowRight className="h-4 w-4" />
 </Link>
+
 
           </div>
         </div>

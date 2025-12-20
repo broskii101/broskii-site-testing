@@ -22,51 +22,30 @@ interface Testimonial {
   featured?: boolean;
 }
 
-/* ===================== ON THE MOUNTAIN SECTION (FINAL — SAFE + PREMIUM) ===================== */
+/* ===================== ON THE MOUNTAIN SECTION (SANDBOX MATCH — FIXED) ===================== */
 function OnTheMountainSection() {
   return (
     <section className="bg-[#f7fbff] pt-8 pb-14">
       {/* Poster Wrapper */}
-      <div
-        className="
-          relative mx-auto w-full max-w-[420px] px-4
-          min-h-[520px]
-          overflow-hidden
-          group
-        "
-      >
+      <div className="relative mx-auto w-full max-w-[420px] px-4">
         {/* Image */}
         <img
           src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
           alt="Nothing brings people together like the mountains"
           loading="lazy"
           className="
-            absolute inset-0
-            w-full h-full
-            object-contain
-            brightness-[1.08]
+            w-full
+            h-auto
+            brightness-[1.05]
             contrast-[1.02]
-            transition-transform duration-[1200ms] ease-out
-            will-change-transform
-            group-hover:translate-y-[-8px]
           "
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/20 to-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
 
         {/* Content */}
-        <div
-          className="
-            absolute inset-0
-            flex flex-col items-center justify-end
-            pb-10 px-6
-            text-center text-white
-            opacity-0 translate-y-4
-            transition-all duration-[1000ms] ease-out
-            group-hover:opacity-100 group-hover:translate-y-0
-          "
-        >
+        <div className="absolute inset-0 flex flex-col items-center justify-end pb-10 text-center text-white px-6">
           {/* Headline */}
           <h2
             className="
@@ -94,7 +73,6 @@ function OnTheMountainSection() {
               text-gray-900 font-semibold text-base
               shadow-lg
               hover:bg-white
-              hover:translate-y-[-1px]
               transition-all
             "
           >
@@ -106,6 +84,7 @@ function OnTheMountainSection() {
     </section>
   );
 }
+
 
 
 

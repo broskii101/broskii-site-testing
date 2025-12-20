@@ -240,7 +240,7 @@ const HomePage: React.FC = () => {
 
   const heroImages = [
     '/1000090386.webp',
-    '/1000090387.webp',
+    'https://res.cloudinary.com/dtx0og5tm/image/upload/v1766260050/broskii-salah-prayer-ski-trip-french-alps.jpg_hajf8j.webp',
     '/1000090389.webp',
     '/1000090390.webp',
     '/1000090385.webp',

@@ -42,7 +42,7 @@ function OnTheMountainSection() {
     // Initial fade state
     if (!reduceMotion) {
       posterEl.style.opacity = "0";
-      posterEl.style.transform = "translateY(10px)";
+      
     }
   
     let hasRevealed = false;
@@ -56,13 +56,12 @@ function OnTheMountainSection() {
           hasRevealed = true;
   
           if (!reduceMotion) {
-            posterEl.style.transition =
-              "opacity 900ms ease-out, transform 900ms ease-out";
-            posterEl.style.opacity = "1";
-            posterEl.style.transform = "translateY(0px)";
+            posterEl.style.transition = "opacity 900ms ease-out";
+posterEl.style.opacity = "1";
+
           } else {
             posterEl.style.opacity = "1";
-            posterEl.style.transform = "none";
+            
           }
         }
       },
@@ -152,19 +151,18 @@ function OnTheMountainSection() {
     font-serif font-semibold
     text-[30px]
     leading-[1.15]
-    w-full
-    max-w-[420px]
     px-6
     drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
   "
 >
-  <span className="block">
+  <span className="block whitespace-nowrap">
     Nothing brings people together
   </span>
-  <span className="block">
+  <span className="block whitespace-nowrap">
     like the mountains.
   </span>
 </h2>
+
 
 
 

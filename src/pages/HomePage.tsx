@@ -284,12 +284,15 @@ const HomePage: React.FC = () => {
     'inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-full text-sm md:text-base font-semibold border border-gray-300 bg-white text-gray-900 shadow-sm hover:shadow-md transition-all duration-300';
 
     const heroPrimaryButtonClasses =
-  'inline-flex items-center justify-center space-x-3 px-10 py-5 rounded-full ' +
-  'text-lg sm:text-xl font-semibold ' +
+  'inline-flex items-center justify-center space-x-3 ' +
+  'px-8 py-4 sm:px-10 sm:py-5 ' +
+  'text-base sm:text-xl font-semibold ' +
+  'rounded-full ' +
   'bg-[#0092D1] text-white ' +
   'shadow-lg hover:shadow-[0_0_40px_rgba(0,146,209,0.6)] ' +
   'hover:scale-[1.06] active:scale-[0.97] ' +
   'transition-all duration-300 ease-out';
+
 
 
 
@@ -312,21 +315,8 @@ const HomePage: React.FC = () => {
 
       {/* HERO */}
 
-      <section
-  className="
-    relative
-    min-h-[85svh]
-    max-h-[820px]
-    sm:min-h-screen
-    flex
-    items-center
-    justify-center
-    overflow-hidden
-    bg-black
-  "
->
+      <section className="relative h-[90vh] min-h-[540px] flex items-center justify-center overflow-hidden bg-black">
 
-      
        {/* Background */}
 <motion.div className="absolute inset-0" style={{ y: heroBgY, scale: heroBgScale }}>
 
@@ -372,21 +362,20 @@ const HomePage: React.FC = () => {
   style={{ y: heroTextY, opacity: heroTextOpacity }}
 >
 
-<p className="text-sm sm:text-base tracking-[0.22em] uppercase mb-6 sm:mb-8 text-white/80 whitespace-nowrap">
-
+<p className="text-[11px] sm:text-base tracking-[0.18em] sm:tracking-[0.22em] uppercase mb-5 sm:mb-8 text-white/80">
   Muslim ski & snowboarding trips worldwide
 </p>
 
 
 
+<h1 className="text-white font-serif font-semibold leading-[0.95] tracking-tight text-[44px] sm:text-6xl md:text-7xl drop-shadow-[0_6px_18px_rgba(0,0,0,0.65)]">
+  Ski. Snowboard. Explore.
+</h1>
 
-          <h1 className="text-white font-serif font-semibold leading-tight tracking-tight text-5xl sm:text-6xl md:text-7xl drop-shadow-[0_6px_18px_rgba(0,0,0,0.65)]">
-            Ski. Snowboard. Explore.
-          </h1>
+<p className="mt-4 sm:mt-6 text-white/90 text-base sm:text-lg leading-relaxed max-w-[32rem] mx-auto">
+  Built around adventure, brotherhood and time to reconnect — on and off the mountain.
+</p>
 
-          <p className="text-gray-100/95 text-lg sm:text-xl md:text-2xl mt-4 sm:mt-5 leading-relaxed max-w-2xl mx-auto drop-shadow-[0_4px_14px_rgba(0,0,0,0.7)]">
-            Built around adventure, brotherhood and time to reconnect — on and off the mountain.
-          </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mt-10 sm:mt-14">
           <Link to="/upcoming-trip" className={heroPrimaryButtonClasses}>
@@ -402,13 +391,15 @@ const HomePage: React.FC = () => {
               className="flex items-center space-x-3 text-white hover:text-[#0092D1] transition-colors"
             >
               <div className="bg-white/10 hover:bg-white/20 rounded-full p-3 sm:p-4 border border-white/30 backdrop-blur-sm">
-              <Play className="h-6 w-6 sm:h-7 sm:w-7" />
+              <Play className="h-5 w-5 sm:h-7 sm:w-7" />
+
 
               </div>
               
-              <span className="text-xl sm:text-2xl font-semibold">
+              <span className="text-lg sm:text-2xl font-semibold">
   Watch our story
 </span>
+
 
 
             </button>

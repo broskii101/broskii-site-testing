@@ -89,7 +89,8 @@ function OnTheMountainSection() {
   
       // Subtle range: -10px to +10px
       const y = (clamped - 0.5) * 40;
-      imageEl.style.transform = `translateY(${y.toFixed(2)}px)`;
+      imageEl.style.transform = `translateY(${Math.round(y)}px)`;
+
     };
   
     const onScroll = () => {
@@ -137,6 +138,7 @@ function OnTheMountainSection() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/45" />
 
           {/* Headline (keep your tuned version) */}
+       
           <h2
   className="
     absolute top-20 left-1/2 -translate-x-1/2
@@ -144,10 +146,9 @@ function OnTheMountainSection() {
     font-serif font-semibold
     text-[30px]
     leading-[1.15]
-    max-w-none
-    whitespace-nowrap
+    max-w-[36ch]
     drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)]
-    px-4
+    px-6
   "
 >
   Nothing brings people together
@@ -156,25 +157,29 @@ function OnTheMountainSection() {
 </h2>
 
 
+
           {/* CTA (your “View Trip Details / Read Our Story” style) */}
           <div className="absolute bottom-14 left-1/2 -translate-x-1/2">
           <Link
   to="/upcoming-trip"
   className="
+    whitespace-nowrap
+    inline-flex items-center gap-3
+    px-7 py-3.5
     rounded-full
-    px-6 py-4
-    bg-white text-gray-900
-    text-base font-semibold
-    flex items-center gap-3
-    shadow-md
-    transition-transform duration-200
-    hover:scale-[1.04]
-    active:scale-[0.96]
+    bg-white/85 backdrop-blur-md
+    text-gray-900 font-semibold text-base
+    shadow-[0_8px_30px_rgba(0,0,0,0.25)]
+    transition-all duration-200
+    hover:bg-white
+    hover:shadow-[0_10px_40px_rgba(0,0,0,0.3)]
+    active:scale-[0.97]
   "
 >
   Join the Next Trip
   <ArrowRight className="h-4 w-4" />
 </Link>
+
 
 
           </div>

@@ -7,6 +7,9 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === '/';
+const isHeroTop = isHome && !isScrolled && !isMobileMenuOpen;
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +18,19 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+  
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+  
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileMenuOpen]);
+  
+  
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -159,43 +175,57 @@ const Header = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isHeroTop
+          ? 'bg-transparent shadow-none'
+          : 'bg-white/85 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.08)] border-b border-black/5'
+      }`}
+      
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="flex justify-between items-center h-16 sm:h-20">
+
           {/* Logo Only - Bigger Size and Vertically Flipped - Moved Left */}
           <Link to="/" className="flex items-center group -ml-4">
-            <CompanyLogo className="h-20 w-20 transition-all duration-300 group-hover:scale-110" />
+          <CompanyLogo className="h-14 w-14 sm:h-16 sm:w-16 transition-all duration-300 group-hover:scale-110" />
+
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${
-                  location.pathname === item.href
-                    ? 'text-primary-600' 
-                    : 'text-gray-700 hover:text-primary-600'
-                }`}
-              >
-                {item.name}
-                {location.pathname === item.href && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-500"
-                  />
-                )}
-              </Link>
-            ))}
-          </nav>
+<nav className="hidden md:flex items-center space-x-2">
+  {navigation.map((item) => {
+    const isActive = location.pathname === item.href;
+
+    return (
+      <Link
+        key={item.name}
+        to={item.href}
+        className={`relative px-3 py-2 text-[13px] font-medium tracking-[0.08em] uppercase transition-colors duration-200 ${
+          isActive
+            ? 'text-[#0092D1]'
+            : 'text-gray-800 hover:text-[#0092D1]'
+        }`}
+      >
+        {item.name}
+
+        {isActive && (
+          <motion.div
+            layoutId="activeTab"
+            className="absolute -bottom-1 left-3 right-3 h-[2px] bg-[#0092D1] rounded-full"
+          />
+        )}
+      </Link>
+    );
+  })}
+</nav>
+
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Link
               to="/upcoming-trip"
-              className="flex items-center space-x-2 bg-broskii-light-blue-500 hover:bg-broskii-light-blue-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="flex items-center gap-2 bg-[#0092D1] hover:bg-[#0088c4] text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)] hover:shadow-[0_14px_40px_rgba(0,146,209,0.28)] hover:scale-[1.03]"
+
             >
               <Calendar className="h-4 w-4" />
               <span>Book Now</span>
@@ -205,7 +235,12 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-300"
+            className={`md:hidden p-2.5 rounded-xl transition-colors duration-200 ${
+              isHeroTop
+                ? 'text-white hover:bg-white/10'
+                : 'text-gray-900 hover:bg-black/5'
+            }`}
+            
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -213,48 +248,84 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-200 shadow-lg"
-          >
-            <div className="px-4 py-6 space-y-6">
-              {/* Navigation Links */}
-              <div className="space-y-3">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block px-4 py-3 text-base font-medium transition-all duration-300 ${
-                      location.pathname === item.href
-                        ? 'text-primary-600 bg-primary-50 border-l-4 border-primary-600'
-                        : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
-                    } rounded-r-lg`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
+<AnimatePresence>
+  {isMobileMenuOpen && (
+    <>
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px]"
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
 
-              {/* Book Now Button */}
-              <div className="pt-6">
+      {/* Slide-in sheet */}
+      <motion.div
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%' }}
+        transition={{ type: 'tween', duration: 0.28, ease: 'easeOut' }}
+        className="fixed top-0 right-0 bottom-0 z-50 w-[88%] max-w-[380px] bg-white shadow-[0_20px_80px_rgba(0,0,0,0.25)]"
+      >
+        {/* Sheet header */}
+        <div className="h-16 sm:h-20 px-5 flex items-center justify-between border-b border-black/5">
+          <span className="text-sm tracking-[0.16em] uppercase text-gray-500">
+            Menu
+          </span>
+
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-2.5 rounded-xl hover:bg-black/5 transition-colors"
+            aria-label="Close menu"
+          >
+            <X className="h-6 w-6 text-gray-900" />
+          </button>
+        </div>
+
+        {/* Navigation */}
+        <div className="px-5 py-6">
+          <div className="space-y-2">
+            {navigation.map((item) => {
+              const active = location.pathname === item.href;
+
+              return (
                 <Link
-                  to="/upcoming-trip"
+                  key={item.name}
+                  to={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-center space-x-3 bg-broskii-light-blue-500 hover:bg-broskii-light-blue-600 text-black px-6 py-4 rounded-xl text-lg font-bold transition-all duration-300"
+                  className={
+                    'block rounded-2xl px-4 py-4 transition-colors ' +
+                    (active
+                      ? 'bg-[#0092D1]/10 text-[#0092D1]'
+                      : 'text-gray-900 hover:bg-black/5')
+                  }
                 >
-                  <Calendar className="h-5 w-5" />
-                  <span>Book Now</span>
+                  <span className="text-[20px] font-serif">
+                    {item.name}
+                  </span>
                 </Link>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              );
+            })}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-7">
+            <Link
+              to="/upcoming-trip"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-3 bg-[#0092D1] hover:bg-[#0088c4] text-white px-6 py-4 rounded-2xl text-lg font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)]"
+            >
+              <Calendar className="h-5 w-5" />
+              <span>Book Now</span>
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
+
     </motion.header>
   );
 };

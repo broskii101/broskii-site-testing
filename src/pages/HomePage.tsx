@@ -238,13 +238,29 @@ const HomePage: React.FC = () => {
     const heroTextOpacity = useTransform(scrollY, [0, 260], [1, 0]);
   
 
-  const heroImages = [
-    '/1000090386.webp',
-    'https://res.cloudinary.com/dtx0og5tm/image/upload/v1766260050/broskii-salah-prayer-ski-trip-french-alps.jpg_hajf8j.webp',
-    '/1000090389.webp',
-    '/1000090390.webp',
-    '/1000090385.webp',
-  ];
+    const heroImages = [
+      {
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-bro-mountain-view-alps.webp",
+        alt: "A bro sitting on the snow overlooking a mountain resort in the Alps",
+      },
+      {
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-salah-prayer-ski-trip-french-alps.webp",
+        alt: "The Broskii group praying salah together during a ski trip in the French Alps",
+      },
+      {
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-snow-trike-astronaut-suit-alps.webp",
+        alt: "A bro riding a snow trike in the Alps while wearing an astronaut suit",
+      },
+      {
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-snowboarder-group-alps.webp",
+        alt: "A snowboarder in green posing with the Broskii group on the slopes in the Alps",
+      },
+      {
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto,f_auto/broskii-skiing-action-shot-alps.webp",
+        alt: "A bro skiing downhill on a groomed slope in the Alps",
+      },
+    ];
+    
 
   // Auto-slide
   useEffect(() => {
@@ -424,10 +440,11 @@ const HomePage: React.FC = () => {
               className="absolute inset-0"
             >
               <img
-                src={heroImages[currentSlide]}
+               src={heroImages[currentSlide].src}
+               alt={heroImages[currentSlide].alt}
+               
                 width={1500}
                 height={1000}
-                alt="Muslim brothers and families skiing and snowboarding together"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/70" />

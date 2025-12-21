@@ -45,6 +45,13 @@ const UpcomingTripDetailsPage = () => {
     setFullScreenImage(null);
   };
 
+  const premiumReveal = {
+    initial: { opacity: 0, y: 18 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-80px' },
+    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const },
+  };
+
   const upcomingTrip = {
     id: '550e8400-e29b-41d4-a716-446655440000', // Valid UUID that matches the trips table
     title: 'SKI 3 VALLEYS',
@@ -95,10 +102,15 @@ const UpcomingTripDetailsPage = () => {
       console.error('Unexpected error during waitlist submission:', err);
       toast.error(`An unexpected error occurred: ${err instanceof Error ? err.message : 'Unknown error'}`);
     }
+
+  
+    
+
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
+
 
 <Helmet>
         <title>
@@ -117,7 +129,8 @@ const UpcomingTripDetailsPage = () => {
       </Helmet>
 
       {/* Header Section */}
-<section className="relative py-10 overflow-hidden">
+      <section className="relative overflow-hidden min-h-[44vh] sm:min-h-[52vh] flex items-center">
+
   {/* Background Image */}
   <div className="absolute inset-0">
     <img
@@ -165,9 +178,10 @@ const UpcomingTripDetailsPage = () => {
       transition={{ duration: 0.6, delay: 0.05 }}
       className="text-center mb-8"
     >
-      <p className="text-xs tracking-widest uppercase text-primary-600 font-semibold mb-2">
-        April 2026
-      </p>
+      <p className="text-sm tracking-widest uppercase text-primary-600 font-semibold mb-2">
+  April 2026
+</p>
+
       <h2 className="text-3xl font-serif font-bold text-gray-900">
         Tignes, French Alps
       </h2>
@@ -229,7 +243,8 @@ const UpcomingTripDetailsPage = () => {
       className="mt-10 max-w-2xl mx-auto"
     >
       {/* Why Tignes (short, premium) */}
-      <div className="mb-8">
+      <motion.section {...premiumReveal} className="mb-8">
+
         <h3 className="text-xl font-serif font-bold text-gray-900 mb-3">
           Why Tignes?
         </h3>
@@ -240,11 +255,14 @@ const UpcomingTripDetailsPage = () => {
           <p>
             Expect big, varied slopes with a great mix for different ability levels — plus a lively alpine resort feel.
           </p>
-        </div>
-      </div>
+          </div>
+          </motion.section>
+
+    
 
       {/* What’s included (lightweight list — not a bulky card) */}
-      <div className="mb-10">
+      <motion.section {...premiumReveal} className="mb-10">
+
         <h3 className="text-xl font-serif font-bold text-gray-900 mb-4">
           What’s included
         </h3>
@@ -263,7 +281,8 @@ const UpcomingTripDetailsPage = () => {
             </div>
           ))}
         </div>
-      </div>
+        </motion.section>
+
 
       {/* April CTA */}
       <div className="text-center">

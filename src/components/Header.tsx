@@ -258,18 +258,19 @@ const Header = () => {
     <motion.div
     
     key="mobileMenu"
-    initial={{ x: 56, opacity: 0 }}
+    initial={{ x: 64, opacity: 0 }}
 animate={{ x: 0, opacity: 1 }}
-exit={{ x: 56, opacity: 0 }}
-transition={{
-  duration: 0.48,
-  ease: [0.22, 1, 0.36, 1]
-}}
+exit={{ x: 64, opacity: 0 }}
+transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 
-    className="md:hidden ml-auto mr-4 mt-4 w-[72%] max-w-[320px]"
+
+
+className="md:hidden ml-auto mr-0 mt-0 w-[64%] max-w-[280px]"
+
 
   >
-    <div className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[70vh] overflow-y-auto px-5 py-7">
+    <div className="bg-white rounded-bl-3xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[60vh] overflow-y-auto px-5 py-6">
+
 
   <div className="max-h-[70vh] overflow-y-auto px-6 py-7">
 
@@ -291,8 +292,8 @@ transition={{
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.06,
-        delayChildren: 0.1,
+        staggerChildren: 0.10,
+        delayChildren: 0.20,
       },
     },
   }}
@@ -329,7 +330,7 @@ transition={{
 
 
         {/* CTA */}
-        <div className="mt-10">
+        <div className="mt-8">
           <Link
             to="/upcoming-trip"
             onClick={() => setIsMobileMenuOpen(false)}

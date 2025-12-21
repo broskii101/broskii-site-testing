@@ -350,19 +350,21 @@ const Header = () => {
             })}
           </motion.nav>
 
-          {/* CTA (shrink-to-content) */}
-          <div className="mt-7 flex justify-center">
+          {/* Editorial CTA (text only) */}
+<div className="mt-7 flex flex-col items-center">
+  <Link
+    to="/upcoming-trip"
+    onClick={() => setIsMobileMenuOpen(false)}
+    className="group inline-flex items-center gap-2 font-serif text-[22px] leading-tight text-gray-900 active:opacity-60 transition-colors duration-200"
+  >
+    <span className="border-b border-transparent group-hover:border-gray-900/30 transition-colors">
+      Book now
+    </span>
+    <span className="text-[#0092D1]">•</span>
+  </Link>
+</div>
 
-            <Link
-              to="/upcoming-trip"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="inline-flex items-center gap-3 bg-[#0092D1] hover:bg-[#0088c4] text-white px-5 py-4 rounded-full text-[17px]
-              font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)]"
-            >
-              
-              <span>Book Now</span>
-            </Link>
-          </div>
+
         </div>
       </motion.div>
     </motion.div>

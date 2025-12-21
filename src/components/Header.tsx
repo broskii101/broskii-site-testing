@@ -256,14 +256,21 @@ const Header = () => {
 <AnimatePresence>
   {isMobileMenuOpen && (
     <motion.div
+    
     key="mobileMenu"
-    initial={{ x: 32, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    exit={{ x: 32, opacity: 0 }}
-    transition={{ duration: 0.22, ease: 'easeOut' }}
-    className="md:hidden ml-auto mr-4 mt-4 w-[86%] max-w-[420px] rounded-3xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
+    initial={{ x: 56, opacity: 0 }}
+animate={{ x: 0, opacity: 1 }}
+exit={{ x: 56, opacity: 0 }}
+transition={{
+  duration: 0.48,
+  ease: [0.22, 1, 0.36, 1]
+}}
+
+    className="md:hidden ml-auto mr-4 mt-4 w-[72%] max-w-[320px]"
+
   >
-  
+    <div className="bg-white rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[70vh] overflow-y-auto px-5 py-7">
+
   <div className="max-h-[70vh] overflow-y-auto px-6 py-7">
 
         {/* Menu header */}
@@ -276,7 +283,22 @@ const Header = () => {
         </div>
 
         {/* Links */}
-        <nav className="flex flex-col gap-5">
+        <motion.nav
+  initial="hidden"
+  animate="visible"
+  variants={{
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.06,
+        delayChildren: 0.1,
+      },
+    },
+  }}
+  className="flex flex-col gap-5"
+>
+
           {navigation.map((item) => {
             const active = location.pathname === item.href;
 
@@ -303,7 +325,8 @@ const Header = () => {
               </Link>
             );
           })}
-        </nav>
+        </motion.nav>
+
 
         {/* CTA */}
         <div className="mt-10">
@@ -316,6 +339,7 @@ const Header = () => {
             <span>Book Now</span>
           </Link>
         </div>
+      </div>
       </div>
     </motion.div>
   )}

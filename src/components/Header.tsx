@@ -290,7 +290,8 @@ const Header = () => {
 
       >
         {/* Off-white veil surface (NOT pure white) */}
-        <div className="rounded-b-3xl bg-white/95 backdrop-blur-[1px] shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[60vh] overflow-y-auto px-5 py-6">
+        <div className="rounded-b-3xl bg-[#FAFAFA] shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[60vh] overflow-y-auto px-5 py-6">
+
           {/* Menu label (no extra X here; header X controls close) */}
           
 
@@ -351,7 +352,7 @@ const Header = () => {
           </motion.nav>
 
           {/* Editorial CTA (text only) */}
-<div className="mt-7 flex flex-col items-center">
+<div className="mt-7">
   <Link
     to="/upcoming-trip"
     onClick={() => setIsMobileMenuOpen(false)}

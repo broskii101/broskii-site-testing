@@ -45,7 +45,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <FloatingContactButton />
+        
         <Toaster position="top-right" />
       </div>
     </Router>

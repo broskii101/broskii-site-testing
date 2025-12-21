@@ -184,7 +184,7 @@ const Header = () => {
 >
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center h-[80px] sm:h-[88px]">
+      <div className="flex justify-between items-center h-[72px] sm:h-[88px]">
 
 
           {/* Logo Only - Bigger Size and Vertically Flipped - Moved Left */}
@@ -256,26 +256,23 @@ const Header = () => {
 <AnimatePresence>
   {isMobileMenuOpen && (
     <motion.div
-      key="mobileMenu"
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: 'calc(100vh - 80px)', opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
-      transition={{ duration: 0.28, ease: 'easeOut' }}
-      className="md:hidden bg-white border-b border-black/10 overflow-hidden"
-    >
-      <div className="h-[calc(100vh-80px)] overflow-y-auto px-5 py-6">
+    key="mobileMenu"
+    initial={{ x: 32, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    exit={{ x: 32, opacity: 0 }}
+    transition={{ duration: 0.22, ease: 'easeOut' }}
+    className="md:hidden ml-auto mr-4 mt-4 w-[86%] max-w-[420px] rounded-3xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
+  >
+  
+  <div className="max-h-[70vh] overflow-y-auto px-6 py-7">
+
         {/* Menu header */}
         <div className="mb-8 flex items-center justify-between">
           <span className="text-xs font-medium tracking-[0.18em] text-gray-500">
             MENU
           </span>
 
-          <button
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center justify-center h-10 w-10 rounded-full bg-black/5 hover:bg-black/10 transition-colors duration-200 text-gray-900"
-          >
-            <X className="h-6 w-6" />
-          </button>
+          
         </div>
 
         {/* Links */}

@@ -273,7 +273,8 @@ const Header = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.18, ease: 'easeOut' }}
-      className="md:hidden fixed inset-0 z-[60]"
+      className="md:hidden fixed inset-0 z-[50]"
+
     >
       {/* IMPORTANT: no backdrop, no full-width white layer */}
 
@@ -288,13 +289,9 @@ const Header = () => {
 
       >
         {/* Off-white veil surface (NOT pure white) */}
-        <div className="rounded-b-3xl bg-[#F6F5F2] shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[56vh] overflow-y-auto px-5 py-6">
+        <div className="rounded-b-3xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[60vh] overflow-y-auto px-5 py-6">
           {/* Menu label (no extra X here; header X controls close) */}
-          <div className="mb-6">
-            <span className="text-xs font-medium tracking-[0.18em] text-gray-500">
-              MENU
-            </span>
-          </div>
+          
 
           {/* Links (staggered) */}
           <motion.nav
@@ -353,7 +350,8 @@ const Header = () => {
           </motion.nav>
 
           {/* CTA (shrink-to-content) */}
-          <div className="mt-7">
+          <div className="mt-7 flex justify-center">
+
             <Link
               to="/upcoming-trip"
               onClick={() => setIsMobileMenuOpen(false)}

@@ -21,15 +21,27 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (!isMobileMenuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
   
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    if (isMobileMenuOpen) {
+      // Prevent layout shift when scrollbar disappears (desktop browsers)
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = 'hidden';
+      if (scrollBarWidth > 0) {
+        document.body.style.paddingRight = `${scrollBarWidth}px`;
+      }
+    } else {
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
+    }
   
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
     };
   }, [isMobileMenuOpen]);
+  
   
   
 
@@ -252,99 +264,111 @@ const Header = () => {
 
     </motion.header>
 
-{/* Mobile Menu (premium in-flow panel, does not overlay hero) */}
+{/* Mobile Menu (overlay, anchored to header, does NOT replace hero) */}
 <AnimatePresence>
   {isMobileMenuOpen && (
     <motion.div
-    
-    key="mobileMenu"
-    initial={{ x: 64, opacity: 0 }}
-animate={{ x: 0, opacity: 1 }}
-exit={{ x: 64, opacity: 0 }}
-transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      key="mobileMenuOverlay"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18, ease: 'easeOut' }}
+      className="md:hidden fixed inset-0 z-[60]"
+    >
+      {/* IMPORTANT: no backdrop, no full-width white layer */}
 
+      {/* Panel (anchored under header, right aligned) */}
+      <motion.div
+        key="mobileMenuPanel"
+        initial={{ x: 64, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: 64, opacity: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed right-0 top-[72px] w-[58%] max-w-[260px] pointer-events-auto"
 
+      >
+        {/* Off-white veil surface (NOT pure white) */}
+        <div className="rounded-b-3xl bg-[#F6F5F2] shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[56vh] overflow-y-auto px-5 py-6">
+          {/* Menu label (no extra X here; header X controls close) */}
+          <div className="mb-6">
+            <span className="text-xs font-medium tracking-[0.18em] text-gray-500">
+              MENU
+            </span>
+          </div>
 
-className="md:hidden ml-auto mr-0 mt-0 w-[64%] max-w-[280px]"
-
-
-  >
-    <div className="bg-white rounded-bl-3xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[60vh] overflow-y-auto px-5 py-6">
-
-
-  <div className="max-h-[70vh] overflow-y-auto px-6 py-7">
-
-        {/* Menu header */}
-        <div className="mb-8 flex items-center justify-between">
-          <span className="text-xs font-medium tracking-[0.18em] text-gray-500">
-            MENU
-          </span>
-
-          
-        </div>
-
-        {/* Links */}
-        <motion.nav
-  initial="hidden"
-  animate="visible"
-  variants={{
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.10,
-        delayChildren: 0.20,
-      },
-    },
-  }}
-  className="flex flex-col gap-5"
->
-
-          {navigation.map((item) => {
-            const active = location.pathname === item.href;
-
-            return (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="group"
-              >
-                <div
-                  className={`inline-flex items-baseline gap-3 font-serif text-[24px] leading-tight ${
-                    active ? 'text-gray-900' : 'text-gray-700'
-                  }`}
-                >
-                  <span className="border-b border-transparent group-hover:border-gray-900/30 transition-colors">
-                    {item.name}
-                  </span>
-
-                  {active && (
-                    <span className="h-[6px] w-[6px] rounded-full bg-[#0092D1]" />
-                  )}
-                </div>
-              </Link>
-            );
-          })}
-        </motion.nav>
-
-
-        {/* CTA */}
-        <div className="mt-8">
-          <Link
-            to="/upcoming-trip"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center gap-3 bg-[#0092D1] hover:bg-[#0088c4] text-white px-6 py-4 rounded-full text-base font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)]"
+          {/* Links (staggered) */}
+          <motion.nav
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.08,
+                  delayChildren: 0.18,
+                },
+              },
+            }}
+            className="flex flex-col"
           >
-            <Calendar className="h-5 w-5" />
-            <span>Book Now</span>
-          </Link>
+            {navigation.map((item, idx) => {
+              const active = location.pathname === item.href;
+
+              return (
+                <motion.div
+                  key={item.name}
+                  variants={{
+                    hidden: { opacity: 0, y: 8 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                >
+                  <Link
+                    to={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="group block py-3"
+                  >
+                    <div
+                      className={`inline-flex items-baseline gap-3 font-serif text-[24px] leading-tight ${
+                        active ? 'text-gray-900' : 'text-gray-700'
+                      }`}
+                    >
+                      <span className="border-b border-transparent group-hover:border-gray-900/30 transition-colors">
+                        {item.name}
+                      </span>
+
+                      {active && (
+                        <span className="h-[6px] w-[6px] rounded-full bg-[#0092D1]" />
+                      )}
+                    </div>
+                  </Link>
+
+                  {/* ultra-soft divider (optional, very subtle) */}
+                  {idx !== navigation.length - 1 && (
+                    <div className="h-px bg-black/5" />
+                  )}
+                </motion.div>
+              );
+            })}
+          </motion.nav>
+
+          {/* CTA (shrink-to-content) */}
+          <div className="mt-7">
+            <Link
+              to="/upcoming-trip"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="inline-flex items-center gap-3 bg-[#0092D1] hover:bg-[#0088c4] text-white px-5 py-4 rounded-full text-base font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)]"
+            >
+              <Calendar className="h-5 w-5" />
+              <span>Book Now</span>
+            </Link>
+          </div>
         </div>
-      </div>
-      </div>
+      </motion.div>
     </motion.div>
   )}
 </AnimatePresence>
+
 
      </>
    );

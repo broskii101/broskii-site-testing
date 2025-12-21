@@ -202,7 +202,7 @@ const Header = () => {
           {/* Logo Only - Bigger Size and Vertically Flipped - Moved Left */}
           <Link to="/" className="flex items-center -ml-2">
 
-          <CompanyLogo className="h-[70px] w-[70px] sm:h-[76px] sm:w-[76px]" />
+          <CompanyLogo className="h-[75px] w-[75px] sm:h-[80px] sm:w-[80px]" />
 
 
           </Link>
@@ -273,7 +273,8 @@ const Header = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.18, ease: 'easeOut' }}
-      className="md:hidden fixed inset-0 z-[50]"
+      className="md:hidden fixed inset-0 z-[50] pointer-events-none"
+
 
     >
       {/* IMPORTANT: no backdrop, no full-width white layer */}
@@ -289,7 +290,7 @@ const Header = () => {
 
       >
         {/* Off-white veil surface (NOT pure white) */}
-        <div className="rounded-b-3xl bg-white shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[60vh] overflow-y-auto px-5 py-6">
+        <div className="rounded-b-3xl bg-white/95 backdrop-blur-[1px] shadow-[0_20px_60px_rgba(0,0,0,0.12)] max-h-[60vh] overflow-y-auto px-5 py-6">
           {/* Menu label (no extra X here; header X controls close) */}
           
 
@@ -302,8 +303,8 @@ const Header = () => {
               visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.08,
-                  delayChildren: 0.18,
+                  staggerChildren: 0.12,
+                  delayChildren: 0.22,
                 },
               },
             }}
@@ -355,9 +356,10 @@ const Header = () => {
             <Link
               to="/upcoming-trip"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="inline-flex items-center gap-3 bg-[#0092D1] hover:bg-[#0088c4] text-white px-5 py-4 rounded-full text-base font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)]"
+              className="inline-flex items-center gap-3 bg-[#0092D1] hover:bg-[#0088c4] text-white px-5 py-4 rounded-full text-[17px]
+              font-semibold transition-all duration-200 shadow-[0_10px_30px_rgba(0,146,209,0.22)]"
             >
-              <Calendar className="h-5 w-5" />
+              
               <span>Book Now</span>
             </Link>
           </div>

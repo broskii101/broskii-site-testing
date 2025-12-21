@@ -47,11 +47,11 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Upcoming trips', href: '/upcoming-trip' },
-    { name: 'About us', href: '/about' },
+    { name: 'Trips', href: '/upcoming-trip' },
+    { name: 'About', href: '/about' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'FAQs', href: '/faq' },
-    { name: 'Contact us', href: '/contact' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   // Company Logo Component with proper colors and vertical flip
@@ -286,7 +286,7 @@ const Header = () => {
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: 64, opacity: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed right-0 top-[72px] w-[58%] max-w-[260px] pointer-events-auto"
+        className="fixed right-0 top-[72px] w-[48%] max-w-[220px] pointer-events-auto"
 
       >
         {/* Off-white veil surface (NOT pure white) */}
@@ -304,8 +304,8 @@ const Header = () => {
               visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.14,
-                  delayChildren: 0.24,
+                  staggerChildren: 0.11,
+                  delayChildren: 0.21,
                 },
               },
             }}
@@ -356,12 +356,14 @@ const Header = () => {
   <Link
     to="/upcoming-trip"
     onClick={() => setIsMobileMenuOpen(false)}
-    className="group inline-flex items-center gap-2 font-serif text-[22px] leading-tight text-gray-900 active:opacity-60 transition-colors duration-200"
+    className="group inline-flex items-center gap-2 font-serif text-[22px] leading-tight text-gray-900/90 active:opacity-60 transition-colors duration-200"
   >
-    <span className="border-b border-transparent group-hover:border-gray-900/30 transition-colors">
+    <span className="border-b border-gray-900/20">
+
       Book now
     </span>
-    <span className="text-[#0092D1]">•</span>
+    <span className="text-[#0092D1] font-bold">•</span>
+
   </Link>
 </div>
 

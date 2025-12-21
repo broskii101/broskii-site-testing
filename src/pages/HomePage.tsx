@@ -398,11 +398,10 @@ const HomePage: React.FC = () => {
   'px-8 py-4 sm:px-10 sm:py-5 ' +
   'text-base sm:text-xl font-semibold ' +
   'rounded-full ' +
-  'bg-[#0092D1]/82 backdrop-blur-sm text-white ' +
+  'bg-[#0092D1]/90 backdrop-blur-sm text-white ' +
+  'hover:bg-[#0092D1] ' +
+  'transition-colors duration-300 ease-out';
 
-  'shadow-lg hover:shadow-[0_0_40px_rgba(0,146,209,0.6)] ' +
-  'hover:scale-[1.06] active:scale-[0.97] ' +
-  'transition-all duration-300 ease-out';
 
 
 

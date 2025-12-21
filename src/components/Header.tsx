@@ -202,7 +202,7 @@ const Header = () => {
           {/* Logo Only - Bigger Size and Vertically Flipped - Moved Left */}
           <Link to="/" className="flex items-center -ml-2">
 
-          <CompanyLogo className="h-[75px] w-[75px] sm:h-[80px] sm:w-[80px]" />
+          <CompanyLogo className="h-[77px] w-[77px] sm:h-[80px] sm:w-[80px]" />
 
 
           </Link>
@@ -303,8 +303,8 @@ const Header = () => {
               visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.12,
-                  delayChildren: 0.22,
+                  staggerChildren: 0.14,
+                  delayChildren: 0.24,
                 },
               },
             }}

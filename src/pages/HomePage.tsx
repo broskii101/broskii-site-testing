@@ -898,22 +898,23 @@ and winter becomes part of who we are.
       <section className="py-20 md:py-24 bg-[#eaf4ff] relative overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-4">
 
-      <div className="text-center mb-16 md:mb-20">
-  <p className="text-sm tracking-[0.18em] uppercase font-semibold text-[#0092D1]">
+      <div className="text-center mb-20 md:mb-24">
+  <p className="text-4xl md:text-5xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
     Testimonials
   </p>
 
-  <h2 className="text-2xl md:text-3xl font-serif font-semibold text-gray-900 mt-3">
+  <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mt-4">
     Straight from the Broskiis
   </h2>
 
-  <div className="w-16 h-[3px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto mt-5 rounded-full" />
+  <div className="w-24 h-[4px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto mt-6 rounded-full" />
 
-  <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mt-6">
+  <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed mt-8">
     Real experiences from brothers who came for adventure — and left with brotherhood, growth,
     and unforgettable memories.
   </p>
 </div>
+
 
 
           {/* FEATURED TESTIMONIAL — NO FLICKER */}
@@ -923,11 +924,12 @@ and winter becomes part of who we are.
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{ willChange: 'opacity' }}
-            className="mb-24"
+            className="mb-16 md:mb-20"
+
           >
             <div
               className="
-                rounded-3xl p-8 md:p-10 cursor-pointer relative
+                rounded-3xl p-7 md:p-9 cursor-pointer relative
                 backdrop-blur-xl 
                 bg-gradient-to-br from-[#d6edfa]/70 via-white/40 to-white/10
                 border border-[#0092D1]/30 ring-1 ring-[#0092D1]/10
@@ -973,7 +975,8 @@ and winter becomes part of who we are.
                 >
                   <div
                     className="
-                      rounded-3xl p-7 w-72 md:w-80 lg:w-[22rem]
+                    rounded-3xl p-6 w-64 md:w-72 lg:w-[20rem]
+
 
                       flex-shrink-0 cursor-pointer
                       backdrop-blur-xl 
@@ -1053,10 +1056,12 @@ and winter becomes part of who we are.
       </AnimatePresence>
 
       {/* ===================== NEWSLETTER ===================== */}
-      <section className="relative py-14 md:py-18 bg-gradient-to-b ...">
+      <section className="relative py-14 md:py-20 bg-gradient-to-b from-white via-white to-[#eef7ff] overflow-hidden">
+
 
         {/* Smooth transition */}
-        <div className="absolute -top-8 left-0 w-full h-16 bg-gradient-to-b from-white/0 via-white/70 to-white pointer-events-none"></div>
+        <div className="absolute -top-14 left-0 w-full h-24 bg-gradient-to-b from-[#eaf4ff] via-white to-white pointer-events-none"></div>
+
 
         <div className="relative max-w-4xl mx-auto px-4">
           {/* HEADER */}
@@ -1085,7 +1090,7 @@ and winter becomes part of who we are.
             className="
               max-w-lg mx-auto 
               bg-white/75 backdrop-blur-xl 
-              p-5 rounded-2xl 
+              p-7 rounded-2xl 
               shadow-[0_6px_20px_rgba(0,0,0,0.1)] 
               border border-white/40 
               transition-all duration-300

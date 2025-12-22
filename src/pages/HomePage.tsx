@@ -895,21 +895,26 @@ and winter becomes part of who we are.
       <OnTheMountainSection />
 
       {/* ===================== TESTIMONIALS SECTION ===================== */}
-      <section className="py-20 md:py-24 bg-[#eaf4ff] relative overflow-hidden">
+      <section className="py-14 md:py-16 bg-[#eaf4ff] relative overflow-hidden">
+
       <div className="relative max-w-6xl mx-auto px-4">
 
-      <div className="text-center mb-20 md:mb-24">
-  <p className="text-4xl md:text-5xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
+      <div className="text-center mb-14 md:mb-16">
+
+      <p className="text-3xl sm:text-4xl md:text-4xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
+
     Testimonials
   </p>
 
-  <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mt-4">
+  <h2 className="text-2xl sm:text-3xl md:text-3xl font-serif font-semibold text-gray-900 mt-4">
+
     Straight from the Broskiis
   </h2>
 
   <div className="w-24 h-[4px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto mt-6 rounded-full" />
 
-  <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed mt-8">
+  <p className="text-lg sm:text-xl md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mt-7">
+
     Real experiences from brothers who came for adventure — and left with brotherhood, growth,
     and unforgettable memories.
   </p>
@@ -1056,7 +1061,8 @@ and winter becomes part of who we are.
       </AnimatePresence>
 
       {/* ===================== NEWSLETTER ===================== */}
-      <section className="relative py-14 md:py-20 bg-gradient-to-b from-white via-white to-[#eef7ff] overflow-hidden">
+      <section className="relative py-12 md:py-14 bg-gradient-to-b from-white via-white to-[#eef7ff] overflow-hidden">
+
 
 
         {/* Smooth transition */}
@@ -1065,21 +1071,25 @@ and winter becomes part of who we are.
 
         <div className="relative max-w-4xl mx-auto px-4">
           {/* HEADER */}
-          <div className="text-center space-y-4 mb-14">
+          <div className="text-center space-y-3 mb-10 md:mb-12">
+
             {/* Stay Updated — SAME SIZE AS TESTIMONIAL TOP LABEL */}
-            <p className="text-4xl md:text-5xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
+            <p className="text-2xl sm:text-3xl md:text-3xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
+
               Stay Updated
             </p>
 
             {/* Be Part… — SAME SIZE AS TESTIMONIAL SUBHEADER */}
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-semibold text-gray-900">
+
               Be part of the next chapter
             </h2>
 
             <div className="w-24 h-[3px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto rounded-full" />
 
             {/* Join a growing… — SAME SIZE AS TESTIMONIAL BODY TEXT */}
-            <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+
               Join a growing community of Muslim skiers and snowboarders and be the first to hear
               about new dates, destinations and exclusive Broskii announcements.
             </p>

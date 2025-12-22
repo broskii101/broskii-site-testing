@@ -129,7 +129,7 @@ const UpcomingTripDetailsPage = () => {
       </Helmet>
 
       {/* Header Section */}
-      <section className="relative overflow-hidden min-h-[36vh] sm:min-h-[44vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[30vh] sm:min-h-[38vh] flex items-center">
 
   {/* Background Image */}
   <div className="absolute inset-0">
@@ -264,16 +264,16 @@ const UpcomingTripDetailsPage = () => {
       <motion.section {...premiumReveal} className="mb-10">
 
         <h3 className="text-xl font-serif font-bold text-gray-900 mb-4">
-          What’s included
+          What’s included?
         </h3>
 
         <div className="space-y-3">
           {[
             "BA Return flights from London Heathrow",
             "Ski-in / ski-out accommodation",
-            "4★ accommodation with spa facilities",
-            "Full area pass included",
-            "Private coach transfers",
+            "4★ Accommodation with Spa facilities",
+            "Full area Ski Pass included",
+            "Private Coach Transfers",
           ].map((item) => (
             <div key={item} className="flex items-start gap-3">
               <CheckCircle className="h-5 w-5 text-primary-600 flex-shrink-0 mt-0.5" />

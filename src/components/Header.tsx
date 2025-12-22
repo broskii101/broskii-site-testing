@@ -209,7 +209,7 @@ const Header = () => {
 
 
           {/* Logo Only - Bigger Size and Vertically Flipped - Moved Left */}
-          <Link to="/" className="flex items-center -ml-2">
+          <Link to="/" className="flex items-center -mr-3">
 
           <CompanyLogo className="h-[77px] w-[77px] sm:h-[80px] sm:w-[80px]" />
 
@@ -361,10 +361,12 @@ exit={{ x: -64, opacity: 0 }}
   <Link
     to="/upcoming-trip"
     onClick={() => setIsMobileMenuOpen(false)}
-    className="group inline-flex items-center gap-2 font-serif text-[22px] leading-tight text-gray-900 active:opacity-60 transition-colors duration-200"
+    className="group inline-flex items-center font-serif text-[22px] leading-tight text-[#0092D1] font-semibold active:opacity-60 transition-colors duration-200"
+
 
   >
-    <span className="border-b border-gray-900/20">
+    <span className="border-b border-[#0092D1]/30 group-hover:border-[#0092D1]/60 transition-colors duration-200">
+
 
       Book now
     </span>

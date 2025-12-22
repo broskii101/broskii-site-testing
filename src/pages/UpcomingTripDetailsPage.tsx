@@ -129,7 +129,7 @@ const UpcomingTripDetailsPage = () => {
       </Helmet>
 
       {/* Header Section */}
-      <section className="relative overflow-hidden min-h-[30vh] sm:min-h-[38vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[25vh] sm:min-h-[38vh] flex items-center">
 
   {/* Background Image */}
   <div className="absolute inset-0">
@@ -214,7 +214,8 @@ const UpcomingTripDetailsPage = () => {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.15 }}
-      className="max-w-xl mx-auto"
+      className="max-w-md mx-auto"
+
     >
       <div className="relative">
         <img
@@ -305,13 +306,18 @@ const UpcomingTripDetailsPage = () => {
     </div>
 
     {/* JAN 2026 — SOLD OUT (poster only) */}
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-md mx-auto">
+
       <div className="text-center mb-6">
-        <p className="text-xs tracking-widest uppercase text-gray-500 font-semibold mb-2">
+     
+      <p className="text-sm tracking-widest uppercase text-primary-600 font-semibold mb-2">
+
+
           January 2026
         </p>
-        <h3 className="text-2xl font-serif font-bold text-gray-900">
-          Sold Out
+        <h3 className="text-3xl font-serif font-bold text-gray-400">
+
+          SOLD OUT
         </h3>
       </div>
 
@@ -324,33 +330,12 @@ const UpcomingTripDetailsPage = () => {
         />
 
         {/* Sold out banner/badge */}
-        <div className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
-          SOLD OUT
-        </div>
+        <div className="absolute top-4 right-4 bg-red-600/90 text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
+  SOLD OUT
+</div>
+
       </div>
-    </div>
-
-    {/* Got questions (footer-style support block) */}
-    <div className="mt-20 text-center">
-      <p className="text-gray-800 mb-6 text-lg">
-        Got questions?
-      </p>
-
-      <div className="flex justify-center gap-4">
-        <Link
-          to="/faq"
-          className="px-6 py-3 rounded-full bg-gray-100 text-gray-900 font-medium transition hover:bg-gray-200"
-        >
-          FAQs
-        </Link>
-
-        <Link
-          to="/contact"
-          className="px-6 py-3 rounded-full bg-gray-100 text-gray-900 font-medium transition hover:bg-gray-200"
-        >
-          Contact Us
-        </Link>
-      </div>
+    
     </div>
   </div>
 </section>

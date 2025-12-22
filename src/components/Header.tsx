@@ -198,6 +198,15 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center h-[72px] sm:h-[88px]">
 
+{/* Mobile Menu Button */}
+<button
+  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+  className="md:hidden flex items-center justify-center h-11 w-11 rounded-full bg-black/5 hover:bg-black/10 transition-colors duration-200 text-gray-900"
+>
+  {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+</button>
+
+
 
           {/* Logo Only - Bigger Size and Vertically Flipped - Moved Left */}
           <Link to="/" className="flex items-center -ml-2">
@@ -248,13 +257,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-<button
-  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-  className="md:hidden flex items-center justify-center h-11 w-11 rounded-full bg-black/5 hover:bg-black/10 transition-colors duration-200 text-gray-900"
->
-  {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-</button>
+         
 
 
         </div>
@@ -282,11 +285,13 @@ const Header = () => {
       {/* Panel (anchored under header, right aligned) */}
       <motion.div
         key="mobileMenuPanel"
-        initial={{ x: 64, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: 64, opacity: 0 }}
+        initial={{ x: -64, opacity: 0 }}
+animate={{ x: 0, opacity: 1 }}
+exit={{ x: -64, opacity: 0 }}
+
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed right-0 top-[72px] w-[48%] max-w-[220px] pointer-events-auto"
+        className="fixed left-0 top-[72px] w-[48%] max-w-[220px] pointer-events-auto"
+
 
       >
         {/* Off-white veil surface (NOT pure white) */}
@@ -356,13 +361,14 @@ const Header = () => {
   <Link
     to="/upcoming-trip"
     onClick={() => setIsMobileMenuOpen(false)}
-    className="group inline-flex items-center gap-2 font-serif text-[22px] leading-tight text-gray-900/90 active:opacity-60 transition-colors duration-200"
+    className="group inline-flex items-center gap-2 font-serif text-[22px] leading-tight text-gray-900 active:opacity-60 transition-colors duration-200"
+
   >
     <span className="border-b border-gray-900/20">
 
       Book now
     </span>
-    <span className="text-[#0092D1] font-bold">•</span>
+    
 
   </Link>
 </div>

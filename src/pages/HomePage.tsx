@@ -895,25 +895,26 @@ and winter becomes part of who we are.
       <OnTheMountainSection />
 
       {/* ===================== TESTIMONIALS SECTION ===================== */}
-      <section className="py-28 bg-[#eaf4ff] relative overflow-hidden">
-        <div className="relative max-w-6xl mx-auto px-4">
-          {/* HEADER */}
-          <div className="text-center mb-24">
-            <p className="text-4xl md:text-5xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
-              Testimonials
-            </p>
+      <section className="py-20 md:py-24 bg-[#eaf4ff] relative overflow-hidden">
+      <div className="relative max-w-6xl mx-auto px-4">
 
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 mt-4">
-              Straight from the Broskiis
-            </h2>
+      <div className="text-center mb-16 md:mb-20">
+  <p className="text-sm tracking-[0.18em] uppercase font-semibold text-[#0092D1]">
+    Testimonials
+  </p>
 
-            <div className="w-24 h-[4px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto mt-6 rounded-full" />
+  <h2 className="text-2xl md:text-3xl font-serif font-semibold text-gray-900 mt-3">
+    Straight from the Broskiis
+  </h2>
 
-            <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed mt-8">
-              Real experiences from brothers who came for adventure — and left with brotherhood, growth,
-              and unforgettable memories.
-            </p>
-          </div>
+  <div className="w-16 h-[3px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto mt-5 rounded-full" />
+
+  <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mt-6">
+    Real experiences from brothers who came for adventure — and left with brotherhood, growth,
+    and unforgettable memories.
+  </p>
+</div>
+
 
           {/* FEATURED TESTIMONIAL — NO FLICKER */}
           <motion.div
@@ -926,7 +927,7 @@ and winter becomes part of who we are.
           >
             <div
               className="
-                rounded-3xl p-12 md:p-14 cursor-pointer relative
+                rounded-3xl p-8 md:p-10 cursor-pointer relative
                 backdrop-blur-xl 
                 bg-gradient-to-br from-[#d6edfa]/70 via-white/40 to-white/10
                 border border-[#0092D1]/30 ring-1 ring-[#0092D1]/10
@@ -940,13 +941,15 @@ and winter becomes part of who we are.
                 <Quote className="h-24 w-24" />
               </div>
 
-              <p className="text-3xl md:text-4xl leading-snug italic text-gray-800 mb-12">
+              <p className="text-xl md:text-2xl leading-relaxed italic text-gray-800 mb-8">
+
                 “{truncateText(testimonials[0].text, 180)}”
               </p>
 
               <div className="flex items-center justify-between">
-                <div className="font-semibold text-gray-900 text-xl md:text-2xl">
-                  — {testimonials[0].name}
+              <div className="font-semibold text-gray-900 text-base md:text-lg">
+
+                   {testimonials[0].name}
                 </div>
                 <div className="text-base md:text-lg text-[#0092D1] flex items-center space-x-1 font-medium">
                   <span>Tap to read full</span>
@@ -970,7 +973,8 @@ and winter becomes part of who we are.
                 >
                   <div
                     className="
-                      rounded-3xl p-10 w-80 md:w-96 lg:w-[26rem]
+                      rounded-3xl p-7 w-72 md:w-80 lg:w-[22rem]
+
                       flex-shrink-0 cursor-pointer
                       backdrop-blur-xl 
                       bg-gradient-to-br from-[#d6edfa]/60 via-white/40 to-white/10
@@ -982,12 +986,14 @@ and winter becomes part of who we are.
                     "
                     onClick={() => setSelectedTestimonial(t)}
                   >
-                    <p className="text-xl md:text-2xl text-gray-700 mb-10 leading-snug italic line-clamp-4">
+                    <p className="text-base md:text-lg text-gray-700 mb-6 leading-relaxed italic line-clamp-4">
+
                       “{truncateText(t.text, 160)}”
                     </p>
 
                     <div className="flex items-center justify-between">
-                      <div className="font-semibold text-gray-900 text-xl md:text-2xl">
+                    <div className="font-semibold text-gray-900 text-base md:text-lg">
+
                         — {t.name}
                       </div>
                       <div className="text-sm md:text-base text-[#0092D1] flex items-center space-x-1">
@@ -1047,7 +1053,8 @@ and winter becomes part of who we are.
       </AnimatePresence>
 
       {/* ===================== NEWSLETTER ===================== */}
-      <section className="relative py-20 bg-gradient-to-b from-[#eaf4ff] via-white to-[#eef7ff] overflow-hidden">
+      <section className="relative py-14 md:py-18 bg-gradient-to-b ...">
+
         {/* Smooth transition */}
         <div className="absolute -top-8 left-0 w-full h-16 bg-gradient-to-b from-white/0 via-white/70 to-white pointer-events-none"></div>
 
@@ -1078,7 +1085,7 @@ and winter becomes part of who we are.
             className="
               max-w-lg mx-auto 
               bg-white/75 backdrop-blur-xl 
-              p-8 rounded-2xl 
+              p-5 rounded-2xl 
               shadow-[0_6px_20px_rgba(0,0,0,0.1)] 
               border border-white/40 
               transition-all duration-300
@@ -1118,7 +1125,7 @@ and winter becomes part of who we are.
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSubmitting}
                 className="
-                  flex-1 px-4 py-4 
+                  flex-1 px-4 py-3 
                   rounded-full 
                   border border-[#0092D1]/30 
                   bg-white/90 
@@ -1137,7 +1144,7 @@ and winter becomes part of who we are.
                 disabled={isSubmitting}
                 className="
                   min-w-[160px]
-                  px-8 py-5 
+                  px-6 py-4 
                   rounded-full 
                   bg-[#0092D1] text-white 
                   shadow-lg hover:shadow-xl 
@@ -1147,7 +1154,7 @@ and winter becomes part of who we are.
                   hover:bg-[#0081BA]
                   hover:scale-[1.04]
                   active:scale-[0.96]
-                  text-lg sm:text-xl font-semibold
+                  text-base sm:text-lg
                 "
               >
                 <span>{isSubmitting ? 'Subscribing…' : 'Subscribe'}</span>

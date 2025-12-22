@@ -229,10 +229,7 @@ const UpcomingTripDetailsPage = () => {
           className="w-full rounded-2xl shadow-xl cursor-pointer transition-transform duration-300 hover:scale-[1.01] ring-1 ring-black/5"
         />
 
-        {/* Subtle “New” tag (premium + small) */}
-        <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-white/90 text-gray-900 shadow-sm ring-1 ring-black/5">
-          NEW
-        </div>
+        
       </div>
     </motion.div>
 
@@ -306,37 +303,28 @@ const UpcomingTripDetailsPage = () => {
     </div>
 
     {/* JAN 2026 — SOLD OUT (poster only) */}
-    <div className="max-w-md mx-auto">
+<div className="max-w-md mx-auto">
+  <div className="text-center mb-6">
+    <p className="text-xs tracking-widest uppercase text-gray-400 font-semibold">
+      January 2026
+    </p>
+  </div>
 
-      <div className="text-center mb-6">
-     
-      <p className="text-sm tracking-widest uppercase text-primary-600 font-semibold mb-2">
+  <div className="relative">
+    <img
+      src="/1000088456.jpg"
+      alt="January 2026 Val Thorens Ski Trip Poster – Sold Out"
+      onClick={() => openFullScreenImage("/1000088456.jpg")}
+      className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95 scale-[0.92]"
+    />
 
-
-          January 2026
-        </p>
-        <h3 className="text-3xl font-serif font-bold text-gray-400">
-
-          SOLD OUT
-        </h3>
-      </div>
-
-      <div className="relative">
-        <img
-          src="/1000088456.jpg"
-          alt="January 2026 Val Thorens Ski Trip Poster – Sold Out"
-          onClick={() => openFullScreenImage("/1000088456.jpg")}
-          className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95"
-        />
-
-        {/* Sold out banner/badge */}
-        <div className="absolute top-4 right-4 bg-red-600/90 text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
-  SOLD OUT
+    {/* SOLD OUT badge */}
+    <div className="absolute top-4 right-4 bg-gray-900/85 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md">
+      SOLD OUT
+    </div>
+  </div>
 </div>
 
-      </div>
-    
-    </div>
   </div>
 </section>
 

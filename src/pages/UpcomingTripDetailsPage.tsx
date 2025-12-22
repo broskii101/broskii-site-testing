@@ -129,7 +129,7 @@ const UpcomingTripDetailsPage = () => {
       </Helmet>
 
       {/* Header Section */}
-      <section className="relative overflow-hidden min-h-[44vh] sm:min-h-[52vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[36vh] sm:min-h-[44vh] flex items-center">
 
   {/* Background Image */}
   <div className="absolute inset-0">
@@ -153,7 +153,7 @@ const UpcomingTripDetailsPage = () => {
       className="text-white relative z-10 text-center"
     >
       <h1 className="text-4xl md:text-6xl font-serif font-bold mb-2">
-        The Next Broskii Trip
+        Upcoming Trips
       </h1>
 
       <p className="text-lg text-primary-100 mb-3">
@@ -197,7 +197,7 @@ const UpcomingTripDetailsPage = () => {
       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 shadow-sm ring-1 ring-black/5">
         <Calendar className="h-4 w-4 text-primary-600" />
         <span className="text-sm font-medium text-gray-900">
-          10–17 April 2026
+          11–18 April 2026
         </span>
       </div>
 
@@ -269,11 +269,11 @@ const UpcomingTripDetailsPage = () => {
 
         <div className="space-y-3">
           {[
-            "Return flights from London Heathrow",
+            "BA Return flights from London Heathrow",
             "Ski-in / ski-out accommodation",
             "4★ accommodation with spa facilities",
-            "Lift pass included",
-            "Private transfers",
+            "Full area pass included",
+            "Private coach transfers",
           ].map((item) => (
             <div key={item} className="flex items-start gap-3">
               <CheckCircle className="h-5 w-5 text-primary-600 flex-shrink-0 mt-0.5" />

@@ -490,7 +490,7 @@ const HomePage: React.FC = () => {
 </h1>
 
 <p className="mt-4 sm:mt-6 text-white/90 text-base sm:text-lg leading-relaxed max-w-[32rem] mx-auto">
-  Built around adventure, brotherhood and time to reconnect — on and off the mountain.
+  Join us for an unforgettable experience that blends adventure & faith.
 </p>
 
 
@@ -591,7 +591,7 @@ const HomePage: React.FC = () => {
 ">
 
       Part of a 300km alpine playground built for real mountain days — wide pistes, 
-      high views and an atmosphere made for switching off and reconnecting.
+      breathtaking views and an atmosphere made for switching off and reconnecting.
     </p>
 
     {/* POSTER (smaller, rounded, shadow) */}
@@ -694,8 +694,10 @@ const HomePage: React.FC = () => {
               className="text-base sm:text-xl md:text-2xl text-gray-700 leading-relaxed text-center max-w-[36rem] mx-auto"
 
             >
-              A future where Muslims explore the mountains with ease, purpose, and confidence — 
-              where winter adventure becomes a natural, spiritually mindful, and inspiring part of our lives.
+              A future where Muslims explore the mountains with confidence and ease —
+where skiing and snowboarding are accessible, natural parts of life,
+where faith is carried without compromise,
+and winter becomes part of who we are.
             </motion.p>
 
             {/* CTA */}

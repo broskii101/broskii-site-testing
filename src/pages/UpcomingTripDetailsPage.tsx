@@ -324,7 +324,7 @@ const UpcomingTripDetailsPage = () => {
     </div>
   </div>
 </div>
-
+ 
   </div>
 </section>
 

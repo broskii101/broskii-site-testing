@@ -56,11 +56,11 @@ const Footer = () => {
       {/* Subtle top fade */}
       <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/70 to-transparent" />
 
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-14 pb-10">
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-16 pb-12">
 
         {/* Social */}
-        <div className="flex justify-center mb-10">
-          <div className="flex items-center gap-8 text-gray-600">
+        <div className="flex justify-center mb-12">
+          <div className="flex items-center gap-12 text-gray-600">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
@@ -77,13 +77,13 @@ const Footer = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="mb-12">
-          <ul className="mx-auto max-w-xs grid grid-cols-2 gap-y-4 gap-x-6 text-center md:max-w-none md:flex md:justify-center md:gap-10">
+        <nav className="mb-10">
+          <ul className="mx-auto max-w-xs grid grid-cols-2 gap-y-6 gap-x-4 text-center md:max-w-none md:flex md:justify-center md:gap-12">
             {navigationLinks.map((link) => (
               <li key={link.name}>
                 <Link
                   to={link.href}
-                  className="text-[15px] md:text-[16px] text-gray-700 hover:text-[#1f7fbf] transition-colors duration-300"
+                  className="text-[18px] md:text-[17px] text-gray-700 hover:text-[#1f7fbf] transition-colors duration-300"
                 >
                   {link.name}
                 </Link>
@@ -93,10 +93,10 @@ const Footer = () => {
         </nav>
 
         {/* Legal */}
-        <div className="text-center text-[13px] md:text-[14px] text-gray-500">
+        <div className="text-center text-[15px] md:text-[15px] text-gray-500">
           {/* Mobile */}
-          <div className="md:hidden mx-auto max-w-xs mb-4">
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2 justify-items-center">
+          <div className="md:hidden mx-auto max-w-xs mb-6">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3 justify-items-center">
               {legalLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -110,7 +110,7 @@ const Footer = () => {
           </div>
 
           {/* Desktop */}
-          <div className="hidden md:flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4">
+          <div className="hidden md:flex justify-center gap-x-8 gap-y-3 mb-6">
             {legalLinks.map((link) => (
               <Link
                 key={link.name}
@@ -131,6 +131,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 

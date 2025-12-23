@@ -15,24 +15,9 @@ const Footer = () => {
   );
 
   const socialLinks = [
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/broskiiuk?igsh=YXpqM3J4NjhsMTVz',
-      icon: Instagram,
-      hover: 'hover:text-[#E1306C]',
-    },
-    {
-      name: 'TikTok',
-      url: 'https://www.tiktok.com/@broskiiuk?_t=ZN-8xhU3rECMsA&_r=1',
-      icon: TikTokIcon,
-      hover: 'hover:text-black',
-    },
-    {
-      name: 'YouTube',
-      url: 'https://youtube.com/@broskiiuk?si=qe8BXRsGEnkuar2W',
-      icon: Youtube,
-      hover: 'hover:text-[#FF0000]',
-    },
+    { name: 'Instagram', url: 'https://www.instagram.com/broskiiuk?igsh=YXpqM3J4NjhsMTVz', icon: Instagram, hover: 'hover:text-[#E1306C]' },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@broskiiuk?_t=ZN-8xhU3rECMsA&_r=1', icon: TikTokIcon, hover: 'hover:text-black' },
+    { name: 'YouTube', url: 'https://youtube.com/@broskiiuk?si=qe8BXRsGEnkuar2W', icon: Youtube, hover: 'hover:text-[#FF0000]' },
   ];
 
   const navigationLinks = [
@@ -53,7 +38,6 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#e3ebf3]">
-      {/* Subtle top fade */}
       <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/70 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-16 pb-12">
@@ -78,7 +62,7 @@ const Footer = () => {
 
         {/* Navigation */}
         <nav className="mb-10">
-          <ul className="mx-auto max-w-xs grid grid-cols-2 gap-y-6 gap-x-4 text-center md:max-w-none md:flex md:justify-center md:gap-12">
+          <ul className="mx-auto max-w-[260px] grid grid-cols-2 gap-y-6 gap-x-2 text-center md:max-w-none md:flex md:justify-center md:gap-12">
             {navigationLinks.map((link) => (
               <li key={link.name}>
                 <Link
@@ -93,23 +77,19 @@ const Footer = () => {
         </nav>
 
         {/* Legal */}
-        <div className="text-center text-[15px] md:text-[15px] text-gray-500">
-          {/* Mobile */}
-          <div className="md:hidden mx-auto max-w-xs mb-6">
-            <div className="grid grid-cols-2 gap-x-4 gap-y-3 justify-items-center">
-              {legalLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="hover:text-[#1f7fbf] transition-colors duration-300"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
+        <div className="text-center text-[15px] text-gray-500">
+          <div className="mx-auto max-w-[260px] grid grid-cols-2 gap-x-4 gap-y-3 justify-items-center mb-6 md:hidden">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="hover:text-[#1f7fbf] transition-colors duration-300"
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
 
-          {/* Desktop */}
           <div className="hidden md:flex justify-center gap-x-8 gap-y-3 mb-6">
             {legalLinks.map((link) => (
               <Link
@@ -131,6 +111,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 

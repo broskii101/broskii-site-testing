@@ -19,38 +19,48 @@ const Footer = () => {
       name: 'Instagram',
       url: 'https://www.instagram.com/broskiiuk?igsh=YXpqM3J4NjhsMTVz',
       icon: Instagram,
+      hover: 'hover:text-[#E1306C]', // IG pink
     },
     {
       name: 'TikTok',
       url: 'https://www.tiktok.com/@broskiiuk?_t=ZN-8xhU3rECMsA&_r=1',
       icon: TikTokIcon,
+      hover: 'hover:text-black',
     },
     {
       name: 'YouTube',
       url: 'https://youtube.com/@broskiiuk?si=qe8BXRsGEnkuar2W',
       icon: Youtube,
+      hover: 'hover:text-[#FF0000]',
     },
   ];
 
   const navigationLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Upcoming trips', href: '/upcoming-trip' },
+    { name: 'Trips', href: '/upcoming-trip' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'FAQs', href: '/faq' },
     { name: 'Contact', href: '/contact' },
   ];
 
-  const legalLinks = [
-    { name: 'Privacy Policy', href: '/privacy-policy' },
-    { name: 'Terms of Service', href: '/termsofservice' },
-    { name: 'Cookies Policy', href: '/cookiespolicy' },
-    { name: 'Refund Policy', href: '/refund-policy' },
-  ];
+  const legalLinks = {
+    row1: [
+      { name: 'Terms of Service', href: '/termsofservice' },
+      { name: 'Refund Policy', href: '/refund-policy' },
+    ],
+    row2: [
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Cookies Policy', href: '/cookiespolicy' },
+    ],
+  };
 
   return (
-    <footer className="bg-[#eef3f7]">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 pt-14 pb-10">
+    <footer className="relative bg-[#e9eff5]">
+      {/* Subtle top fade */}
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/70 to-transparent" />
+
+      <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-14 pb-10">
 
         {/* Row 1 — Social */}
         <div className="flex justify-center mb-10">
@@ -62,7 +72,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
-                className="hover:text-[#1f7fbf] transition-colors duration-300"
+                className={`transition-colors duration-300 ${social.hover}`}
               >
                 <social.icon className="h-8 w-8" />
               </a>
@@ -72,7 +82,7 @@ const Footer = () => {
 
         {/* Row 2 — Navigation */}
         <nav className="mb-10">
-          <ul className="grid grid-cols-2 gap-y-4 gap-x-6 text-center md:flex md:justify-center md:gap-10">
+          <ul className="mx-auto max-w-xs grid grid-cols-2 gap-y-4 gap-x-6 text-center md:max-w-none md:flex md:justify-center md:gap-10">
             {navigationLinks.map((link) => (
               <li key={link.name}>
                 <Link
@@ -86,10 +96,24 @@ const Footer = () => {
           </ul>
         </nav>
 
-        {/* Footnote / Legal */}
+        {/* Legal */}
         <div className="text-center text-sm text-gray-500">
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-4">
-            {legalLinks.map((link) => (
+          {/* Mobile */}
+          <div className="md:hidden grid grid-cols-2 gap-x-6 gap-y-2 justify-items-center mb-4">
+            {[...legalLinks.row1, ...legalLinks.row2].map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="hover:text-[#1f7fbf] transition-colors duration-300"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Desktop */}
+          <div className="hidden md:flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4">
+            {[...legalLinks.row1, ...legalLinks.row2].map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
@@ -109,4 +133,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 

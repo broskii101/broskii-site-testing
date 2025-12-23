@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom';
 import { Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
-  const [navOpen, setNavOpen] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
+  const [openMenu, setOpenMenu] = useState<null | 'explore' | 'contact'>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   // Close on outside click (mobile only)
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        setNavOpen(false);
+      if (footerRef.current && !footerRef.current.contains(e.target as Node)) {
+        setOpenMenu(null);
       }
     };
 
-    if (navOpen) {
+    if (openMenu) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [navOpen]);
+  }, [openMenu]);
 
   const TikTokIcon = ({ className }: { className?: string }) => (
     <svg
@@ -35,18 +35,24 @@ const Footer = () => {
   );
 
   const socialLinks = [
-    { name: 'Instagram', url: 'https://www.instagram.com/broskiiuk?igsh=YXpqM3J4NjhsMTVz', icon: Instagram, hover: 'hover:text-[#E1306C]' },
-    { name: 'TikTok', url: 'https://www.tiktok.com/@broskiiuk?_t=ZN-8xhU3rECMsA&_r=1', icon: TikTokIcon, hover: 'hover:text-black' },
-    { name: 'YouTube', url: 'https://youtube.com/@broskiiuk?si=qe8BXRsGEnkuar2W', icon: Youtube, hover: 'hover:text-[#FF0000]' },
+    { name: 'Instagram', url: 'https://www.instagram.com/broskiiuk', icon: Instagram, hover: 'hover:text-[#E1306C]' },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@broskiiuk', icon: TikTokIcon, hover: 'hover:text-black' },
+    { name: 'YouTube', url: 'https://youtube.com/@broskiiuk', icon: Youtube, hover: 'hover:text-[#FF0000]' },
   ];
 
-  const navigationLinks = [
+  const exploreLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Trips', href: '/upcoming-trip' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'FAQs', href: '/faq' },
-    { name: 'Contact', href: '/contact' },
+  ];
+
+  const contactLinks = [
+    { name: 'Contact form', href: '/contact', internal: true },
+    { name: 'Email', href: 'mailto:salaam@broskii.com' },
+    { name: 'WhatsApp', href: 'https://wa.me/447749939192' },
+    { name: 'Instagram', href: 'https://www.instagram.com/broskiiuk' },
   ];
 
   const legalLinks = [
@@ -57,7 +63,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-[#e3ebf3]">
+    <footer ref={footerRef} className="relative bg-[#e3ebf3]">
       <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/70 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-16 pb-12">
@@ -80,10 +86,10 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Navigation — desktop (UNCHANGED) */}
+        {/* Desktop navigation — unchanged */}
         <nav className="hidden md:block mb-10">
           <ul className="flex justify-center gap-12">
-            {navigationLinks.map((link) => (
+            {[...exploreLinks, { name: 'Contact', href: '/contact' }].map((link) => (
               <li key={link.name}>
                 <Link
                   to={link.href}
@@ -96,42 +102,83 @@ const Footer = () => {
           </ul>
         </nav>
 
-        {/* Navigation — mobile reveal */}
-        <div ref={navRef} className="md:hidden mb-10 text-center">
-          <button
-            type="button"
-            onClick={() => setNavOpen(v => !v)}
-            className="font-serif text-[20px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
-          >
-            Explore
-            <span
-              className={`inline-block ml-1 transition-opacity duration-300 ${
-                navOpen ? 'opacity-0' : 'opacity-60'
+        {/* Mobile dropdown controls */}
+        <div className="md:hidden mb-10 text-center space-y-6">
+
+          {/* Explore */}
+          <div>
+            <button
+              type="button"
+              onClick={() => setOpenMenu(openMenu === 'explore' ? null : 'explore')}
+              className="font-serif text-[22px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
+            >
+              Explore <span className="opacity-50 ml-1">˅</span>
+            </button>
+
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-out ${
+                openMenu === 'explore' ? 'max-h-96 opacity-100 mt-5' : 'max-h-0 opacity-0'
               }`}
             >
-              ↓
-            </span>
-          </button>
-
-          <div
-            className={`overflow-hidden transition-all duration-500 ease-out ${
-              navOpen ? 'max-h-96 opacity-100 mt-6' : 'max-h-0 opacity-0'
-            }`}
-          >
-            <ul className="flex flex-col items-center gap-4 text-[20px] text-gray-700">
-              {navigationLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    onClick={() => setNavOpen(false)}
-                    className="hover:text-[#1f7fbf] transition-colors duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+              <ul className="flex flex-col items-center gap-4 text-[20px] text-gray-700">
+                {exploreLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
+                      onClick={() => setOpenMenu(null)}
+                      className="hover:text-[#1f7fbf] transition-colors duration-300"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
+
+          {/* Contact */}
+          <div>
+            <button
+              type="button"
+              onClick={() => setOpenMenu(openMenu === 'contact' ? null : 'contact')}
+              className="font-serif text-[22px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
+            >
+              Contact <span className="opacity-50 ml-1">˅</span>
+            </button>
+
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-out ${
+                openMenu === 'contact' ? 'max-h-96 opacity-100 mt-5' : 'max-h-0 opacity-0'
+              }`}
+            >
+              <ul className="flex flex-col items-center gap-4 text-[20px] text-gray-700">
+                {contactLinks.map((link) => (
+                  <li key={link.name}>
+                    {link.internal ? (
+                      <Link
+                        to={link.href}
+                        onClick={() => setOpenMenu(null)}
+                        className="hover:text-[#1f7fbf] transition-colors duration-300"
+                      >
+                        {link.name}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setOpenMenu(null)}
+                        className="hover:text-[#1f7fbf] transition-colors duration-300"
+                      >
+                        {link.name}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
         </div>
 
         {/* Legal */}
@@ -169,6 +216,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 

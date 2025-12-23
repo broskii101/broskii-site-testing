@@ -35,24 +35,9 @@ const Footer = () => {
   );
 
   const socialLinks = [
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/broskiiuk',
-      icon: Instagram,
-      hover: 'hover:text-[#E1306C]',
-    },
-    {
-      name: 'TikTok',
-      url: 'https://www.tiktok.com/@broskiiuk',
-      icon: TikTokIcon,
-      hover: 'hover:text-black',
-    },
-    {
-      name: 'YouTube',
-      url: 'https://youtube.com/@broskiiuk',
-      icon: Youtube,
-      hover: 'hover:text-[#FF0000]',
-    },
+    { name: 'Instagram', url: 'https://www.instagram.com/broskiiuk', icon: Instagram, hover: 'hover:text-[#E1306C]' },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@broskiiuk', icon: TikTokIcon, hover: 'hover:text-black' },
+    { name: 'YouTube', url: 'https://youtube.com/@broskiiuk', icon: Youtube, hover: 'hover:text-[#FF0000]' },
   ];
 
   const exploreLinks = [
@@ -80,7 +65,7 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="bg-gradient-to-b from-[#eef7ff] to-[#e3ebf3]"
+      className="bg-gradient-to-b from-[#eef7ff] via-[#e6f0fa] to-[#d9e6f2]"
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-8 pt-14 pb-10">
 
@@ -125,13 +110,11 @@ const Footer = () => {
           <div>
             <button
               type="button"
-              onClick={() =>
-                setOpenMenu(openMenu === 'explore' ? null : 'explore')
-              }
+              onClick={() => setOpenMenu(openMenu === 'explore' ? null : 'explore')}
               className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
             >
               Explore
-              <span className="opacity-45 ml-1 inline-block text-[1em] relative top-[3px]">
+              <span className="opacity-45 ml-1 inline-block text-[1em] relative top-[6px]">
                 ˅
               </span>
             </button>
@@ -163,13 +146,11 @@ const Footer = () => {
           <div>
             <button
               type="button"
-              onClick={() =>
-                setOpenMenu(openMenu === 'contact' ? null : 'contact')
-              }
+              onClick={() => setOpenMenu(openMenu === 'contact' ? null : 'contact')}
               className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
             >
               Contact
-              <span className="opacity-45 ml-1 inline-block text-[1em] relative top-[3px]">
+              <span className="opacity-45 ml-1 inline-block text-[1em] relative top-[6px]">
                 ˅
               </span>
             </button>
@@ -234,3 +215,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

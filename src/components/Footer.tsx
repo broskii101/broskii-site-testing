@@ -2,6 +2,27 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Youtube } from 'lucide-react';
 
+const CaretDown = ({ className = '' }) => (
+  <svg
+    viewBox="0 0 12 8"
+    width="14"
+    height="10"
+    className={className}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1 1.5L6 6.5L11 1.5"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+
+
 const Footer = () => {
   const [openMenu, setOpenMenu] = useState<null | 'explore' | 'contact'>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -114,9 +135,9 @@ const Footer = () => {
               className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
             >
               Explore
-              <span className="opacity-45 ml-1 inline-block text-[1em] relative top-[6px]">
-                ˅
-              </span>
+              <CaretDown className="inline-block ml-1 opacity-45 relative top-[9px]" />
+
+
             </button>
 
             <div
@@ -150,9 +171,9 @@ const Footer = () => {
               className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
             >
               Contact
-              <span className="opacity-45 ml-1 inline-block text-[1em] relative top-[6px]">
-                ˅
-              </span>
+              <CaretDown className="inline-block ml-1 opacity-45 relative top-[9px]" />
+
+
             </button>
 
             <div

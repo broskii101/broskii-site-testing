@@ -58,7 +58,6 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#e3ebf3]">
-      {/* Subtle top fade */}
       <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/70 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-16 pb-12">
@@ -81,7 +80,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Navigation — desktop (unchanged, always visible) */}
+        {/* Navigation — desktop (UNCHANGED) */}
         <nav className="hidden md:block mb-10">
           <ul className="flex justify-center gap-12">
             {navigationLinks.map((link) => (
@@ -101,10 +100,17 @@ const Footer = () => {
         <div ref={navRef} className="md:hidden mb-10 text-center">
           <button
             type="button"
-            onClick={() => setNavOpen((v) => !v)}
-            className="font-serif text-[18px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
+            onClick={() => setNavOpen(v => !v)}
+            className="font-serif text-[20px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
           >
-            Navigation
+            Explore
+            <span
+              className={`inline-block ml-1 transition-opacity duration-300 ${
+                navOpen ? 'opacity-0' : 'opacity-60'
+              }`}
+            >
+              ↓
+            </span>
           </button>
 
           <div
@@ -112,7 +118,7 @@ const Footer = () => {
               navOpen ? 'max-h-96 opacity-100 mt-6' : 'max-h-0 opacity-0'
             }`}
           >
-            <ul className="flex flex-col items-center gap-4 text-[18px] text-gray-700">
+            <ul className="flex flex-col items-center gap-4 text-[20px] text-gray-700">
               {navigationLinks.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -129,8 +135,8 @@ const Footer = () => {
         </div>
 
         {/* Legal */}
-        <div className="text-center text-[15px] text-gray-500">
-          <div className="mx-auto max-w-[260px] grid grid-cols-2 gap-x-4 gap-y-3 justify-items-center mb-6 md:hidden">
+        <div className="text-center text-[14px] text-gray-500">
+          <div className="md:hidden flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6">
             {legalLinks.map((link) => (
               <Link
                 key={link.name}
@@ -163,6 +169,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 

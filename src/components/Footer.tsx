@@ -19,7 +19,7 @@ const Footer = () => {
       name: 'Instagram',
       url: 'https://www.instagram.com/broskiiuk?igsh=YXpqM3J4NjhsMTVz',
       icon: Instagram,
-      hover: 'hover:text-[#E1306C]', // IG pink
+      hover: 'hover:text-[#E1306C]',
     },
     {
       name: 'TikTok',
@@ -44,25 +44,21 @@ const Footer = () => {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const legalLinks = {
-    row1: [
-      { name: 'Terms of Service', href: '/termsofservice' },
-      { name: 'Refund Policy', href: '/refund-policy' },
-    ],
-    row2: [
-      { name: 'Privacy Policy', href: '/privacy-policy' },
-      { name: 'Cookies Policy', href: '/cookiespolicy' },
-    ],
-  };
+  const legalLinks = [
+    { name: 'Terms of Service', href: '/termsofservice' },
+    { name: 'Refund Policy', href: '/refund-policy' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
+    { name: 'Cookies Policy', href: '/cookiespolicy' },
+  ];
 
   return (
-    <footer className="relative bg-[#e9eff5]">
+    <footer className="relative bg-[#e3ebf3]">
       {/* Subtle top fade */}
       <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/70 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-14 pb-10">
 
-        {/* Row 1 — Social */}
+        {/* Social */}
         <div className="flex justify-center mb-10">
           <div className="flex items-center gap-8 text-gray-600">
             {socialLinks.map((social) => (
@@ -80,14 +76,14 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Row 2 — Navigation */}
-        <nav className="mb-10">
+        {/* Navigation */}
+        <nav className="mb-12">
           <ul className="mx-auto max-w-xs grid grid-cols-2 gap-y-4 gap-x-6 text-center md:max-w-none md:flex md:justify-center md:gap-10">
             {navigationLinks.map((link) => (
               <li key={link.name}>
                 <Link
                   to={link.href}
-                  className="text-gray-700 hover:text-[#1f7fbf] transition-colors duration-300"
+                  className="text-[15px] md:text-[16px] text-gray-700 hover:text-[#1f7fbf] transition-colors duration-300"
                 >
                   {link.name}
                 </Link>
@@ -97,23 +93,25 @@ const Footer = () => {
         </nav>
 
         {/* Legal */}
-        <div className="text-center text-sm text-gray-500">
+        <div className="text-center text-[13px] md:text-[14px] text-gray-500">
           {/* Mobile */}
-          <div className="md:hidden grid grid-cols-2 gap-x-6 gap-y-2 justify-items-center mb-4">
-            {[...legalLinks.row1, ...legalLinks.row2].map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="hover:text-[#1f7fbf] transition-colors duration-300"
-              >
-                {link.name}
-              </Link>
-            ))}
+          <div className="md:hidden mx-auto max-w-xs mb-4">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2 justify-items-center">
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="hover:text-[#1f7fbf] transition-colors duration-300"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Desktop */}
           <div className="hidden md:flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4">
-            {[...legalLinks.row1, ...legalLinks.row2].map((link) => (
+            {legalLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
@@ -133,5 +131,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 

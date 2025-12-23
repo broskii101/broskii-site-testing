@@ -175,21 +175,22 @@ className="absolute inset-0 will-change-transform transition-transform duration-
           <Link
   to="/upcoming-trip"
   className="
-    whitespace-nowrap
-    inline-flex items-center gap-3
-    px-7 py-3.5
-    rounded-full
-    bg-white/85 backdrop-blur-md
-    text-gray-900 font-semibold text-base
-    shadow-[0_8px_30px_rgba(0,0,0,0.25)]
-    transition-all duration-200
-    hover:bg-white
-    hover:shadow-[0_10px_40px_rgba(0,0,0,0.3)]
-    active:scale-[0.97]
+  whitespace-nowrap
+  inline-flex items-center gap-3
+  px-7 py-3.5
+  rounded-full
+  bg-[#0092D1]/80 backdrop-blur-md
+  text-white font-semibold text-base
+  shadow-[0_8px_30px_rgba(0,146,209,0.35)]
+  transition-all duration-200
+  hover:bg-[#0092D1]
+  hover:shadow-[0_10px_40px_rgba(0,146,209,0.45)]
+  active:scale-[0.97]
   "
 >
-  Join the Next Trip
-  <ArrowRight className="h-4 w-4" />
+Book Now
+<Calendar className="h-4 w-4" />
+
 </Link>
 
 
@@ -740,8 +741,8 @@ and winter becomes part of who we are.
   shadow-[0_20px_60px_rgba(0,0,0,0.18)]
   border border-gray-200/60
   w-full
-  max-w-[320px]
-  sm:max-w-sm
+  max-w-[360px]
+  sm:max-w-md
 ">
 
 
@@ -913,11 +914,7 @@ and winter becomes part of who we are.
 
   <div className="w-24 h-[4px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto mt-6 rounded-full" />
 
-  <p className="text-lg sm:text-xl md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mt-7">
-
-    Real experiences from brothers who came for adventure — and left with brotherhood, growth,
-    and unforgettable memories.
-  </p>
+  
 </div>
 
 
@@ -934,13 +931,13 @@ and winter becomes part of who we are.
           >
             <div
               className="
-                rounded-3xl p-7 md:p-9 cursor-pointer relative
-                backdrop-blur-xl 
-                bg-gradient-to-br from-[#d6edfa]/70 via-white/40 to-white/10
-                border border-[#0092D1]/30 ring-1 ring-[#0092D1]/10
-                shadow-[0_12px_40px_rgba(0,146,209,0.22)]
-                hover:shadow-[0_18px_55px_rgba(0,146,209,0.28)]
-                transition-all
+              rounded-3xl p-6 md:p-7 cursor-pointer relative
+              backdrop-blur-xl 
+              bg-gradient-to-br from-[#d6edfa]/70 via-white/40 to-white/10
+              border border-[#0092D1]/30 ring-1 ring-[#0092D1]/10
+              shadow-[0_10px_34px_rgba(0,146,209,0.22)]
+              hover:shadow-[0_16px_48px_rgba(0,146,209,0.28)]
+              transition-all
               "
               onClick={() => setSelectedTestimonial(testimonials[0])}
             >
@@ -1061,7 +1058,7 @@ and winter becomes part of who we are.
       </AnimatePresence>
 
       {/* ===================== NEWSLETTER ===================== */}
-      <section className="relative py-12 md:py-14 bg-gradient-to-b from-white via-white to-[#eef7ff] overflow-hidden">
+      <section className="relative py-10 md:py-12 bg-gradient-to-b from-white via-white to-[#eef7ff] overflow-hidden">
 
 
 
@@ -1071,7 +1068,7 @@ and winter becomes part of who we are.
 
         <div className="relative max-w-4xl mx-auto px-4">
           {/* HEADER */}
-          <div className="text-center space-y-3 mb-10 md:mb-12">
+          <div className="text-center space-y-3 mb-9 md:mb-12">
 
             {/* Stay Updated — SAME SIZE AS TESTIMONIAL TOP LABEL */}
             <p className="text-2xl sm:text-3xl md:text-3xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
@@ -1096,16 +1093,10 @@ and winter becomes part of who we are.
           </div>
 
           {/* SIGNUP CARD */}
-          <div
-            className="
-              max-w-lg mx-auto 
-              bg-white/75 backdrop-blur-xl 
-              p-7 rounded-2xl 
-              shadow-[0_6px_20px_rgba(0,0,0,0.1)] 
-              border border-white/40 
-              transition-all duration-300
-            "
-          >
+          
+          <div className="max-w-lg mx-auto pt-1">
+
+
             <form
               onSubmit={async (e) => {
                 e.preventDefault();

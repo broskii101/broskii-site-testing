@@ -1071,13 +1071,15 @@ and winter becomes part of who we are.
           <div className="text-center space-y-3 mb-9 md:mb-12">
 
             {/* Stay Updated — SAME SIZE AS TESTIMONIAL TOP LABEL */}
-            <p className="text-2xl sm:text-3xl md:text-3xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
+            <p className="text-3xl sm:text-4xl md:text-4xl tracking-[0.12em] uppercase font-bold text-[#0092D1]">
+
 
               Stay Updated
             </p>
 
             {/* Be Part… — SAME SIZE AS TESTIMONIAL SUBHEADER */}
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-semibold text-gray-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-semibold text-gray-900">
+
 
               Be part of the next chapter
             </h2>
@@ -1087,7 +1089,7 @@ and winter becomes part of who we are.
             {/* Join a growing… — SAME SIZE AS TESTIMONIAL BODY TEXT */}
             <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
 
-              Join a growing community of Muslim skiers and snowboarders and be the first to hear
+              Be the first to hear
               about new dates, destinations and exclusive Broskii announcements.
             </p>
           </div>
@@ -1150,14 +1152,14 @@ and winter becomes part of who we are.
                 disabled={isSubmitting}
                 className="
                   min-w-[160px]
-                  px-6 py-4 
+                  px-6 py-3.5 
                   rounded-full 
-                  bg-[#0092D1] text-white 
-                  shadow-lg hover:shadow-xl 
+                  bg-[#0092D1]/90 text-white 
+                  shadow-md hover:shadow-lg 
                   transition-all duration-300
                   flex items-center justify-center 
                   space-x-3 
-                  hover:bg-[#0081BA]
+                  hover:bg-[#0092D1]
                   hover:scale-[1.04]
                   active:scale-[0.96]
                   text-base sm:text-lg

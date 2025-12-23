@@ -645,7 +645,7 @@ const onSubmit = async () => {
       <div className="flex-1">
         <div className="font-medium text-gray-900">I'll be bringing my own skis/snowboard</div>
         <div className="text-sm text-gray-600">
-          (airline carriage fees may apply — details will be sent closer to the trip)
+          (Airline carriage fees may apply — details will be sent closer to the trip)
         </div>
       </div>
     </label>

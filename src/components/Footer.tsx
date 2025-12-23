@@ -6,7 +6,7 @@ const Footer = () => {
   const [openMenu, setOpenMenu] = useState<null | 'explore' | 'contact'>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
-  // Close on outside click (mobile only)
+  // Close dropdowns on outside click (mobile only)
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (footerRef.current && !footerRef.current.contains(e.target as Node)) {
@@ -35,9 +35,24 @@ const Footer = () => {
   );
 
   const socialLinks = [
-    { name: 'Instagram', url: 'https://www.instagram.com/broskiiuk', icon: Instagram, hover: 'hover:text-[#E1306C]' },
-    { name: 'TikTok', url: 'https://www.tiktok.com/@broskiiuk', icon: TikTokIcon, hover: 'hover:text-black' },
-    { name: 'YouTube', url: 'https://youtube.com/@broskiiuk', icon: Youtube, hover: 'hover:text-[#FF0000]' },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/broskiiuk',
+      icon: Instagram,
+      hover: 'hover:text-[#E1306C]',
+    },
+    {
+      name: 'TikTok',
+      url: 'https://www.tiktok.com/@broskiiuk',
+      icon: TikTokIcon,
+      hover: 'hover:text-black',
+    },
+    {
+      name: 'YouTube',
+      url: 'https://youtube.com/@broskiiuk',
+      icon: Youtube,
+      hover: 'hover:text-[#FF0000]',
+    },
   ];
 
   const exploreLinks = [
@@ -63,15 +78,15 @@ const Footer = () => {
   ];
 
   return (
-    <footer ref={footerRef} className="relative bg-[#e3ebf3]">
-      {/* Subtle top fade */}
-      <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/70 to-transparent" />
+    <footer
+      ref={footerRef}
+      className="bg-gradient-to-b from-[#eef7ff] to-[#e3ebf3]"
+    >
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 pt-14 pb-10">
 
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-16 pb-10">
-
-        {/* Social */}
-        <div className="flex justify-center mb-10">
-          <div className="flex items-center gap-10 text-gray-600">
+        {/* Social icons */}
+        <div className="flex justify-center mb-9">
+          <div className="flex items-center gap-9 text-gray-600">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
@@ -110,16 +125,22 @@ const Footer = () => {
           <div>
             <button
               type="button"
-              onClick={() => setOpenMenu(openMenu === 'explore' ? null : 'explore')}
+              onClick={() =>
+                setOpenMenu(openMenu === 'explore' ? null : 'explore')
+              }
               className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
             >
               Explore
-              <span className="opacity-40 ml-1 relative top-[1px]">˅</span>
+              <span className="opacity-45 ml-1 inline-block text-[1em] relative top-[3px]">
+                ˅
+              </span>
             </button>
 
             <div
               className={`overflow-hidden transition-all duration-500 ease-out ${
-                openMenu === 'explore' ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+                openMenu === 'explore'
+                  ? 'max-h-96 opacity-100 mt-4'
+                  : 'max-h-0 opacity-0'
               }`}
             >
               <ul className="flex flex-col items-center gap-4 text-[18px] text-gray-700">
@@ -142,16 +163,22 @@ const Footer = () => {
           <div>
             <button
               type="button"
-              onClick={() => setOpenMenu(openMenu === 'contact' ? null : 'contact')}
+              onClick={() =>
+                setOpenMenu(openMenu === 'contact' ? null : 'contact')
+              }
               className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
             >
               Contact
-              <span className="opacity-40 ml-1 relative top-[1px]">˅</span>
+              <span className="opacity-45 ml-1 inline-block text-[1em] relative top-[3px]">
+                ˅
+              </span>
             </button>
 
             <div
               className={`overflow-hidden transition-all duration-500 ease-out ${
-                openMenu === 'contact' ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+                openMenu === 'contact'
+                  ? 'max-h-96 opacity-100 mt-4'
+                  : 'max-h-0 opacity-0'
               }`}
             >
               <ul className="flex flex-col items-center gap-4 text-[18px] text-gray-700">
@@ -186,19 +213,7 @@ const Footer = () => {
 
         {/* Legal */}
         <div className="text-center text-[14px] text-gray-500">
-          <div className="md:hidden flex flex-wrap justify-center gap-x-4 gap-y-1.5 mb-2">
-            {legalLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="hover:text-[#1f7fbf] transition-colors duration-300"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden md:flex justify-center gap-x-8 mb-2">
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 mb-2">
             {legalLinks.map((link) => (
               <Link
                 key={link.name}
@@ -219,12 +234,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-
-
-
-
-
-
-

@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
+  const [navOpen, setNavOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  // Close on outside click (mobile only)
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setNavOpen(false);
+      }
+    };
+
+    if (navOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [navOpen]);
+
   const TikTokIcon = ({ className }: { className?: string }) => (
     <svg
       className={className}
@@ -38,6 +58,7 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#e3ebf3]">
+      {/* Subtle top fade */}
       <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/70 to-transparent" />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-8 pt-16 pb-12">
@@ -60,14 +81,14 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="mb-10">
-          <ul className="mx-auto max-w-[260px] grid grid-cols-2 gap-y-6 gap-x-2 text-center md:max-w-none md:flex md:justify-center md:gap-12">
+        {/* Navigation — desktop (unchanged, always visible) */}
+        <nav className="hidden md:block mb-10">
+          <ul className="flex justify-center gap-12">
             {navigationLinks.map((link) => (
               <li key={link.name}>
                 <Link
                   to={link.href}
-                  className="text-[18px] md:text-[17px] text-gray-700 hover:text-[#1f7fbf] transition-colors duration-300"
+                  className="text-[17px] text-gray-700 hover:text-[#1f7fbf] transition-colors duration-300"
                 >
                   {link.name}
                 </Link>
@@ -75,6 +96,37 @@ const Footer = () => {
             ))}
           </ul>
         </nav>
+
+        {/* Navigation — mobile reveal */}
+        <div ref={navRef} className="md:hidden mb-10 text-center">
+          <button
+            type="button"
+            onClick={() => setNavOpen((v) => !v)}
+            className="font-serif text-[18px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
+          >
+            Navigation
+          </button>
+
+          <div
+            className={`overflow-hidden transition-all duration-500 ease-out ${
+              navOpen ? 'max-h-96 opacity-100 mt-6' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <ul className="flex flex-col items-center gap-4 text-[18px] text-gray-700">
+              {navigationLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    onClick={() => setNavOpen(false)}
+                    className="hover:text-[#1f7fbf] transition-colors duration-300"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
         {/* Legal */}
         <div className="text-center text-[15px] text-gray-500">
@@ -111,6 +163,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 
 

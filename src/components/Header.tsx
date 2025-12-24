@@ -366,17 +366,23 @@ exit={{ x: -64, opacity: 0 }}
 <Link
   to="/upcoming-trip"
   onClick={() => setIsMobileMenuOpen(false)}
-  className="group inline-flex items-center font-serif text-[22px] leading-tight text-broskii-light-blue-500 font-semibold"
+  className="group inline-flex items-center font-serif text-[22px] leading-tight text-broskii-light-blue-500 font-bold"
   style={{ textShadow: '0 1px 1px rgba(0,0,0,0.28)' }}
 >
 
 
+<span
+  className="
+    border-b-2
+    border-broskii-light-blue-500/60
+    group-hover:border-broskii-light-blue-500
+    transition-colors duration-200
+  "
+>
+  Book now
+</span>
 
-    <span className="border-b border-broskii-light-blue-500/30 group-hover:border-broskii-light-blue-500/60 transition-colors duration-200">
-
-
-      Book now
-    </span>
+    
     
 
   </Link>

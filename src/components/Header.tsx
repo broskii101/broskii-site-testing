@@ -371,23 +371,19 @@ exit={{ x: -64, opacity: 0 }}
 >
 
 
+
+
 <span
   className="
     relative
+    px-1
     text-broskii-light-blue-500
-    font-semibold
-    after:content-['']
-    after:absolute
-    after:left-0
-    after:-bottom-[2px]
-    after:w-full
-    after:h-[2px]
-    after:bg-broskii-light-blue-500/70
+    font-bold
   "
 >
-  Book now
+  <span className="absolute inset-x-0 -inset-y-0.5 bg-black/5 rounded-md" />
+  <span className="relative">Book now</span>
 </span>
-
 
     
     

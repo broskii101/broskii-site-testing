@@ -399,9 +399,10 @@ const HomePage: React.FC = () => {
   'px-8 py-4 sm:px-10 sm:py-5 ' +
   'text-base sm:text-xl font-semibold ' +
   'rounded-full ' +
-  'bg-[#0092D1]/80 backdrop-blur-sm text-white ' +
-  'hover:bg-[#0092D1] ' +
+  'bg-broskii-light-blue-500/80 backdrop-blur-sm text-black ' +
+  'hover:bg-broskii-light-blue-500 ' +
   'transition-colors duration-300 ease-out';
+
 
 
 
@@ -454,22 +455,31 @@ const HomePage: React.FC = () => {
     </motion.div>
   </div>
 
-  {/* Eyebrow — higher, 2 lines max, does not move anything below */}
-  <div className="absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 z-20 px-4 text-center pointer-events-none">
-    <p
-      className="
-        text-[11px] sm:text-base
-        tracking-[0.18em] sm:tracking-[0.22em]
-        uppercase
-        text-white/90
-        font-medium
-      "
-      style={{ textShadow: '0 2px 10px rgba(0,0,0,0.65)' }}
-    >
-      <span className="block whitespace-nowrap">Muslim ski &amp; snowboarding</span>
-      <span className="block whitespace-nowrap">trips worldwide</span>
-    </p>
-  </div>
+  
+{/* Eyebrow — stronger, editorial, 2 lines max */}
+<div className="absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 z-20 px-4 text-center pointer-events-none">
+  <p
+    className="
+      text-[11px] sm:text-base
+      tracking-[0.18em] sm:tracking-[0.22em]
+      uppercase
+      text-white
+      font-semibold
+    "
+    style={{
+      textShadow: '0 3px 12px rgba(0,0,0,0.75), 0 1px 4px rgba(0,0,0,0.6)',
+    }}
+  >
+    <span className="block whitespace-nowrap">
+      Muslim ski &amp; snowboarding
+    </span>
+    <span className="block whitespace-nowrap">
+      trips worldwide
+    </span>
+  </p>
+</div>
+
+
 
   {/* Hero Content */}
   <motion.div
@@ -484,7 +494,8 @@ const HomePage: React.FC = () => {
         {/* Old-site local blurred backdrop behind headline */}
         <div className="absolute inset-0 bg-black/20 blur-3xl rounded-3xl" />
 
-        <h1 className="relative font-serif font-black leading-tight tracking-tight text-4xl sm:text-6xl md:text-7xl">
+        <h1 className="relative font-serif font-black leading-tight tracking-tight text-[38px] sm:text-6xl md:text-7xl">
+
           <span
             className="block text-white drop-shadow-2xl"
             style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.6)' }}

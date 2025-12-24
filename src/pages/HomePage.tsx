@@ -448,127 +448,101 @@ const HomePage: React.FC = () => {
             alt={heroImages[currentSlide].alt}
             className="w-full h-full object-cover"
           />
+          {/* IMPORTANT: no global overlay (matches old site) */}
         </motion.div>
       </AnimatePresence>
     </motion.div>
   </div>
 
-  {/* Eyebrow (pinned near top, does not affect layout) */}
-  <p
-    className="
-      absolute
-      top-24 sm:top-28
-      left-1/2 -translate-x-1/2
-      z-20
-      text-xs sm:text-[15px]
-      tracking-[0.28em]
-      uppercase
-      text-white/95
-      font-medium
-      text-center
-      pointer-events-none
-    "
-  >
-    Muslim ski & snowboarding trips worldwide
-  </p>
+  {/* Eyebrow — higher, 2 lines max, does not move anything below */}
+  <div className="absolute top-16 sm:top-20 left-1/2 -translate-x-1/2 z-20 px-4 text-center pointer-events-none">
+    <p
+      className="
+        text-[11px] sm:text-base
+        tracking-[0.18em] sm:tracking-[0.22em]
+        uppercase
+        text-white/90
+        font-medium
+      "
+      style={{ textShadow: '0 2px 10px rgba(0,0,0,0.65)' }}
+    >
+      <span className="block whitespace-nowrap">Muslim ski &amp; snowboarding</span>
+      <span className="block whitespace-nowrap">trips worldwide</span>
+    </p>
+  </div>
 
   {/* Hero Content */}
   <motion.div
-    className="
-      relative z-10
-      max-w-3xl mx-auto px-4
-      text-center
-      translate-y-[6vh] sm:translate-y-0
-    "
+    className="relative z-10 text-center max-w-5xl mx-auto px-4"
     style={{ y: heroTextY, opacity: heroTextOpacity }}
   >
+    {/* This spacing rhythm is a major part of the old site's readability */}
+    <div className="space-y-8">
 
-    {/* Headline */}
-    <div className="relative mb-6 sm:mb-8">
+      {/* Headline — replicate old site's mechanism */}
+      <div className="relative">
+        {/* Old-site local blurred backdrop behind headline */}
+        <div className="absolute inset-0 bg-black/20 blur-3xl rounded-3xl" />
 
-      {/* Very subtle local contrast – not visible, just supportive */}
-      <div className="absolute inset-0 bg-black/10 blur-3xl rounded-3xl" />
+        <h1 className="relative font-serif font-black leading-tight tracking-tight text-4xl sm:text-6xl md:text-7xl">
+          <span
+            className="block text-white drop-shadow-2xl"
+            style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.6)' }}
+          >
+            Not just a trip
+          </span>
 
-      <h1 className="relative font-serif leading-[0.95]">
+          <span
+            className="block mt-2 drop-shadow-2xl text-broskii-light-blue-500"
+            style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.6)' }}
+          >
+            A Journey
+          </span>
+        </h1>
+      </div>
 
-        <span
-          className="
-            block
-            text-white
-            font-semibold
-            tracking-[-0.015em]
-            text-[44px] sm:text-6xl md:text-7xl
-          "
+      {/* Subtext — replicate old site's mechanism */}
+      <div className="relative">
+        {/* Old-site local blurred backdrop behind subtext */}
+        <div className="absolute inset-0 bg-black/15 blur-2xl rounded-2xl" />
+        <p
+          className="relative text-lg sm:text-xl text-gray-100 max-w-4xl mx-auto leading-relaxed font-medium"
+          style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.6)' }}
         >
-          Not just a trip
-        </span>
+          Join us for an unforgettable experience that blends adventure &amp; faith.
+        </p>
+      </div>
 
-        <span
-          className="
-            block
-            mt-1 sm:mt-2
-            font-bold
-            tracking-[-0.015em]
-            text-[48px] sm:text-[3.9rem] md:text-[4.5rem]
-            text-broskii-light-blue-500
-          "
+      {/* CTA row — DO NOT TOUCH styles, only keep original spacing intent */}
+      <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-2">
+        <Link to="/upcoming-trip" className={heroPrimaryButtonClasses}>
+          <Calendar className="h-5 w-5" />
+          <span>Book Now</span>
+        </Link>
+
+        <button
+          onClick={() =>
+            videoSectionRef.current?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            })
+          }
+          className="flex items-center space-x-3 text-white hover:text-broskii-light-blue-500 transition-colors"
         >
-          A Journey
-        </span>
+          <div className="bg-white/10 hover:bg-white/20 rounded-full p-3 sm:p-4 border border-white/30 backdrop-blur-sm">
+            <Play className="h-5 w-5 sm:h-7 sm:w-7" />
+          </div>
 
-      </h1>
-    </div>
-
-    {/* Subtext */}
-    <div className="relative mt-6 sm:mt-8 mb-14 sm:mb-18">
-
-      {/* Lighter support than before */}
-      <div className="absolute inset-0 bg-black/10 blur-xl rounded-2xl" />
-
-      <p
-        className="
-          relative
-          text-[18px] sm:text-[20px] md:text-[22px]
-          leading-[1.75]
-          text-white
-          font-medium
-          max-w-[34rem]
-          mx-auto
-        "
-      >
-        Join us for an unforgettable experience that blends adventure & faith.
-      </p>
+          <span className="text-lg sm:text-2xl font-semibold">
+            Watch our story
+          </span>
+        </button>
+      </div>
 
     </div>
-
-    {/* CTA Row (unchanged visually) */}
-    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-      <Link to="/upcoming-trip" className={heroPrimaryButtonClasses}>
-        <Calendar className="h-5 w-5" />
-        <span>Book Now</span>
-      </Link>
-
-      <button
-        onClick={() =>
-          videoSectionRef.current?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-          })
-        }
-        className="flex items-center space-x-3 text-white hover:text-broskii-light-blue-500 transition-colors"
-      >
-        <div className="bg-white/10 hover:bg-white/20 rounded-full p-3 sm:p-4 border border-white/30 backdrop-blur-sm">
-          <Play className="h-5 w-5 sm:h-7 sm:w-7" />
-        </div>
-
-        <span className="text-lg sm:text-2xl font-semibold">
-          Watch our story
-        </span>
-      </button>
-    </div>
-
   </motion.div>
 </section>
+
 
 
         

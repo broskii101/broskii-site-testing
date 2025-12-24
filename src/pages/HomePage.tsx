@@ -424,104 +424,133 @@ const HomePage: React.FC = () => {
 </Helmet>
 
 
-      {/* HERO */}
-
-      <section className="relative h-[90vh] min-h-[540px] flex items-center justify-center overflow-hidden bg-black">
-
-       {/* Background */}
-<div className="absolute inset-0">
-  <motion.div
-    className="absolute inset-0"
-    style={{ y: heroBgY, scale: heroBgScale }}
-  >
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={currentSlide}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 1.3, ease: 'easeInOut' }}
-        className="absolute inset-0"
-      >
-        <img
-          src={heroImages[currentSlide].src}
-          alt={heroImages[currentSlide].alt}
-          width={1500}
-          height={1000}
-          className="w-full h-full object-cover"
-        />
-       <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/45" />
-
-      </motion.div>
-    </AnimatePresence>
-  </motion.div>
-</div>
-
-
-
+      
 
         
-{/* Hero Content */}
-<motion.div
-  className="relative z-10 max-w-3xl mx-auto px-4 text-center"
-  style={{ y: heroTextY, opacity: heroTextOpacity }}
->
+{/* HERO */}
+<section className="relative h-[92vh] min-h-[560px] flex items-center justify-center overflow-hidden bg-black">
 
-<p className="text-[11px] sm:text-base tracking-[0.18em] sm:tracking-[0.22em] uppercase mb-5 sm:mb-8 text-white/80">
-  Muslim ski & snowboarding trips worldwide
-</p>
+  {/* Background */}
+  <div className="absolute inset-0">
+    <motion.div
+      className="absolute inset-0"
+      style={{ y: heroBgY, scale: heroBgScale }}
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.3, ease: 'easeInOut' }}
+          className="absolute inset-0"
+        >
+          <img
+            src={heroImages[currentSlide].src}
+            alt={heroImages[currentSlide].alt}
+            width={1500}
+            height={1000}
+            className="w-full h-full object-cover"
+          />
+
+          {/* Lighter cinematic overlay (VALID Tailwind values) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
+        </motion.div>
+      </AnimatePresence>
+    </motion.div>
+  </div>
+
+  {/* Hero Content */}
+  <motion.div
+    className="relative z-10 max-w-3xl mx-auto px-4 text-center"
+    style={{ y: heroTextY, opacity: heroTextOpacity }}
+  >
+
+    {/* Eyebrow */}
+    <p className="
+      text-xs sm:text-[15px]
+      tracking-[0.24em]
+      uppercase
+      text-white/85
+      mb-7 sm:mb-10
+    ">
+      Muslim ski & snowboarding trips worldwide
+    </p>
+
+    {/* Headline */}
+    <h1 className="font-serif leading-[0.95] tracking-tight mb-6 sm:mb-8">
+
+      <span className="
+        block
+        text-white
+        font-medium
+        text-[42px] sm:text-6xl md:text-7xl
+        drop-shadow-[0_4px_14px_rgba(0,0,0,0.55)]
+      ">
+        Not just a trip
+      </span>
+
+      <span className="
+        block
+        mt-1 sm:mt-2
+        font-semibold
+        text-[46px] sm:text-[3.8rem] md:text-[4.4rem]
+        tracking-[-0.01em]
+        text-[#0092D1]
+      ">
+        A Journey
+      </span>
+
+    </h1>
+
+    {/* Subtext */}
+    <div className="relative mb-12 sm:mb-16">
+      <div className="absolute inset-0 bg-black/10 blur-2xl rounded-2xl" />
+      <p className="
+        relative
+        text-[17px] sm:text-[19px] md:text-[21px]
+        leading-[1.7]
+        text-white/90
+        max-w-[32rem]
+        mx-auto
+      ">
+        Join us for an unforgettable experience that blends adventure & faith.
+      </p>
+    </div>
+
+    {/* CTA Row */}
+    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+      <Link to="/upcoming-trip" className={heroPrimaryButtonClasses}>
+        <Calendar className="h-5 w-5" />
+        <span>Book Now</span>
+      </Link>
+
+      <button
+        onClick={() =>
+          videoSectionRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          })
+        }
+        className="flex items-center space-x-3 text-white hover:text-[#0092D1] transition-colors"
+      >
+        <div className="bg-white/10 hover:bg-white/20 rounded-full p-3 sm:p-4 border border-white/30 backdrop-blur-sm">
+          <Play className="h-5 w-5 sm:h-7 sm:w-7" />
+        </div>
+
+        <span className="text-lg sm:text-2xl font-semibold">
+          Watch our story
+        </span>
+      </button>
+    </div>
+
+  </motion.div>
+</section>
 
 
 
-<h1 className="font-serif leading-[0.95] tracking-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.55)]">
-  <span className="block text-white font-medium text-[42px] sm:text-6xl md:text-7xl">
-    Not just a trip
-  </span>
-
-  <span className="block mt-1 sm:mt-2 font-semibold text-[46px] sm:text-[3.8rem] md:text-[4.4rem] tracking-[-0.01em] text-broskii-blue">
-    A Journey
-  </span>
-</h1>
 
 
-<div className="relative mt-4 sm:mt-6">
-  <div className="absolute inset-0 bg-black/10 blur-2xl rounded-2xl" />
-  <p className="relative text-white/90 text-base sm:text-lg leading-relaxed max-w-[32rem] mx-auto">
-    Join us for an unforgettable experience that blends adventure & faith.
-  </p>
-</div>
-
-
-
-          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mt-10 sm:mt-14">
-          <Link to="/upcoming-trip" className={heroPrimaryButtonClasses}>
-
-              <Calendar className="h-5 w-5" />
-              <span>Book Now</span>
-            </Link>
-
-            <button
-              onClick={() =>
-                videoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-              }
-              className="flex items-center space-x-3 text-white hover:text-[#0092D1] transition-colors"
-            >
-              <div className="bg-white/10 hover:bg-white/20 rounded-full p-3 sm:p-4 border border-white/30 backdrop-blur-sm">
-              <Play className="h-5 w-5 sm:h-7 sm:w-7" />
-
-
-              </div>
-              
-              <span className="text-lg sm:text-2xl font-semibold">
-  Watch our story
-</span>
-
-
-
-            </button>
-          </div>
-          </motion.div>
-      </section>
 
       
 {/* ===================== NEXT TRIP SECTION ===================== */}

@@ -360,36 +360,24 @@ exit={{ x: -64, opacity: 0 }}
             })}
           </motion.nav>
 
-          {/* Editorial CTA (text only) */}
-<div className="mt-7">
-  
-<Link
-  to="/upcoming-trip"
-  onClick={() => setIsMobileMenuOpen(false)}
-  className="group inline-flex items-center font-serif text-[22px] leading-tight text-broskii-light-blue-500 font-bold"
-  style={{ textShadow: '0 1px 1px rgba(0,0,0,0.28)' }}
->
-
-
-
-
-<span
-  className="
-    relative
-    px-1
-    text-broskii-light-blue-500
-    font-bold
-  "
->
-  <span className="absolute inset-x-0 -inset-y-0.5 bg-black/5 rounded-md" />
-  <span className="relative">Book now</span>
-</span>
-
-    
-    
-
+      {/* Editorial CTA (text only, neutral) */}
+<div className="mt-8">
+  <Link
+    to="/upcoming-trip"
+    onClick={() => setIsMobileMenuOpen(false)}
+    className="group inline-flex items-center font-serif text-[23px] leading-tight text-gray-900 font-semibold"
+  >
+    <span className="
+      border-b-2
+      border-gray-900/40
+      group-hover:border-gray-900
+      transition-colors duration-200
+    ">
+      Book now
+    </span>
   </Link>
 </div>
+
 
 
         </div>

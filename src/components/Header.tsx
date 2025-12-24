@@ -270,26 +270,30 @@ const Header = () => {
 {/* Mobile Menu (overlay, anchored to header, does NOT replace hero) */}
 <AnimatePresence>
   {isMobileMenuOpen && (
-    <motion.div
-      key="mobileMenuOverlay"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.18, ease: 'easeOut' }}
-      className="md:hidden fixed inset-0 z-[50] pointer-events-none"
+    
+<motion.div
+  key="mobileMenuOverlay"
+  onClick={() => setIsMobileMenuOpen(false)}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: 0.18, ease: 'easeOut' }}
+  className="md:hidden fixed inset-0 z-[50] pointer-events-auto"
+>
 
 
-    >
       {/* IMPORTANT: no backdrop, no full-width white layer */}
 
       {/* Panel (anchored under header, right aligned) */}
       <motion.div
         key="mobileMenuPanel"
+        onClick={(e) => e.stopPropagation()}
+
         initial={{ x: -64, opacity: 0 }}
 animate={{ x: 0, opacity: 1 }}
 exit={{ x: -64, opacity: 0 }}
 
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         className="fixed left-0 top-[72px] w-[48%] max-w-[220px] pointer-events-auto"
 
 
@@ -361,11 +365,12 @@ exit={{ x: -64, opacity: 0 }}
   <Link
     to="/upcoming-trip"
     onClick={() => setIsMobileMenuOpen(false)}
-    className="group inline-flex items-center font-serif text-[22px] leading-tight text-[#0092D1] font-semibold active:opacity-60 transition-colors duration-200"
+    className="group inline-flex items-center font-serif text-[22px] leading-tight text-broskii-light-blue-500 font-semibold"
+
 
 
   >
-    <span className="border-b border-[#0092D1]/30 group-hover:border-[#0092D1]/60 transition-colors duration-200">
+    <span className="border-b border-broskii-light-blue-500/30 group-hover:border-broskii-light-blue-500/60 transition-colors duration-200">
 
 
       Book now

@@ -427,7 +427,7 @@ const HomePage: React.FC = () => {
 
       
 {/* HERO */}
-<section className="relative h-[92vh] min-h-[560px] flex items-center justify-center overflow-hidden bg-black">
+<section className="relative h-[87vh] min-h-[560px] flex items-center justify-center overflow-hidden bg-black">
 
   {/* Background Carousel */}
   <div className="absolute inset-0">

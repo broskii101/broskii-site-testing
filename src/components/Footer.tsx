@@ -170,7 +170,7 @@ const Footer = () => {
   className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
 >
   Contact{' '}
-  <CaretDown className="inline-block opacity-45 relative top-[6px]" />
+  <CaretDown className="inline-block opacity-45 relative top-[2px]" />
 </button>
 
 

@@ -450,27 +450,14 @@ const HomePage: React.FC = () => {
           height={1000}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/70" />
+       <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/45" />
+
       </motion.div>
     </AnimatePresence>
   </motion.div>
 </div>
 
-{/* Dots */}
-<div className="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
-  {heroImages.map((_, index) => (
-    <button
-      key={index}
-      onClick={() => setCurrentSlide(index)}
-      className={`w-3 h-3 rounded-full border border-white/40 transition-all duration-300 ${
-        index === currentSlide
-          ? 'bg-white scale-125 shadow-md'
-          : 'bg-white/25 hover:bg-white/60'
-      }`}
-      aria-label={`Go to slide ${index + 1}`}
-    />
-  ))}
-</div>
+
 
 
         
@@ -486,13 +473,24 @@ const HomePage: React.FC = () => {
 
 
 
-<h1 className="text-white font-serif font-semibold leading-[0.95] tracking-tight text-[44px] sm:text-6xl md:text-7xl drop-shadow-[0_6px_18px_rgba(0,0,0,0.65)]">
-  Ski. Snowboard. Explore.
+<h1 className="font-serif leading-[0.95] tracking-tight drop-shadow-[0_6px_18px_rgba(0,0,0,0.55)]">
+  <span className="block text-white font-medium text-[42px] sm:text-6xl md:text-7xl">
+    Not just a trip
+  </span>
+
+  <span className="block mt-1 sm:mt-2 font-semibold text-[46px] sm:text-[3.8rem] md:text-[4.4rem] tracking-[-0.01em] text-broskii-blue">
+    A Journey
+  </span>
 </h1>
 
-<p className="mt-4 sm:mt-6 text-white/90 text-base sm:text-lg leading-relaxed max-w-[32rem] mx-auto">
-  Join us for an unforgettable experience that blends adventure & faith.
-</p>
+
+<div className="relative mt-4 sm:mt-6">
+  <div className="absolute inset-0 bg-black/10 blur-2xl rounded-2xl" />
+  <p className="relative text-white/90 text-base sm:text-lg leading-relaxed max-w-[32rem] mx-auto">
+    Join us for an unforgettable experience that blends adventure & faith.
+  </p>
+</div>
+
 
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mt-10 sm:mt-14">
@@ -582,18 +580,18 @@ const HomePage: React.FC = () => {
 
     {/* SUBTEXT */}
     <p className="
-  text-base sm:text-xl md:text-2xl
+  text-[17px] sm:text-[19px] md:text-[21px]
   text-gray-700
-  leading-relaxed
+  leading-[1.7]
   text-center
   max-w-[36rem]
   mx-auto
   mb-8 sm:mb-10
 ">
+  Part of a 300km alpine playground built for real mountain days — wide pistes, 
+  breathtaking views and an atmosphere made for switching off and reconnecting.
+</p>
 
-      Part of a 300km alpine playground built for real mountain days — wide pistes, 
-      breathtaking views and an atmosphere made for switching off and reconnecting.
-    </p>
 
     {/* POSTER (smaller, rounded, shadow) */}
     <div

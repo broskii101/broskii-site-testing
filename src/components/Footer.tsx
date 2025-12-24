@@ -129,16 +129,15 @@ const Footer = () => {
 
           {/* Explore */}
           <div>
-            <button
-              type="button"
-              onClick={() => setOpenMenu(openMenu === 'explore' ? null : 'explore')}
-              className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
-            >
-              Explore
-              <CaretDown className="inline-block ml-1 opacity-45 relative top-[6px]" />
+          <button
+  type="button"
+  onClick={() => setOpenMenu(openMenu === 'explore' ? null : 'explore')}
+  className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
+>
+  Explore{' '}
+  <CaretDown className="inline-block opacity-45 relative top-[4px]" />
+</button>
 
-
-            </button>
 
             <div
               className={`overflow-hidden transition-all duration-500 ease-out ${
@@ -165,16 +164,15 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <button
-              type="button"
-              onClick={() => setOpenMenu(openMenu === 'contact' ? null : 'contact')}
-              className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
-            >
-              Contact
-              <CaretDown className="inline-block ml-1 opacity-45 relative top-[6px]" />
+          <button
+  type="button"
+  onClick={() => setOpenMenu(openMenu === 'explore' ? null : 'explore')}
+  className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
+>
+  Explore{' '}
+  <CaretDown className="inline-block opacity-45 relative top-[4px]" />
+</button>
 
-
-            </button>
 
             <div
               className={`overflow-hidden transition-all duration-500 ease-out ${

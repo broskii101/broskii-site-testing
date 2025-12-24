@@ -313,8 +313,8 @@ exit={{ x: -64, opacity: 0 }}
               visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.11,
-                  delayChildren: 0.21,
+                  staggerChildren: 0.09,
+                  delayChildren: 0.19,
                 },
               },
             }}

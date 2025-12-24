@@ -314,7 +314,7 @@ exit={{ x: -64, opacity: 0 }}
                 opacity: 1,
                 transition: {
                   staggerChildren: 0.09,
-                  delayChildren: 0.19,
+                  delayChildren: 0.17,
                 },
               },
             }}
@@ -373,14 +373,21 @@ exit={{ x: -64, opacity: 0 }}
 
 <span
   className="
-    border-b-2
-    border-broskii-light-blue-500/60
-    group-hover:border-broskii-light-blue-500
-    transition-colors duration-200
+    relative
+    text-broskii-light-blue-500
+    font-semibold
+    after:content-['']
+    after:absolute
+    after:left-0
+    after:-bottom-[2px]
+    after:w-full
+    after:h-[2px]
+    after:bg-broskii-light-blue-500/70
   "
 >
   Book now
 </span>
+
 
     
     

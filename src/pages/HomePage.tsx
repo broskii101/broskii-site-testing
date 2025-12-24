@@ -425,12 +425,10 @@ const HomePage: React.FC = () => {
 
 
       
-
-        
 {/* HERO */}
 <section className="relative h-[92vh] min-h-[560px] flex items-center justify-center overflow-hidden bg-black">
 
-  {/* Background */}
+  {/* Background Carousel */}
   <div className="absolute inset-0">
     <motion.div
       className="absolute inset-0"
@@ -448,13 +446,8 @@ const HomePage: React.FC = () => {
           <img
             src={heroImages[currentSlide].src}
             alt={heroImages[currentSlide].alt}
-            width={1500}
-            height={1000}
             className="w-full h-full object-cover"
           />
-
-          {/* Lighter cinematic overlay (VALID Tailwind values) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
         </motion.div>
       </AnimatePresence>
     </motion.div>
@@ -467,58 +460,70 @@ const HomePage: React.FC = () => {
   >
 
     {/* Eyebrow */}
-    <p className="
-      text-xs sm:text-[15px]
-      tracking-[0.24em]
-      uppercase
-      text-white/85
-      mb-7 sm:mb-10
-    ">
-      Muslim ski & snowboarding trips worldwide
-    </p>
+    <div className="relative mb-8 sm:mb-12">
+      <div className="absolute inset-0 bg-black/10 blur-xl rounded-full" />
+      <p
+        className="
+          relative
+          text-xs sm:text-[15px]
+          tracking-[0.26em]
+          uppercase
+          text-white
+        "
+      >
+        Muslim ski & snowboarding trips worldwide
+      </p>
+    </div>
 
     {/* Headline */}
-    <h1 className="font-serif leading-[0.95] tracking-tight mb-6 sm:mb-8">
+    <div className="relative mb-6 sm:mb-8">
+      <div className="absolute inset-0 bg-black/20 blur-3xl rounded-3xl" />
 
-      <span className="
-        block
-        text-white
-        font-medium
-        text-[42px] sm:text-6xl md:text-7xl
-        drop-shadow-[0_4px_14px_rgba(0,0,0,0.55)]
-      ">
-        Not just a trip
-      </span>
+      <h1 className="relative font-serif leading-[0.95] tracking-tight">
+        <span
+          className="
+            block
+            text-white
+            font-medium
+            text-[42px] sm:text-6xl md:text-7xl
+          "
+        >
+          Not just a trip
+        </span>
 
-      <span className="
-        block
-        mt-1 sm:mt-2
-        font-semibold
-        text-[46px] sm:text-[3.8rem] md:text-[4.4rem]
-        tracking-[-0.01em]
-        text-[#0092D1]
-      ">
-        A Journey
-      </span>
-
-    </h1>
+        <span
+          className="
+            block
+            mt-1 sm:mt-2
+            font-semibold
+            text-[46px] sm:text-[3.8rem] md:text-[4.4rem]
+            tracking-[-0.01em]
+            text-[#0092D1]
+          "
+        >
+          A Journey
+        </span>
+      </h1>
+    </div>
 
     {/* Subtext */}
-    <div className="relative mb-12 sm:mb-16">
-      <div className="absolute inset-0 bg-black/10 blur-2xl rounded-2xl" />
-      <p className="
-        relative
-        text-[17px] sm:text-[19px] md:text-[21px]
-        leading-[1.7]
-        text-white/90
-        max-w-[32rem]
-        mx-auto
-      ">
+    <div className="relative mt-6 sm:mt-8 mb-14 sm:mb-18">
+      <div className="absolute inset-0 bg-black/15 blur-2xl rounded-2xl" />
+      <p
+        className="
+          relative
+          text-[18px] sm:text-[20px] md:text-[22px]
+          leading-[1.75]
+          text-white
+          max-w-[34rem]
+          mx-auto
+        "
+      >
         Join us for an unforgettable experience that blends adventure & faith.
       </p>
     </div>
 
-    {/* CTA Row */}
+    {/* CTA Row (unchanged styling) */}
     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
       <Link to="/upcoming-trip" className={heroPrimaryButtonClasses}>
         <Calendar className="h-5 w-5" />
@@ -546,6 +551,9 @@ const HomePage: React.FC = () => {
 
   </motion.div>
 </section>
+
+        
+
 
 
 

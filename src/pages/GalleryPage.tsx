@@ -85,31 +85,7 @@ const GalleryPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-primary-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <h2 className="text-4xl font-serif font-bold text-white">
-              Ready to Create Your Own Memories?
-            </h2>
-            <p className="text-xl text-primary-100">
-              Join us on our next adventure and become part of the Broskii story.
-            </p>
-            <Link
-              to="/booking"
-              className="inline-flex items-center space-x-2 bg-broskii-light-blue-500 hover:bg-broskii-light-blue-600 text-black px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-xl"
-            >
-              <span>Book Your Trip</span>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      
     </div>
   );
 };

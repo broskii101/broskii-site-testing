@@ -365,7 +365,7 @@ exit={{ x: -64, opacity: 0 }}
   <Link
     to="/upcoming-trip"
     onClick={() => setIsMobileMenuOpen(false)}
-    className="group inline-flex items-center font-serif text-[23px] leading-tight text-gray-900 font-semibold"
+    className="group inline-flex items-center font-serif text-[22px] leading-tight text-gray-900 font-semibold"
   >
     <span className="
       border-b-2

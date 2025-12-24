@@ -670,68 +670,7 @@ For full contact info, check out our <a href='/contact' class='text-primary-600 
         </section>
       )}
 
-{/* Contact Section */}
-<section className="py-12 bg-white">
-  <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-    >
-      <div className="mb-6">
-        <h3 className="text-2xl sm:text-3xl font-serif font-semibold text-black">
-          Still got questions?
-        </h3>
-        <p className="text-base sm:text-lg text-black mt-2">
-          We're just a message away and happy to help
-        </p>
-      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        <Link
-          to="/contact"
-          className="group bg-[#00a6fb]/10 hover:bg-[#00a6fb]/20 rounded-md p-4 transition"
-        >
-          <Send className="h-6 w-6 mx-auto mb-2 text-[#00a6fb] group-hover:text-white" />
-          <div className="text-sm font-semibold text-black">Send a Message</div>
-          <div className="text-xs text-black hidden">Contact Form</div>
-        </Link>
-
-        <a
-          href="mailto:salaam@broskii.co"
-          className="group bg-[#00a6fb]/10 hover:bg-[#00a6fb]/20 rounded-md p-4 transition"
-        >
-          <Mail className="h-6 w-6 mx-auto mb-2 text-[#00a6fb] group-hover:text-white" />
-          <div className="text-sm font-semibold text-black">Email</div>
-          <div className="text-xs text-black hidden">salaam@broskii.com</div>
-        </a>
-
-        <a
-          href="https://wa.me/447749939192"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group bg-[#00a6fb]/10 hover:bg-[#00a6fb]/20 rounded-md p-4 transition"
-        >
-          <MessageCircle className="h-6 w-6 mx-auto mb-2 text-[#00a6fb] group-hover:text-white" />
-          <div className="text-sm font-semibold text-black">WhatsApp</div>
-          <div className="text-xs text-black hidden">+44 7749 939192</div>
-        </a>
-
-        <a
-          href="https://www.instagram.com/broskiiuk"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group bg-[#00a6fb]/10 hover:bg-[#00a6fb]/20 rounded-md p-4 transition"
-        >
-          <Instagram className="h-6 w-6 mx-auto mb-2 text-[#00a6fb] group-hover:text-white" />
-          <div className="text-sm font-semibold text-black">Instagram</div>
-          <div className="text-xs text-black hidden">@broskiiuk</div>
-        </a>
-      </div>
-    </motion.div>
-  </div>
-</section>
 
 
 

@@ -166,12 +166,13 @@ const Footer = () => {
           <div>
           <button
   type="button"
-  onClick={() => setOpenMenu(openMenu === 'explore' ? null : 'explore')}
+  onClick={() => setOpenMenu(openMenu === 'contact' ? null : 'contact')}
   className="font-serif text-[23px] text-gray-700 hover:text-[#1f7fbf] transition-colors"
 >
-  Explore{' '}
-  <CaretDown className="inline-block opacity-45 relative top-[2px]" />
+  Contact{' '}
+  <CaretDown className="inline-block opacity-45 relative top-[6px]" />
 </button>
+
 
 
             <div

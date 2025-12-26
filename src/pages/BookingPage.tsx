@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Adjust if you use a different router
+import { useNavigate, useParams } from 'react-router-dom';
+
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../lib/supabaseClient'; // Adjust path if needed
@@ -26,20 +27,59 @@ interface BookingForm {
   terms: boolean;
   electronicSignature: string;
 }
-
 const BookingPage = () => {
+  const { tripId } = useParams<{ tripId?: string }>();
+
+  console.log('BookingPage tripId:', tripId);
+
+  const [trip, setTrip] = useState<any>(null);
+  const [isLoadingTrip, setIsLoadingTrip] = useState(true);
+
   const [currentStep, setCurrentStep] = useState(0);
+
+
   const [showTooltip, setShowTooltip] = useState<string | null>(null);
 const formRef = useRef<HTMLFormElement>(null);  // 
   const [paymentOption, setPaymentOption] = useState<string | null>(null);
   const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 const [hasSaved, setHasSaved] = useState(false);
+const [isSavingBooking, setIsSavingBooking] = useState(false);
+
 
   
   const { register, handleSubmit, watch, formState: { errors }, setValue, trigger, getValues } = useForm<BookingForm>();
   
   const equipmentRental = watch('equipmentRental');
+
+  useEffect(() => {
+    const loadTrip = async () => {
+      // If someone visits /booking without a tripId, skip for now
+      if (!tripId) {
+        setIsLoadingTrip(false);
+        return;
+      }
+  
+      const { data, error } = await supabase
+        .from('trips')
+        .select('*')
+        .eq('id', tripId)
+        .single();
+  
+      if (error) {
+        console.error('Failed to load trip:', error);
+      } else {
+        setTrip(data);
+        console.log('Loaded trip:', data);
+      }
+  
+      setIsLoadingTrip(false);
+    };
+  
+    loadTrip();
+  }, [tripId]);
+  
+
   
   useEffect(() => {
     if (equipmentRental !== 'yes') {
@@ -54,6 +94,14 @@ const [hasSaved, setHasSaved] = useState(false);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   const [paymentConfirmedError, setPaymentConfirmedError] = useState('');
   
+
+  useEffect(() => {
+    if (!tripId) {
+      navigate('/upcoming-trip', { replace: true });
+    }
+  }, [tripId, navigate]);
+  
+
 
   // Trip data
   const tripData = {
@@ -103,13 +151,18 @@ const experienceOptions = [
   }
 ];
 
-// Save into Supabase + send confirmation email after Step 3 (Waiver)
+
+
 const saveAfterWaiver = async () => {
-  if (hasSaved) return true; // already saved once
+  if (isSavingBooking || hasSaved) return true;
+
+  setIsSavingBooking(true);
 
   const data = getValues();
 
   const transformedData = {
+    trip_id: tripId ?? null,
+
     full_name: data.fullName,
     age: data.age,
     city: data.city,
@@ -123,23 +176,28 @@ const saveAfterWaiver = async () => {
     lessons: data.lessons,
     room_preference: data.roomPreference,
     travel_plans: data.travelPlans,
-    payment_option: data.selectedPaymentOption ?? null, // ensure not undefined
+    payment_option: data.selectedPaymentOption ?? null,
     waiver_agreed: data.waiver,
     extras_balance_adjusted: data.extrasTerms,
     terms_accepted: data.terms,
     electronic_signature: data.electronicSignature,
   };
 
-  const { error: insertError } = await supabase.from('booking').insert([transformedData]);
-  if (insertError) {
-    console.error('Supabase insert error:', insertError);
+  // 1️⃣ Save booking
+  const { error } = await supabase
+    .from('booking')
+    .insert([transformedData]);
+
+  if (error) {
+    console.error('Supabase insert error:', error);
     alert('Failed to save booking. Please try again.');
+    setIsSavingBooking(false);
     return false;
   }
 
-  setHasSaved(true); // mark as saved so we don’t insert again
+  setHasSaved(true);
 
-  // Send single confirmation email that mentions payment
+  // 2️⃣ Send confirmation email (non-blocking)
   try {
     await fetch('/.netlify/functions/sendBookingConfirmation', {
       method: 'POST',
@@ -159,19 +217,24 @@ const saveAfterWaiver = async () => {
         roomPreference: data.roomPreference,
         travelPlans: data.travelPlans,
         selectedPaymentOption: data.selectedPaymentOption,
-        waiver: data.waiver,
-        extrasTerms: data.extrasTerms,
-        terms: data.terms,
         electronicSignature: data.electronicSignature,
         messageType: 'pendingPayment',
       }),
     });
-  } catch (emailErr) {
-    console.warn('Email send failed (non-blocking):', emailErr);
+  } catch (err) {
+    console.warn('Email send failed (non-blocking):', err);
   }
 
+  setIsSavingBooking(false);
   return true;
 };
+
+
+
+
+
+
+
 const nextStep = async () => {
   // Clear previous payment confirmation error
   setPaymentConfirmedError('');
@@ -275,6 +338,11 @@ const onSubmit = async () => {
     </div>
   );
 
+  if (isLoadingTrip) {
+    return null;
+  }
+
+
   return (
     <div className="min-h-screen bg-gray-50">
 {/* Hero Section */}
@@ -298,21 +366,33 @@ const onSubmit = async () => {
     
       <div className="flex items-center justify-center space-x-3 mb-2 md:mb-4">
         <h1 className="text-5xl font-serif font-bold text-white drop-shadow-lg">
-          SKI 3 VALLEYS
+        {trip?.title ?? 'Loading trip...'}
+
         </h1>
       </div>
 
       <p className="text-lg font-semibold text-white/90 max-w-4xl mx-auto drop-shadow-md mb-6">
-        Val Thorens, French Alps
+      {trip?.location ?? ''}
+
       </p>
 
       <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md mb-7">
-        Where every run feels legendary — 600km of epic slopes at Europe's highest ski resort.
+      {trip?.hero_description ?? ''}
+
       </p>
 
       <p className="text-2xl text-white font-semibold max-w-4xl mx-auto drop-shadow-md mb-7">
-        10th – 17th January 2026
-      </p>
+  {trip
+    ? `${new Date(trip.start_date).toLocaleDateString('en-GB', {
+        day: 'numeric',
+      })} – ${new Date(trip.end_date).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })}`
+    : ''}
+</p>
+
 
       {/* Grouped Total Trip Price and Price */}
       <div className="max-w-4xl mx-auto drop-shadow-md">
@@ -320,7 +400,8 @@ const onSubmit = async () => {
           Total Trip Price
         </p>
         <p className="text-3xl font-bold text-primary-400 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] mt-1">
-          £1,200
+        {trip?.hero_price ?? ''}
+
         </p>
       </div>
     </motion.div>
@@ -925,20 +1006,19 @@ const onSubmit = async () => {
                     className="space-y-6"
                   >
 
-                    {/* 2. Payment Info Box */}
-                    <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded text-blue-900 text-sm leading-relaxed font-medium">
-                      <h4 className="font-semibold text-base mb-2">💳 Payment Options</h4>
-                      <p className="mb-2">
-                        You can choose to pay either the <strong>full amount (£1200)</strong> or a <strong>£300 deposit</strong> to secure your spot.
-                      </p>
-                      <p className="mb-2">
-                        If you’ve selected <strong>extras</strong> (like equipment hire or lessons), or if you're flying from a <strong>different airport</strong>, please only pay the deposit for now.
-                        We'll send you a revised total after your booking is confirmed.
-                      </p>
-                      <p>
-                        🗓️ If you choose to pay the deposit, the remaining balance is due by <strong>01/11/2025</strong>.
-                      </p>
-                    </div>
+                    
+{/* 2. Payment Info Box */}
+{trip?.payment_explanation && (
+  <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded text-blue-900 text-sm leading-relaxed font-medium">
+    <h4 className="font-semibold text-base mb-2">💳 Payment Options</h4>
+    <p
+      className="mb-2"
+      dangerouslySetInnerHTML={{ __html: trip.payment_explanation }}
+    />
+  </div>
+  )}
+
+
 
         {/* 3. Subheader */}
 <h3 className="text-xl font-semibold text-gray-900 mb-3">How would you like to pay?</h3>

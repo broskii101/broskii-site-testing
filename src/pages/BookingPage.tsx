@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../lib/supabaseClient'; // Adjust path if needed
-import { CheckCircle, Calendar, User, Mail, Phone, Users, CreditCard, ArrowRight, Clock, MapPin, Mountain, Plane, Snowflake, Hotel, Sparkles, Bus, HelpCircle, FileText, Info, Globe, Wallet, X, ArrowLeft, Package, GraduationCap, Bed, ShieldCheck, FileSignature as Signature } from 'lucide-react';
+import { CheckCircle, User, Mail, Phone, CreditCard, ArrowRight, Mountain, Plane, HelpCircle, Wallet, X, ArrowLeft, Package, GraduationCap, Bed, ShieldCheck, FileSignature as Signature } from 'lucide-react';
 
 
 interface BookingForm {
@@ -100,6 +100,12 @@ const [isSavingBooking, setIsSavingBooking] = useState(false);
   const depositAmount = trip?.deposit_amount ?? null;
   const balanceDueDate = trip?.balance_due_date ?? null;
 
+// ---- Travel helpers (trip-driven) ----
+const departureAirport = trip?.departure_airport ?? null;
+const transferAirport = trip?.transfer_airport ?? null;
+
+
+
   // Card prices are derived (2% fee)
   const fullAmountCard =
     fullAmount !== null ? Math.round(fullAmount * 1.02) : null;
@@ -132,24 +138,7 @@ const [isSavingBooking, setIsSavingBooking] = useState(false);
   
 
 
-  // Trip data
-  const tripData = {
-    dates: "10th - 17th January 2026",
-    location: "Val Thorens",
-    region: "French Alps",
-    resortLocation: "Val Thorens, French Alps",
-    resort: "Europe's Highest Ski Resort",
-    price: "£1200",
-    priceLabel: "Total Trip Price",
-    inclusions: [
-      { text: "Return flights with BA from LHR", icon: Plane },
-      { text: "4★ Luxury Hotel (L'Oxalys)", icon: Hotel },
-      { text: "Private Coach Transfer", icon: Bus },
-      { text: "Ski pass (£370 value)", icon: Snowflake },
-      { text: "Ski in/out access", icon: ArrowRight },
-      { text: "Spa Facilities", icon: Sparkles }
-    ]
-  };
+  
 
   // Steps (REORDERED: Waiver before Payment)
   const steps = [
@@ -851,7 +840,7 @@ const onSubmit = async () => {
                           />
                           <div className="flex-1">
                             <div className="font-medium text-gray-900">I'd like to request my own room</div>
-                            <div className="text-sm text-gray-600">(approx. £550 extra – subject to availability)</div>
+                            <div className="text-sm text-gray-600">(Subject to availability)</div>
                           </div>
                         </label>
                       </div>
@@ -867,7 +856,7 @@ const onSubmit = async () => {
                         <span>Travel Plans</span>
                       </h3>
                       <div className="text-gray-600 mb-4 space-y-4">
-                        <p>Our package includes return flights from London Heathrow (LHR) to Geneva (GVA), along with private coach transfers from Geneva to the resort.</p>
+                        <p>Our package includes return flights from {departureAirport ?? 'London Heathrow (LHR)'} to {transferAirport ?? 'Geneva (GVA)'}, along with private coach transfers from {transferAirport ?? 'Geneva (GVA)'} to the resort.</p>
 
                         <p>If you're travelling from another UK airport or from abroad, you'll need to arrange your own flights. You can still join our private coach transfer from Geneva — we'll share our flight details and transfer timings in advance to help you coordinate.</p>
 
@@ -877,8 +866,17 @@ const onSubmit = async () => {
                         </div>
 
                         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                          <p className="text-amber-800 font-semibold mb-2">Important:</p>
-                          <p className="text-amber-700">If you miss your group flight from London or miss the group transfer in Geneva, you'll be responsible for arranging your own transportation to the resort at your own expense.</p>
+                          
+                        {trip?.important_notice && (
+  <div
+    className="text-amber-700"
+    dangerouslySetInnerHTML={{ __html: trip.important_notice }}
+  />
+)}
+
+
+
+
                         </div>
                       </div>
                       <p className="text-gray-700 font-medium mb-4">How will you be travelling?</p>
@@ -891,7 +889,8 @@ const onSubmit = async () => {
                             className="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300"
                           />
                           <div className="flex-1">
-                            <div className="font-medium text-gray-900">I'll be flying with the group from London Heathrow</div>
+                            <div className="font-medium text-gray-900">I'll be flying with the group from {departureAirport ?? 'London Heathrow'}
+</div>
                             <div className="text-sm text-gray-600">(included in the package)</div>
                           </div>
                         </label>
@@ -905,7 +904,8 @@ const onSubmit = async () => {
                           <div className="flex-1">
                             <div>
                               <div className="font-medium text-gray-900">I'll be travelling from another UK airport or abroad</div>
-                              <div className="text-sm text-gray-600 mt-1">I will join the group coach transfer from Geneva</div>
+                              <div className="text-sm text-gray-600 mt-1">I will join the group coach transfer from {transferAirport ?? 'Geneva'}
+</div>
                             </div>
                           </div>
                         </label>

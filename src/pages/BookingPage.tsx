@@ -356,6 +356,25 @@ const onSubmit = async () => {
     </div>
   );
 
+
+
+  useEffect(() => {
+    if (isLoadingTrip) {
+      document.body.classList.add('booking-loading');
+    } else {
+      document.body.classList.remove('booking-loading');
+    }
+  
+    return () => {
+      document.body.classList.remove('booking-loading');
+    };
+  }, [isLoadingTrip]);
+  
+
+
+
+
+
   if (isLoadingTrip) {
     return null;
   }

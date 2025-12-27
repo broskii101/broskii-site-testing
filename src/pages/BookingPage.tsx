@@ -453,21 +453,20 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
   return (
     <div className="min-h-screen bg-gray-50">
 {/* Hero Section */}
-<section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+<section className="relative h-[45vh] md:h-[55vh] flex items-center justify-center overflow-hidden">
   <img
-    src="/IMG-20250120-WA0026.webp"
-    alt="Ski slopes background"
+    src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766869280/alpine-skiing-panorama-hero.webp_nhhysp.webp"
+    alt="Panoramic view of high-altitude alpine ski terrain with snow-covered mountains under a clear sky."
     className="absolute inset-0 w-full h-full object-cover"
   />
   <div className="absolute inset-0 bg-black/50"></div>
 
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-    {/* Moved everything slightly lower */}
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="text-center text-white relative z-10 mt-20 md:mt-28"
+      className="text-center text-white relative z-10"
 >
  {/* increased top margin to move block down */}  
     

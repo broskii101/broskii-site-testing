@@ -160,11 +160,13 @@ const UpcomingTripDetailsPage = () => {
 
   {/* Background Image */}
   <div className="absolute inset-0">
-    <img
-      src="/IMG-20250125-WA0048.webp"
-      alt="Skiing in the Alps"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
+  <img
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766874462/broskii-skiing-action-alpine-hero.webp_qlnwfp.webp"
+  alt="Action shot of a skier descending an alpine slope with two others nearby, showing the tips of skis in the foreground."
+  className="absolute inset-0 w-full h-full object-cover"
+/>
+
+
     {/* Cinematic overlay (lighter than before) */}
     <div className="absolute inset-0 bg-black/35"></div>
 
@@ -246,14 +248,15 @@ const UpcomingTripDetailsPage = () => {
     >
       <div className="relative">
         <img
-          src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766105151/April_26_Tignes_Poster_erkrcb.jpg"
-          alt="April 2026 Tignes Ski Trip Poster"
+          src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg"
+          alt="Broskii poster promoting an April ski trip to Tignes, part of the Tignes–Val d’Isère ski area in the French Alps.
+          "
           onClick={() =>
             openFullScreenImage(
-              "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766105151/April_26_Tignes_Poster_erkrcb.jpg"
+              "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg"
             )
           }
-          className="w-full rounded-2xl shadow-xl cursor-pointer transition-transform duration-300 hover:scale-[1.01] ring-1 ring-black/5"
+          className="w-full rounded-2xl shadow-xl cursor-pointer transition-transform duration-300 hover:scale-[0.90] ring-1 ring-black/5"
         />
 
         
@@ -370,7 +373,7 @@ const UpcomingTripDetailsPage = () => {
       src="/1000088456.jpg"
       alt="January 2026 Val Thorens Ski Trip Poster – Sold Out"
       onClick={() => openFullScreenImage("/1000088456.jpg")}
-      className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95 scale-[0.92]"
+      className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95 scale-[0.90]"
     />
 
     {/* SOLD OUT badge */}

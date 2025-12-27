@@ -132,12 +132,15 @@ imageEl.style.transform = `translateY(${targetY}px) scale(${scale.toFixed(3)})`;
 className="absolute inset-0 will-change-transform transition-transform duration-[1200ms] ease-out"
 
 >
-  <img
-    src="https://res.cloudinary.com/dtx0og5tm/image/upload/q_auto/v1753218439/IMG-20240118-WA0022_f305gs.jpg"
-    alt="Nothing brings people together like the mountains"
-    loading="lazy"
-    className="w-full h-full object-cover object-center"
-  />
+ 
+<img
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766874825/broskii-ski-trip-group-evening.webp_kkhnxt.jpg"
+  alt="Group of people standing together outdoors in falling snow after a day of skiing."
+  loading="lazy"
+  className="w-full h-full object-cover object-center"
+/>
+
+
 </div>
 
 
@@ -637,7 +640,7 @@ const HomePage: React.FC = () => {
     <div
       className="
         mx-auto cursor-pointer 
-        max-w-[290px] sm:max-w-[420px]
+        max-w-[280px] sm:max-w-[410px]
         rounded-3xl overflow-hidden 
         shadow-xl border border-white/60
       "
@@ -648,8 +651,9 @@ const HomePage: React.FC = () => {
       }
     >
       <img
-        src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766105151/April_26_Tignes_Poster_erkrcb.jpg"
-        alt="Broskii Tignes Trip Poster"
+        src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766105151/April_26_Tignes_Poster_erkrcb.jpg "
+        alt="Broskii poster promoting an April ski trip to Tignes, part of the Tignes–Val d’Isère ski area in the French Alps.
+        "
         className="w-full h-auto"
       />
     </div>

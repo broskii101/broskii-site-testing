@@ -33,15 +33,16 @@ const AboutPage = () => {
   const founders = [
     {
       name: 'Ali Shaikh',
-      role: 'Co-Founder', 
-      image: '/Screenshot_20250710_212007_Gallery.webp'
+      role: 'Co-Founder',
+      image: 'https://res.cloudinary.com/dtx0og5tm/image/upload/v1766872445/broskii-cofounder-ali-shaikh.webp_j8f4kd.webp'
     },
     {
       name: 'Abdullah Green',
       role: 'Co-Founder',
-      image: '/Screenshot_20250710_211429_Gallery.webp'
+      image: 'https://res.cloudinary.com/dtx0og5tm/image/upload/v1766872446/broskii-cofounder-abdullah-green.webp_y3r3g5.webp'
     }
   ];
+  
 
   const values = [
     {
@@ -72,11 +73,15 @@ const AboutPage = () => {
           className="relative"
           style={{ y: imageY, scale: imageScale }}
         >
+          
           <img 
-            src="/IMG-20250116-WA0034.jpg"
-            alt="Two Broskiis enjoying mountain views"
-            className="w-full h-auto min-h-[70vh] object-cover"
-          />
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766873565/broskii-founders-mountain-break.JPEG_ol2wox.jpg"
+  alt="Two Broskii co-founders seated on a mountain ridge in ski clothing, looking out over a distant alpine landscape."
+  className="w-full h-[50vh] md:h-[60vh] object-cover object-[center_60%]"
+/>
+
+
+
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30"></div>
         </motion.div>
         
@@ -151,11 +156,12 @@ const AboutPage = () => {
               className="relative"
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/IMG-20241217-WA0005.jpg"
-                  alt="Group skiing"
-                  className="w-full h-96 object-cover"
-                />
+              <img 
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766874104/broskii-family-ski-trip-children-group.JPEG_figbe6.jpg"
+  alt="Children from a Broskii family ski trip posing together after a ski school session."
+  className="w-full h-96 object-cover"
+/>
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
             </motion.div>
@@ -264,7 +270,8 @@ const AboutPage = () => {
           <div className="mb-4 sm:mb-6">
             <img
               src={founder.image}
-              alt={founder.name}
+              alt={`${founder.name}, ${founder.role} of Broskii`}
+
               className="w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 rounded-full mx-auto object-cover shadow-xl"
             />
           </div>

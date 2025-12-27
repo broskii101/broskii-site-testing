@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../lib/supabaseClient'; // Adjust path if needed
 import { CheckCircle, User, Mail, Phone, CreditCard, ArrowRight, Mountain, Plane, HelpCircle, Wallet, X, ArrowLeft, Package, GraduationCap, Bed, ShieldCheck, FileSignature as Signature } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 
 interface BookingForm {
@@ -35,6 +36,17 @@ const BookingPage = () => {
   const [trip, setTrip] = useState<any>(null);
   const [isLoadingTrip, setIsLoadingTrip] = useState(true);
 
+  const isSoldOut =
+  !!trip &&
+  (
+    (typeof trip.capacity === 'number' &&
+      typeof trip.booked_count === 'number' &&
+      trip.booked_count >= trip.capacity) ||
+    trip.status === 'full'
+  );
+
+
+
   const [currentStep, setCurrentStep] = useState(0);
 
 
@@ -45,6 +57,9 @@ const formRef = useRef<HTMLFormElement>(null);  //
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 const [hasSaved, setHasSaved] = useState(false);
 const [isSavingBooking, setIsSavingBooking] = useState(false);
+
+const [showWaitlistModal, setShowWaitlistModal] = useState(false);
+
 
 
   
@@ -251,9 +266,13 @@ const saveAfterWaiver = async () => {
 
 
 
-
-
 const nextStep = async () => {
+  if (isSoldOut) {
+    setShowWaitlistModal(true);
+    return;
+  }
+
+
   // Clear previous payment confirmation error
   setPaymentConfirmedError('');
 
@@ -319,12 +338,63 @@ const prevStep = () => {
 
 // Final submit on last step -> just navigate to thank-you
 const onSubmit = async () => {
+  if (isSoldOut) {
+    setShowWaitlistModal(true);
+    return;
+  }
   if (!paymentConfirmed) {
     setPaymentConfirmedError('Please confirm your payment before finishing.');
     return;
   }
   navigate('/thank-you');
 };
+
+
+// --------------------
+// Waitlist form logic
+// --------------------
+interface WaitlistFormInputs {
+  fullName: string;
+  email: string;
+  phone?: string;
+}
+
+const {
+  register: registerWaitlist,
+  handleSubmit: handleWaitlistSubmit,
+  reset: resetWaitlist,
+  formState: { errors: waitlistErrors },
+} = useForm<WaitlistFormInputs>();
+
+const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
+  if (!tripId) return;
+
+  try {
+    const { error } = await supabase.from('waitlist').insert([
+      {
+        trip_id: tripId,
+        full_name: data.fullName,
+        email: data.email,
+        phone: data.phone ?? null,
+      },
+    ]);
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+
+    toast.success('You have been added to the waitlist.');
+    resetWaitlist();
+    setShowWaitlistModal(false);
+  } catch {
+    toast.error('Something went wrong. Please try again.');
+  }
+};
+
+
+
+
 
   const Tooltip = ({ content, id }: { content: string; id: string }) => (
     <div className="relative inline-block">
@@ -1370,16 +1440,30 @@ const onSubmit = async () => {
                     Previous
                   </button>
 
+                
                   {currentStep < steps.length - 1 ? (
-                    <button
-                      type="button"
-                      onClick={nextStep}
-                      className="flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg font-medium h-11 leading-5 hover:bg-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-                    >
-                      Next
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </button>
-                  ) : (
+  isSoldOut ? (
+    <button
+      type="button"
+      onClick={() => setShowWaitlistModal(true)}
+      className="flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg font-medium h-11 leading-5 hover:bg-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+    >
+      Join waitlist
+    </button>
+  ) : (
+    <button
+      type="button"
+      onClick={nextStep}
+      className="flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg font-medium h-11 leading-5 hover:bg-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+    >
+      Next
+      <ArrowRight className="h-4 w-4 ml-2" />
+    </button>
+  )
+) : (
+
+
+
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -1396,6 +1480,102 @@ const onSubmit = async () => {
           </div>
         </div>
       </section>
+
+
+      
+      {/* Waitlist Modal */}
+{showWaitlistModal && (
+  <div
+    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+    onClick={() => setShowWaitlistModal(false)}
+  >
+    <div
+      className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        onClick={() => setShowWaitlistModal(false)}
+        className="absolute top-4 right-4 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+      >
+        <X className="h-6 w-6" />
+      </button>
+
+      <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4 text-center">
+        Join the waitlist
+      </h2>
+
+      <p className="text-gray-700 text-center mb-6">
+        This trip is currently full. Enter your details below and we’ll notify you if a spot becomes available.
+      </p>
+
+      <form
+        onSubmit={handleWaitlistSubmit(onWaitlistSubmit)}
+        className="space-y-4"
+      >
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Full name *
+          </label>
+          <input
+            type="text"
+            {...registerWaitlist('fullName', { required: 'Full name is required' })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+          {waitlistErrors.fullName && (
+            <p className="text-sm text-red-600 mt-1">
+              {waitlistErrors.fullName.message}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Email address *
+          </label>
+          <input
+            type="email"
+            {...registerWaitlist('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: 'Invalid email address',
+              },
+            })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+          {waitlistErrors.email && (
+            <p className="text-sm text-red-600 mt-1">
+              {waitlistErrors.email.message}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Phone number (optional)
+          </label>
+          <input
+            type="tel"
+            {...registerWaitlist('phone')}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full mt-4 inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg text-lg font-bold shadow-lg transition-transform duration-300 hover:scale-105"
+        >
+          Join waitlist
+        </button>
+      </form>
+    </div>
+  </div>
+)}
+
+
+
+
+
     </div>
   );
 };

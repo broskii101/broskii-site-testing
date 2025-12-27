@@ -1,13 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import UpcomingTripCard from '../components/UpcomingTripCard';
 import { Helmet } from 'react-helmet-async';
 
 import { 
   Calendar, 
   MapPin, 
-  Mountain, 
   CheckCircle,
   X,
   Users, // Added for waitlist icon
@@ -30,10 +28,8 @@ const UpcomingTripDetailsPage = () => {
   const [fullScreenImage, setFullScreenImage] = React.useState<string | null>(null);
   const [showWaitlistModal, setShowWaitlistModal] = React.useState(false); // State to control modal visibility
 
-  // Hardcoded trip capacity and booked count for testing
-  const tripCapacity = 52; // Set the total capacity to 52
-  const bookedCount = 52; // Set to 0 as no one has booked yet
-  const isSoldOut = bookedCount >= tripCapacity; // Derived state for sold out logic
+  const [trip, setTrip] = React.useState<any>(null);
+
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<WaitlistFormInputs>(); // Initialize react-hook-form for waitlist
 
@@ -44,6 +40,37 @@ const UpcomingTripDetailsPage = () => {
   const closeFullScreenImage = () => {
     setFullScreenImage(null);
   };
+
+
+  React.useEffect(() => {
+    const loadTrip = async () => {
+      const { data, error } = await supabase
+        .from('trips')
+        .select('id, capacity, booked_count, status')
+        .eq('id', '648bbce7-7b1f-4b53-aee3-0bfbfb32a1c1')
+        .single();
+
+      if (!error) {
+        setTrip(data);
+      }
+    };
+
+    loadTrip();
+  }, []);
+
+
+
+  const isSoldOut =
+    !!trip &&
+    (
+      (typeof trip.capacity === 'number' &&
+        typeof trip.booked_count === 'number' &&
+        trip.booked_count >= trip.capacity) ||
+      trip.status === 'full'
+    );
+
+
+
 
   const premiumReveal = {
     initial: { opacity: 0, y: 18 },
@@ -283,18 +310,46 @@ const UpcomingTripDetailsPage = () => {
 
 
       {/* April CTA */}
-      <div className="text-center">
-        <Link
-          to="/booking"
-          className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-primary-600 text-white font-bold text-lg shadow-lg transition-transform duration-300 hover:bg-primary-700 hover:scale-105"
-        >
-          Book Now
-        </Link>
-
-        <p className="text-sm text-gray-600 mt-3">
-          £300 deposit option available at checkout.
-        </p>
+<div className="text-center">
+  {isSoldOut ? (
+    <>
+      <div className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-gray-300 text-gray-700 font-bold text-lg cursor-not-allowed">
+        Sold out
       </div>
+
+      
+      <button
+  onClick={() => setShowWaitlistModal(true)}
+  className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors cursor-pointer"
+>
+  Join waitlist
+  <span aria-hidden>→</span>
+</button>
+
+
+
+    </>
+  ) : (
+    <>
+      <Link
+        to="/booking/648bbce7-7b1f-4b53-aee3-0bfbfb32a1c1"
+        className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-primary-600 text-white font-bold text-lg shadow-lg transition-transform duration-300 hover:bg-primary-700 hover:scale-105"
+      >
+        Book Now
+      </Link>
+
+      <p className="text-sm text-gray-600 mt-3">
+        Reserve your place with a £300 deposit
+      </p>
+    </>
+  )}
+</div>
+
+
+
+
+
+
     </motion.div>
 
     {/* Divider */}

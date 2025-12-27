@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import UpcomingTripCard from '../components/UpcomingTripCard';
 import { supabase } from '../lib/supabaseClient';
 import { Helmet } from 'react-helmet-async';
 import {

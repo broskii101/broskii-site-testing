@@ -1265,14 +1265,20 @@ const onSubmit = async () => {
                             </button>
        
 
-                            <a
-  href={paymentUrl ?? '#'}
-  target="_blank"
-  rel="noopener noreferrer"
+                            <button
+  type="button"
+  onClick={() => {
+
+    if (paymentUrl) {
+      window.open(paymentUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    
+  }}
   className="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition font-medium"
 >
   Proceed to Payment
-</a>
+</button>
 
 
 

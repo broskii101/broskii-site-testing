@@ -93,6 +93,35 @@ const [isSavingBooking, setIsSavingBooking] = useState(false);
   const [selectedPaymentAmount, setSelectedPaymentAmount] = useState<'full' | 'deposit' | null>(null);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   const [paymentConfirmedError, setPaymentConfirmedError] = useState('');
+
+
+  // ---- Payment helpers (trip-driven) ----
+  const fullAmount = trip?.full_payment_amount ?? null;
+  const depositAmount = trip?.deposit_amount ?? null;
+  const balanceDueDate = trip?.balance_due_date ?? null;
+
+  // Card prices are derived (2% fee)
+  const fullAmountCard =
+    fullAmount !== null ? Math.round(fullAmount * 1.02) : null;
+
+  const depositAmountCard =
+    depositAmount !== null ? Math.round(depositAmount * 1.02) : null;
+
+  // Monzo links
+  const monzoLinks = {
+    bank: {
+      full: trip?.monzo_bank_full_url ?? null,
+      deposit: trip?.monzo_bank_deposit_url ?? null,
+    },
+    card: {
+      full: trip?.monzo_card_full_url ?? null,
+      deposit: trip?.monzo_card_deposit_url ?? null,
+    },
+  };
+
+
+
+
   
 
   useEffect(() => {
@@ -1077,7 +1106,8 @@ const onSubmit = async () => {
       type="button"
       onClick={() => {
         setSelectedPaymentAmount('full');
-        setPaymentUrl('https://monzo.com/pay/r/broskii-ltd_M9c3CNpxlcIlWL');
+        setPaymentUrl(monzoLinks.bank.full);
+
         setShowPaymentModal(true);
       }}
       className={`w-full rounded-xl border p-3 sm:p-4 text-left transition
@@ -1087,14 +1117,18 @@ const onSubmit = async () => {
         }`}
     >
       <div className="font-semibold text-gray-900">Full Payment</div>
-      <div className="text-sm text-gray-600">£1,200</div>
+      {fullAmount !== null && (
+  <div className="text-sm text-gray-600">£{fullAmount}</div>
+)}
+
     </button>
 
     <button
       type="button"
       onClick={() => {
         setSelectedPaymentAmount('deposit');
-        setPaymentUrl('https://monzo.com/pay/r/broskii-ltd_2h3KswpLAxWlnJ');
+        setPaymentUrl(monzoLinks.bank.deposit);
+
         setShowPaymentModal(true);
       }}
       className={`w-full rounded-xl border p-3 sm:p-4 text-left transition
@@ -1104,7 +1138,15 @@ const onSubmit = async () => {
         }`}
     >
       <div className="font-semibold text-gray-900">Deposit</div>
-      <div className="text-sm text-gray-600">£300 • Balance due 01/11/2025</div>
+      {depositAmount !== null && (
+  <div className="text-sm text-gray-600">
+    £{depositAmount}
+    {balanceDueDate ? (
+      <> • Balance due {new Date(balanceDueDate).toLocaleDateString('en-GB')}</>
+    ) : null}
+  </div>
+)}
+
     </button>
   </div>
 )}
@@ -1116,7 +1158,8 @@ const onSubmit = async () => {
       type="button"
       onClick={() => {
         setSelectedPaymentAmount('full');
-        setPaymentUrl('https://monzo.com/pay/r/broskii-ltd_sWuhRPwxUlU5zS');
+        setPaymentUrl(monzoLinks.card.full);
+
         setShowPaymentModal(true);
       }}
       className={`w-full rounded-xl border p-3 sm:p-4 text-left transition
@@ -1126,14 +1169,20 @@ const onSubmit = async () => {
         }`}
     >
       <div className="font-semibold text-blue-900">Full Payment</div>
-      <div className="text-sm text-blue-700">£1,224 (incl. 2% fee)</div>
+      {fullAmountCard !== null && (
+  <div className="text-sm text-blue-700">
+    £{fullAmountCard} (incl. 2% fee)
+  </div>
+)}
+
     </button>
 
     <button
       type="button"
       onClick={() => {
         setSelectedPaymentAmount('deposit');
-        setPaymentUrl('https://monzo.com/pay/r/broskii-ltd_qFFngtKWtWWJQA');
+        setPaymentUrl(monzoLinks.card.deposit);
+
         setShowPaymentModal(true);
       }}
       className={`w-full rounded-xl border p-3 sm:p-4 text-left transition
@@ -1143,7 +1192,15 @@ const onSubmit = async () => {
         }`}
     >
       <div className="font-semibold text-blue-900">Deposit</div>
-      <div className="text-sm text-blue-700">£306 (incl. 2% fee) • Balance due 01/11/2025</div>
+      {depositAmountCard !== null && (
+  <div className="text-sm text-blue-700">
+    £{depositAmountCard} (incl. 2% fee)
+    {balanceDueDate ? (
+      <> • Balance due {new Date(balanceDueDate).toLocaleDateString('en-GB')}</>
+    ) : null}
+  </div>
+)}
+
     </button>
   </div>
 )}
@@ -1206,14 +1263,22 @@ const onSubmit = async () => {
                             >
                               Cancel
                             </button>
+       
+
                             <a
-                              href={paymentUrl!}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition font-medium"
-                            >
-                              Proceed to Payment
-                            </a>
+  href={paymentUrl ?? '#'}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition font-medium"
+>
+  Proceed to Payment
+</a>
+
+
+
+
+
+
                           </div>
                         </div>
                       </div>

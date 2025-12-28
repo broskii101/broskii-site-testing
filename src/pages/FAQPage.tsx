@@ -388,7 +388,7 @@ For full contact info, check out our <a href='/contact' class='text-primary-600 
 />
 
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/45"></div>
+        <div className="absolute inset-0 bg-black/35"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div

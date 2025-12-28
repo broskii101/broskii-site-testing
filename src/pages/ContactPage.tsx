@@ -78,7 +78,7 @@ const ContactPage = () => {
         <>
         
 {/* Hero Section */}
-<section className="relative min-h-[48vh] md:min-h-[52vh] overflow-hidden flex items-center">
+<section className="relative min-h-[48vh] md:min-h-[52 vh] overflow-hidden flex items-center">
 
 
   {/* Background image */}
@@ -89,7 +89,7 @@ const ContactPage = () => {
   />
 
   {/* Overlay for readability */}
-  <div className="absolute inset-0 bg-black/40"></div>
+  <div className="absolute inset-0 bg-black/35"></div>
 
   <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -107,7 +107,7 @@ const ContactPage = () => {
       </div>
 
       <p className="text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed font-normal">
-        Need help planning your trip? Whether it&apos;s your first time on the slopes or your fifth — we&apos;ll guide you every step of the way.
+        Need help planning your trip? Whether it&apos;s your first time on the slopes or your sixth — we&apos;ll guide you every step of the way.
       </p>
     </motion.div>
   </div>
@@ -129,7 +129,7 @@ const ContactPage = () => {
                 >
                   <div className="flex items-center space-x-3 mb-8">
                     <MessageCircle className="h-4 w-4" />
-                    <h2 className="text-3xl font-serif font-bold text-gray-900">Send us a Message</h2>
+                    <h2 className="text-2xl font-serif font-bold text-gray-900">Send us a Message</h2>
                   </div>
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

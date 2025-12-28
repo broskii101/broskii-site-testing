@@ -75,7 +75,7 @@ const AboutPage = () => {
 
 
 
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-black/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-black/15 to-black/25"></div>
         </motion.div>
         
         <div className="absolute inset-0 flex items-center justify-center">
@@ -113,7 +113,7 @@ const AboutPage = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
                   Our Story
                 </h2>
                 <div className="w-20 h-1 bg-primary-600 mb-8"></div>

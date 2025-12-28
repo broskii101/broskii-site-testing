@@ -24,7 +24,8 @@ const GalleryPage = () => {
       
 
      {/* Hero Section */}
-     <section className="relative min-h-[50vh] sm:min-h-[54vh] md:min-h-[60vh] overflow-hidden flex items-center">
+     <section className="relative py-20 overflow-hidden">
+
   {/* Background image */}
   <img
      src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766891995/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp_em3d2q.webp"
@@ -33,7 +34,7 @@ const GalleryPage = () => {
   />
 
   {/* Dark overlay */}
-  <div className="absolute inset-0 bg-black/45"></div>
+  <div className="absolute inset-0 bg-black/40"></div>
 
   {/* Content */}
   <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -24,39 +24,32 @@ const GalleryPage = () => {
       
 
      {/* Hero Section */}
-     <section
-  className="relative flex items-center
-             min-h-[50vh] sm:min-h-[54vh] md:min-h-[60vh]
-             py-20 sm:py-24 md:py-28
-             bg-cover bg-center bg-no-repeat"
-  
-             style={{
-              backgroundImage:
-                'url(https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766891995/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp)',
-            }}
-            
->
+     <section className="relative min-h-[50vh] sm:min-h-[54vh] md:min-h-[60vh] overflow-hidden flex items-center">
+  {/* Background image */}
+  <img
+    src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766891995/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp"
+    alt="Broskii group ski trip on an alpine ridge"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
 
-
-  {/* Dark overlay for text readability */}
+  {/* Dark overlay */}
   <div className="absolute inset-0 bg-black/45"></div>
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  {/* Content */}
+  <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="text-white relative z-10"
+      className="text-white text-center"
     >
-      <div className="text-center">
-        <h1 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1] mb-6">
-          Captured In Motion
-        </h1>
+      <h1 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1] mb-6">
+        Captured In Motion
+      </h1>
 
-        <p className="text-lg md:text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed font-normal">
-          An intimate look into the moments that define our passion for the mountains.
-        </p>
-      </div>
+      <p className="text-lg md:text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed font-normal">
+        An intimate look into the moments that define our passion for the mountains.
+      </p>
     </motion.div>
   </div>
 </section>

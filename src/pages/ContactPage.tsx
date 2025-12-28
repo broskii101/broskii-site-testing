@@ -78,7 +78,8 @@ const ContactPage = () => {
         <>
         
 {/* Hero Section */}
-<section className="relative py-22 md:py-28 min-h-[50vh] md:min-h-[54vh] overflow-hidden">
+<section className="relative min-h-[50vh] md:min-h-[54vh] overflow-hidden flex items-center">
+
 
   {/* Background image */}
   <img
@@ -88,9 +89,10 @@ const ContactPage = () => {
   />
 
   {/* Overlay for readability */}
-  <div className="absolute inset-0 bg-black/45"></div>
+  <div className="absolute inset-0 bg-black/40"></div>
 
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}

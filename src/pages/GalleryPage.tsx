@@ -25,11 +25,15 @@ const GalleryPage = () => {
 
      {/* Hero Section */}
      <section
-  className="relative py-24 md:py-28 min-h-[60vh] bg-cover bg-center bg-no-repeat"
+  className="relative flex items-center
+             min-h-[50vh] sm:min-h-[54vh] md:min-h-[60vh]
+             py-20 sm:py-24 md:py-28
+             bg-cover bg-center bg-no-repeat"
   style={{
-    backgroundImage: 'url(https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp)',
+    backgroundImage: 'url(https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp)',
   }}
 >
+
 
   {/* Dark overlay for text readability */}
   <div className="absolute inset-0 bg-black/45"></div>

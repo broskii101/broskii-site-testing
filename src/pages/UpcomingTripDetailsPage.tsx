@@ -185,14 +185,15 @@ const UpcomingTripDetailsPage = () => {
   Upcoming Trips
 </h1>
 
-<div className="mt-6">
-  <p className="text-sm md:text-base text-primary-100/90 mb-1 font-normal">
+<div className="mt-10 md:mt-12">
+  <p className="text-sm md:text-base text-primary-100 font-medium tracking-wide mb-1">
     Limited spaces
   </p>
-  <p className="text-sm text-primary-100/80 font-normal">
+  <p className="text-sm md:text-base text-primary-100/85 font-normal">
     Secure your place with a £300 deposit
   </p>
 </div>
+
 
     </motion.div>
   </div>

@@ -200,47 +200,34 @@ const UpcomingTripDetailsPage = () => {
 </section>
 
 
-      {/* Trip Details Section */}
+     
+{/* Trip Details Section */}
 <section className="py-12">
   <div className="max-w-7xl mx-auto px-6">
-    {/* APRIL 2026 — TIGNES */}
     <motion.div
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.05 }}
       className="text-center mb-8"
     >
-   <p className="text-[0.9rem] tracking-widest uppercase text-primary-600 font-semibold mb-2">
-  April 2026
-</p>
-
-
-      <h2 className="text-3xl font-serif font-bold text-gray-900">
+      <h2 className="text-[2.1rem] leading-tight font-serif font-bold text-gray-900 mb-1">
         Tignes, French Alps
       </h2>
-    </motion.div>
 
-    {/* Date + Location row ABOVE poster */}
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.1 }}
-      className="flex flex-wrap items-center justify-center gap-3 mb-6"
-    >
-      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 shadow-sm ring-1 ring-black/5">
-        <Calendar className="h-4 w-4 text-primary-600" />
-        <span className="text-sm font-medium text-gray-900">
-          11–18 April 2026
-        </span>
-      </div>
+      <p className="text-[1.15rem] font-semibold text-primary-600">
+        11th – 18th April 2026
+      </p>
 
-      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 shadow-sm ring-1 ring-black/5">
-        <MapPin className="h-4 w-4 text-primary-600" />
-        <span className="text-sm font-medium text-gray-900">
-          Tignes, French Alps
+      <div className="inline-flex items-center px-3 py-1.5 mt-2 rounded-md bg-primary-50">
+        <span className="text-sm font-medium text-primary-700">
+          Tignes le Lac · 2,100 m
         </span>
       </div>
     </motion.div>
+
+   
+
+
 
     {/* April poster (clickable) */}
     <motion.div

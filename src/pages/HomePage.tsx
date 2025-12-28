@@ -651,12 +651,12 @@ alt: "Broskii skier descending an Alpine slope while holding padel tennis racket
       "
       onClick={() =>
         setFullScreenImage(
-          'https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766105151/April_26_Tignes_Poster_erkrcb.jpg'
+          'https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg'   
         )
       }
     >
       <img
-        src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766105151/April_26_Tignes_Poster_erkrcb.jpg "
+        src='https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg'   
         alt="Broskii poster promoting an April ski trip to Tignes, part of the Tignes–Val d’Isère ski area in the French Alps.
         "
         className="w-full h-auto"

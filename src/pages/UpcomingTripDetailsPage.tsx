@@ -204,26 +204,24 @@ const UpcomingTripDetailsPage = () => {
 {/* Trip Details Section */}
 <section className="py-12">
   <div className="max-w-7xl mx-auto px-6">
-    <motion.div
-      initial={{ opacity: 0, y: 14 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.05 }}
-      className="text-center mb-8"
-    >
-      <h2 className="text-[2.1rem] leading-tight font-serif font-bold text-gray-900 mb-1">
-        Tignes, French Alps
-      </h2>
+  <motion.div
+  initial={{ opacity: 0, y: 14 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.05 }}
+  className="text-center mb-10"
+>
+  <h2 className="text-[2.1rem] leading-tight font-serif font-bold text-gray-900 mb-3">
+    Tignes, French Alps
+  </h2>
 
-      <p className="text-[1.15rem] font-semibold text-primary-600">
-        11th – 18th April 2026
-      </p>
+  <p className="text-[1.3rem] font-semibold text-primary-600 mb-3">
+    11th – 18th April 2026
+  </p>
 
-      <div className="inline-flex items-center px-3 py-1.5 mt-2 rounded-md bg-primary-50">
-        <span className="text-sm font-medium text-primary-700">
-          Tignes le Lac · 2,100 m
-        </span>
-      </div>
-    </motion.div>
+  <p className="text-[1rem] font-medium text-gray-600 tracking-wide">
+    Tignes le Lac · 2,100 m
+  </p>
+</motion.div>
 
    
 

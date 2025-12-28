@@ -78,7 +78,7 @@ const ContactPage = () => {
         <>
         
 {/* Hero Section */}
-<section className="relative min-h-[50vh] md:min-h-[54vh] overflow-hidden flex items-center">
+<section className="relative min-h-[48vh] md:min-h-[52vh] overflow-hidden flex items-center">
 
 
   {/* Background image */}

@@ -27,7 +27,7 @@ const GalleryPage = () => {
      <section className="relative min-h-[50vh] sm:min-h-[54vh] md:min-h-[60vh] overflow-hidden flex items-center">
   {/* Background image */}
   <img
-    src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766891995/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp"
+     src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766891995/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp_em3d2q.webp"
     alt="Broskii group ski trip on an alpine ridge"
     className="absolute inset-0 w-full h-full object-cover"
   />

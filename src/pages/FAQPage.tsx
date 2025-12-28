@@ -377,15 +377,16 @@ For full contact info, check out our <a href='/contact' class='text-primary-600 
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-gray-50">
+    <div>
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         {/* Background Image */}
         <img 
-          src="/Snapshot_20250114_230101.webp"
-          alt="Skiing adventure background"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1920/v1766883701/broskii-ski-boot-pov-alpine-slope.webp_nojdlh.webp"
+  alt="First-person view of ski boots clipped into skis on a snowy alpine slope, with sunlit mountains ahead."
+  className="absolute inset-0 w-full h-full object-cover"
+/>
+
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/50"></div>
         

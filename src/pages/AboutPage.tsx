@@ -66,7 +66,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section */}
       <section ref={heroRef} className="relative">
         <motion.div
@@ -77,7 +77,7 @@ const AboutPage = () => {
           <img 
   src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766873565/broskii-founders-mountain-break.JPEG_ol2wox.jpg"
   alt="Two Broskii co-founders seated on a mountain ridge in ski clothing, looking out over a distant alpine landscape."
-  className="w-full h-[50vh] md:h-[60vh] object-cover object-[center_60%]"
+  className="w-full h-[62vh] md:h-[72vh] object-cover object-[center_60%]"
 />
 
 
@@ -103,18 +103,7 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <motion.div
-          className="absolute top-20 left-10 animate-float"
-          style={{ y: snowflakeY }}
-        >
-          <Snowflake className="h-8 w-8 text-white/20" />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-20 right-10 animate-float"
-          style={{ animationDelay: '2s', y: snowflakeY }}
-        >
-          <Snowflake className="h-6 w-6 text-white/30" />
-        </motion.div>
+        
       </section>
 
       {/* Origin Story */}
@@ -335,7 +324,7 @@ const AboutPage = () => {
       </h2>
       <p className="text-xl text-primary-100 mb-8">
         If you've ever thought, "I'd love to try that one day" — this is your sign.
-        Whether you're new to skiing or an off-piste legend, come be part of something special.
+        Whether you're new to skiing or an off-piste expert, come be part of something special.
       </p>
       
       <div className="space-y-6">
@@ -344,7 +333,7 @@ const AboutPage = () => {
           className="group relative inline-flex items-center space-x-3 bg-broskii-light-blue-500 hover:bg-broskii-light-blue-600 text-black px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl border-2 border-broskii-light-blue-500 hover:border-broskii-light-blue-400 overflow-hidden"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-          <span className="relative z-10">See our upcoming trips</span>
+          <span className="relative z-10">See upcoming trips</span>
           <ArrowRight className="h-6 w-6" />
         </Link>
         

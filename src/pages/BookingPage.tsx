@@ -455,7 +455,7 @@ const clickableCard =
   return (
     <div className="min-h-screen bg-gray-50">
 {/* Hero Section */}
-<section className="relative h-[53vh] md:h-[55vh] flex items-center justify-center overflow-hidden">
+<section className="relative h-[56vh] md:h-[56vh] flex items-center justify-center overflow-hidden">
   <img
     src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766869280/alpine-skiing-panorama-hero.webp_nhhysp.webp"
     alt="Panoramic view of high-altitude alpine ski terrain with snow-covered mountains under a clear sky."
@@ -1073,9 +1073,32 @@ const clickableCard =
                             {...register('terms', { required: 'You must agree to the terms of service' })}
                             className="mt-1 h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
                           />
+                          
                           <span className="text-gray-700">
-                            I have read and agree to the terms of service, including the refund policy. *
-                          </span>
+  I have read and agree to the{' '}
+  <a
+    href="/termsofservice"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-primary-600 underline underline-offset-2 hover:text-primary-700 cursor-pointer"
+  >
+    terms of service
+  </a>
+  , including the{' '}
+  <a
+    href="/refund-policy"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-primary-600 underline underline-offset-2 hover:text-primary-700 cursor-pointer"
+  >
+    refund policy
+  </a>
+  . *
+</span>
+
+
+
+
                         </label>
                         {errors.terms && (
                           <p className="mt-1 text-sm text-red-600">{errors.terms.message}</p>
@@ -1208,10 +1231,15 @@ const clickableCard =
   <div className="font-semibold text-gray-900">Full Payment</div>
 
   {fullAmount !== null && (
-    <div className="text-sm text-gray-600">£{fullAmount}</div>
-  )}
+  <div className="text-lg font-semibold text-gray-900">
+    £{fullAmount}
+  </div>
+)}
 
-  <div className="text-xs text-gray-400 mt-1">Tap to select</div>
+<div className="text-xs font-medium text-gray-500 mt-1">
+  Tap to select
+</div>
+
 </button>
 
 
@@ -1231,15 +1259,22 @@ const clickableCard =
   <div className="font-semibold text-gray-900">Deposit</div>
 
   {depositAmount !== null && (
-    <div className="text-sm text-gray-600">
-      £{depositAmount}
-      {balanceDueDate ? (
-        <> • Balance due {new Date(balanceDueDate).toLocaleDateString('en-GB')}</>
-      ) : null}
-    </div>
-  )}
+  <div className="text-lg font-semibold text-gray-900">
+    £{depositAmount}
+    {balanceDueDate ? (
+      <span className="text-sm font-normal text-gray-600">
+        {' '}• Remaining balance due{' '}
+        {new Date(balanceDueDate).toLocaleDateString('en-GB')}
+      </span>
+    ) : null}
+  </div>
+)}
 
-  <div className="text-xs text-gray-400 mt-1">Tap to select</div>
+<div className="text-xs font-medium text-gray-500 mt-1">
+  Tap to select
+</div>
+
+
 </button>
 
   </div>
@@ -1264,12 +1299,18 @@ const clickableCard =
   <div className="font-semibold text-slate-900">Full Payment</div>
 
   {fullAmountCard !== null && (
-    <div className="text-sm text-slate-600">
-      £{fullAmountCard} <span className="text-slate-500">(incl. 2% fee)</span>
-    </div>
-  )}
+  <div className="text-lg font-semibold text-gray-900">
+    £{fullAmountCard}
+    <span className="text-sm font-normal text-slate-600">
+      {' '} (incl. 2% fee)
+    </span>
+  </div>
+)}
 
-  <div className="text-xs text-gray-400 mt-1">Tap to select</div>
+<div className="text-xs font-medium text-gray-500 mt-1">
+  Tap to select
+</div>
+
 </button>
 
 
@@ -1289,15 +1330,24 @@ const clickableCard =
   <div className="font-semibold text-slate-900">Deposit</div>
 
   {depositAmountCard !== null && (
-    <div className="text-sm text-slate-600">
-      £{depositAmountCard} <span className="text-slate-500">(incl. 2% fee)</span>
-      {balanceDueDate ? (
-        <> • Balance due {new Date(balanceDueDate).toLocaleDateString('en-GB')}</>
-      ) : null}
-    </div>
-  )}
+  <div className="text-lg font-semibold text-gray-900">
+    £{depositAmountCard}
+    <span className="text-sm font-normal text-slate-600">
+      {' '} (incl. 2% fee)
+    </span>
+    {balanceDueDate ? (
+      <span className="text-sm font-normal text-gray-600">
+        {' '}• Remaining balance due{' '}
+        {new Date(balanceDueDate).toLocaleDateString('en-GB')}
+      </span>
+    ) : null}
+  </div>
+)}
 
-  <div className="text-xs text-gray-400 mt-1">Tap to select</div>
+<div className="text-xs font-medium text-gray-500 mt-1">
+  Tap to select
+</div>
+
 </button>
 
 

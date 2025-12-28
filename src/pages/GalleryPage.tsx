@@ -22,13 +22,8 @@ const GalleryPage = () => {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-gray-50">
-      {/* Floating Elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <Snowflake className="absolute top-20 left-10 h-8 w-8 text-primary-200 animate-float" />
-        <Snowflake className="absolute top-40 right-20 h-6 w-6 text-primary-300 animate-float" style={{ animationDelay: '2s' }} />
-        <Snowflake className="absolute bottom-40 left-20 h-10 w-10 text-primary-200 animate-float" style={{ animationDelay: '4s' }} />
-      </div>
+    <div>
+      
 
       {/* Hero Section */}
       <section 
@@ -50,14 +45,7 @@ const GalleryPage = () => {
             transition={{ duration: 0.6 }}
             className="text-white relative z-10"
           >
-            {/* Back Button */}
-            <Link
-              to="/"
-              className="inline-flex items-center space-x-2 text-primary-200 hover:text-white transition-colors mb-6"
-            >
-              <ArrowLeft className="h-5 w-5" />
-              <span>Back to Home</span>
-            </Link>
+          
 
             <div className="text-center">
               <h1 className="text-5xl font-serif font-bold mb-6">Captured In Motion</h1>

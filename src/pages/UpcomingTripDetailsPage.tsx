@@ -156,7 +156,7 @@ const UpcomingTripDetailsPage = () => {
       </Helmet>
 
       {/* Header Section */}
-      <section className="relative overflow-hidden min-h-[32vh] sm:min-h-[38vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[38vh] sm:min-h-[44vh] flex items-center">
 
   {/* Background Image */}
   <div className="absolute inset-0">

@@ -70,7 +70,7 @@ const ContactPage = () => {
     }
   };
   return (
-    <div className="pt-20">
+    <div>
       {messageSent ? (
         <MessageSentPage />
       ) : (

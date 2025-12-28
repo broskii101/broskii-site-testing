@@ -382,13 +382,13 @@ For full contact info, check out our <a href='/contact' class='text-primary-600 
       <section className="relative py-20 overflow-hidden">
         {/* Background Image */}
         <img 
-  src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1920/v1766883701/broskii-ski-boot-pov-alpine-slope.webp_nojdlh.webp"
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766883701/broskii-ski-boot-pov-alpine-slope.webp_nojdlh.webp"
   alt="First-person view of ski boots clipped into skis on a snowy alpine slope, with sunlit mountains ahead."
   className="absolute inset-0 w-full h-full object-cover"
 />
 
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/45"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div

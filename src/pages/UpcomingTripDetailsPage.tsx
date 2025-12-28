@@ -161,7 +161,7 @@ const UpcomingTripDetailsPage = () => {
   {/* Background Image */}
   <div className="absolute inset-0">
   <img
-  src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766874462/broskii-skiing-action-alpine-hero.webp_qlnwfp.webp"
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766874462/broskii-skiing-action-alpine-hero.webp_qlnwfp.webp"
   alt="Action shot of a skier descending an alpine slope with two others nearby, showing the tips of skis in the foreground."
   className="absolute inset-0 w-full h-full object-cover"
 />
@@ -181,17 +181,19 @@ const UpcomingTripDetailsPage = () => {
       transition={{ duration: 0.6 }}
       className="text-white relative z-10 text-center"
     >
-      <h1 className="text-4xl md:text-6xl font-serif font-bold mb-2">
-        Upcoming Trips
-      </h1>
+      <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">
+  Upcoming Trips
+</h1>
 
-      <p className="text-lg text-primary-100 mb-3">
-        Limited spaces
-      </p>
+<div className="mt-6">
+  <p className="text-sm md:text-base text-primary-100/90 mb-1 font-normal">
+    Limited spaces
+  </p>
+  <p className="text-sm text-primary-100/80 font-normal">
+    Secure your place with a £300 deposit
+  </p>
+</div>
 
-      <p className="text-1g text-primary-100/90">
-        Secure your place with a £300 deposit
-      </p>
     </motion.div>
   </div>
 </section>
@@ -249,12 +251,12 @@ const UpcomingTripDetailsPage = () => {
     >
       <div className="relative">
         <img
-          src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg"
+          src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg"
           alt="Broskii poster promoting an April ski trip to Tignes, part of the Tignes–Val d’Isère ski area in the French Alps.
           "
           onClick={() =>
             openFullScreenImage(
-              "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg"
+              "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg"
             )
           }
           className="w-full rounded-2xl shadow-xl cursor-pointer ring-1 ring-black/5 scale-[0.90]"

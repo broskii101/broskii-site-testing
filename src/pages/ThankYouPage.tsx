@@ -16,12 +16,7 @@ import {
 const ThankYouPage = () => {
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50">
-      {/* Floating Elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <Snowflake className="absolute top-20 left-10 h-8 w-8 text-primary-200 animate-float" />
-        <Snowflake className="absolute top-40 right-20 h-6 w-6 text-primary-300 animate-float" style={{ animationDelay: '2s' }} />
-        <Snowflake className="absolute bottom-40 left-20 h-10 w-10 text-primary-200 animate-float" style={{ animationDelay: '4s' }} />
-      </div>
+      
 
       <section className="py-20 relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

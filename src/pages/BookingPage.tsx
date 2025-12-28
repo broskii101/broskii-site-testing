@@ -457,11 +457,11 @@ const clickableCard =
 {/* Hero Section */}
 <section className="relative h-[58vh] md:h-[58vh] flex items-center justify-center overflow-hidden">
   <img
-    src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766869280/alpine-skiing-panorama-hero.webp_nhhysp.webp"
+    src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766869280/alpine-skiing-panorama-hero.webp_nhhysp.webp"
     alt="Panoramic view of high-altitude alpine ski terrain with snow-covered mountains under a clear sky."
     className="absolute inset-0 w-full h-full object-cover"
   />
-  <div className="absolute inset-0 bg-black/50"></div>
+  <div className="absolute inset-0 bg-black/45"></div>
 
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
     <motion.div
@@ -508,7 +508,7 @@ const clickableCard =
       {/* Grouped Total Trip Price and Price */}
       <div className="max-w-4xl mx-auto drop-shadow-md">
         <p className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-0">
-          Total Trip Price
+          Trip Price
         </p>
         <p className="text-3xl font-bold text-primary-400 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] mt-1">
         {trip?.hero_price ?? ''}

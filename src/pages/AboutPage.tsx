@@ -1,29 +1,20 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  Mountain, 
   Users, 
   Heart, 
-  Star,
-  Calendar,
   Target,
-  Zap,
-  Globe,
   ArrowRight,
-  Quote,
-  Snowflake,
-  Award,
-  Camera,
-  MessageCircle
-} from 'lucide-react';
+  Quote} from 'lucide-react';
 
 const AboutPage = () => {
   const heroRef = useRef(null);
   const { scrollY } = useScroll();
 
   const imageY = useTransform(scrollY, [0, 700], [0, -150]);
-  const imageScale = useTransform(scrollY, [0, 700], [1, 1.05]);
+  const imageScale = useTransform(scrollY, [0, 700], [1, 1.03]);
+
 
   const textY = useTransform(scrollY, [0, 700], [0, -50]);
   const textOpacity = useTransform(scrollY, [0, 300, 600], [1, 1, 0]);
@@ -34,12 +25,12 @@ const AboutPage = () => {
     {
       name: 'Ali Shaikh',
       role: 'Co-Founder',
-      image: 'https://res.cloudinary.com/dtx0og5tm/image/upload/v1766872445/broskii-cofounder-ali-shaikh.webp_j8f4kd.webp'
+      image: 'https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_600/v1766872445/broskii-cofounder-ali-shaikh.webp_j8f4kd.webp'
     },
     {
       name: 'Abdullah Green',
       role: 'Co-Founder',
-      image: 'https://res.cloudinary.com/dtx0og5tm/image/upload/v1766872446/broskii-cofounder-abdullah-green.webp_y3r3g5.webp'
+      image: 'https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_600/v1766872446/broskii-cofounder-abdullah-green.webp_y3r3g5.webp'
     }
   ];
   
@@ -66,16 +57,18 @@ const AboutPage = () => {
   ];
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
+  
       {/* Hero Section */}
-      <section ref={heroRef} className="relative">
+      <section ref={heroRef} className="relative overflow-hidden">
+
         <motion.div
           className="relative"
           style={{ y: imageY, scale: imageScale }}
         >
           
           <img 
-  src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766873565/broskii-founders-mountain-break.JPEG_ol2wox.jpg"
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766873565/broskii-founders-mountain-break.JPEG_ol2wox.jpg"
   alt="Two Broskii co-founders seated on a mountain ridge in ski clothing, looking out over a distant alpine landscape."
   className="w-full h-[62vh] md:h-[72vh] object-cover object-[center_60%]"
 />
@@ -148,7 +141,7 @@ const AboutPage = () => {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <img 
-  src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766874104/broskii-family-ski-trip-children-group.JPEG_figbe6.jpg"
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1400/v1766874104/broskii-family-ski-trip-children-group.JPEG_figbe6.jpg"
   alt="Children from a Broskii family ski trip posing together after a ski school session."
   className="w-full h-96 object-cover"
 />

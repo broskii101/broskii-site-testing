@@ -75,29 +75,41 @@ const ContactPage = () => {
         <MessageSentPage />
       ) : (
         <>
-          {/* Hero Section */}
-          <section className="relative py-20 bg-gradient-to-r from-primary-600 to-primary-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center text-white"
-              >
-                <div className="flex items-center justify-center space-x-3 mb-6">
-                  <MessageCircle className="h-12 w-12 text-primary-200" />
-                  <h1 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1]">
-  Let's Chat
-</h1>
+        
+{/* Hero Section */}
+<section className="relative py-20 overflow-hidden">
+  {/* Background image */}
+  <img
+    src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766890218/broskii-ski-lesson-instructor-guided-slope.webp_rdonp2.webp"
+    alt="Ski instructor guiding a small group on a gentle alpine slope, representing support and guidance during a Broskii ski trip."
+    className="absolute inset-0 w-full h-full object-cover"
+  />
 
-                </div>
-                <p className="text-lg md:text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed font-normal">
-  Need help planning your trip? Whether it's your first time on the slopes or your fifth — we'll guide you every step of the way.
-</p>
+  {/* Overlay for readability */}
+  <div className="absolute inset-0 bg-black/45"></div>
 
-              </motion.div>
-            </div>
-          </section>
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="text-center text-white"
+    >
+      <div className="flex items-center justify-center space-x-3 mb-6">
+        <MessageCircle className="h-12 w-12 text-white/80" />
+        <h1 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1]">
+          Let&apos;s Chat
+        </h1>
+      </div>
+
+      <p className="text-lg md:text-xl text-white/90 max-w-4xl mx-auto leading-relaxed font-normal">
+        Need help planning your trip? Whether it&apos;s your first time on the slopes or your fifth — we&apos;ll guide you every step of the way.
+      </p>
+    </motion.div>
+  </div>
+</section>
+
+
 
           {/* Contact Form & Info */}
           <section className="py-20">

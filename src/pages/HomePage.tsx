@@ -134,7 +134,7 @@ className="absolute inset-0 will-change-transform transition-transform duration-
 >
  
 <img
-  src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766874825/broskii-ski-trip-group-evening.webp_kkhnxt.jpg"
+  src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766874825/broskii-ski-trip-group-evening.webp_kkhnxt.jpg"
   alt="Group of people standing together outdoors in falling snow after a day of skiing."
   loading="lazy"
   className="w-full h-full object-cover object-center"
@@ -243,23 +243,23 @@ const HomePage: React.FC = () => {
 
     const heroImages = [
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261594/broskii-bro-mountain-view-alps_czxoyo.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766261594/broskii-bro-mountain-view-alps_czxoyo.webp",
         alt: "A bro sitting on the snow overlooking a mountain resort in the Alps",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261594/broskii-salah-prayer-ski-trip-french-alps_vlbwxr.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766261594/broskii-salah-prayer-ski-trip-french-alps_vlbwxr.webp",
         alt: "The Broskii group praying salah together during a bros ski trip in the French Alps",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261597/broskii-snow-trike-astronaut-suit-alps_xw9pjb.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766261597/broskii-snow-trike-astronaut-suit-alps_xw9pjb.webp",
         alt: "A bro riding a snow trike in the Alps while wearing an astronaut suit",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261594/broskii-snowboarder-group-alps_v5duwe.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766261594/broskii-snowboarder-group-alps_v5duwe.webp",
         alt: "A snowboarder in green posing with the Broskii group on the slopes in the Alps",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766261595/broskii-skiing-action-shot-alps_xlr1lc.webp",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766261595/broskii-skiing-action-shot-alps_xlr1lc.webp",
         alt: "A bro skiing downhill on a groomed slope in the Alps",
       },
     ];
@@ -646,12 +646,12 @@ const HomePage: React.FC = () => {
       "
       onClick={() =>
         setFullScreenImage(
-          'https://res.cloudinary.com/dtx0og5tm/image/upload/v1766105151/April_26_Tignes_Poster_erkrcb.jpg'
+          'https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766105151/April_26_Tignes_Poster_erkrcb.jpg'
         )
       }
     >
       <img
-        src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766105151/April_26_Tignes_Poster_erkrcb.jpg "
+        src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766105151/April_26_Tignes_Poster_erkrcb.jpg "
         alt="Broskii poster promoting an April ski trip to Tignes, part of the Tignes–Val d’Isère ski area in the French Alps.
         "
         className="w-full h-auto"

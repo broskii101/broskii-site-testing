@@ -7,6 +7,10 @@ import {
   Calendar,
   Star,
   Play,
+  Home,
+  Globe,
+  Users,
+  Heart,
   Quote,
   ExternalLink,
   ArrowRight,
@@ -247,8 +251,9 @@ const HomePage: React.FC = () => {
         alt: "A bro sitting on the snow overlooking a mountain resort in the Alps",
       },
       {
-        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766261594/broskii-salah-prayer-ski-trip-french-alps_vlbwxr.webp",
-        alt: "The Broskii group praying salah together during a bros ski trip in the French Alps",
+        src: "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766943421/broskii-skiing-padel-rackets-alps_h5dyl1.jpg",
+alt: "Broskii skier descending an Alpine slope while holding padel tennis rackets",
+
       },
       {
         src: "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766261597/broskii-snow-trike-astronaut-suit-alps_xw9pjb.webp",
@@ -834,100 +839,85 @@ and winter becomes part of who we are.
 {/* ===================== THE BROSKII EXPERIENCE ===================== */}
 <section className="py-12 sm:py-16 bg-gradient-to-b from-[#F3FAFF] via-white to-white overflow-hidden">
 
-
-  {/* HEADER + SUBHEADER */}
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
-    transition={{ duration: 0.9, ease: "easeOut" }}
-    className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-  >
-    <p className="text-3xl sm:text-4xl md:text-5xl tracking-[0.1em] uppercase font-bold text-[#0092D1] mt-1">
-
-      THE BROSKII EXPERIENCE
-    </p>
-
-    <h2 className="text-[26px] sm:text-3xl md:text-4xl font-serif font-semibold leading-tight text-gray-900 mt-3 mb-5">
-
-      Why hundreds of Muslim skiers & snowboarders choose us
+  {/* HEADER */}
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-14">
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold text-gray-900">
+      Why Book With Broskii?
     </h2>
 
-    {/* Divider */}
-    <div className="w-16 sm:w-24 h-[3px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto rounded-full mb-8 sm:mb-10" />
+    {/* Divider (kept for homepage consistency) */}
+    <div className="w-16 sm:w-24 h-[3px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto rounded-full mt-6" />
+  </div>
 
-  </motion.div>
-
-  {/* ICON GRID */}
-  <motion.div
-    className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-14 mt-2"
-
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
-    variants={{
-      visible: { transition: { staggerChildren: 0.22 } },
-    }}
-  >
+  {/* BENEFITS LIST */}
+  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
     {[
       {
-        title: "Thoughtfully Arranged",
-        desc: "Optional lessons, equipment hire and key logistics supported with ease.",
-        Icon: CheckCircle,
-      },
-      {
-        title: "Premium Accommodation",
-        desc: "Comfortable, well-located stays chosen for quality and convenience.",
+        title: "7+ Years Experience",
+        desc: "Trusted, tried, and tested by hundreds",
         Icon: Mountain,
       },
       {
-        title: "Welcoming Brotherhood",
-        desc: "A warm environment where travellers feel at home from day one.",
+        title: "Hassle-Free",
+        desc: "We handle all the details, so you can just enjoy the ride",
+        Icon: CheckCircle,
+      },
+      {
+        title: "Amazing Value",
+        desc: "Top-tier experiences at unbeatable prices",
         Icon: Star,
+      },
+      {
+        title: "World-Class Resorts",
+        desc: "Carefully selected to suit all levels",
+        Icon: Globe,
+      },
+      {
+        title: "Ski-In / Ski-Out Accommodation",
+        desc: "Quality stays right on the slopes",
+        Icon: Home,
       },
       {
         title: "Beginner-Friendly",
-        desc: "Supportive instructors and gentle terrain for first-timers.",
+        desc: "Optional lessons and equipment hire available — everything you need to get started",
         Icon: CheckCircle,
       },
       {
-        title: "Islamic Values Built-In",
-        desc: "Light reminders woven naturally into the week.",
-        Icon: Star,
+        title: "Dedicated Family Trips",
+        desc: "Family-friendly experiences designed to inspire young skiers and snowboarders",
+        Icon: Users,
       },
       {
-        title: "Great Value",
-        desc: "A top-tier alpine experience at exceptional value.",
-        Icon: CheckCircle,
+        title: "Warm, Welcoming Vibe",
+        desc: "Come solo or with friends — everyone feels at home",
+        Icon: Heart,
       },
     ].map((item, index) => (
-      <motion.div
+      <div
         key={index}
-        variants={{ hidden: { opacity: 0, y: 22 }, visible: { opacity: 1, y: 0 } }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
-        className="text-center"
+        className="flex items-start gap-5 sm:gap-6"
       >
-        <div className="flex justify-center mb-4">
-        <item.Icon className="h-10 w-10 sm:h-12 sm:w-12 text-[#0092D1]" strokeWidth={2.2} />
+        <item.Icon
+          className="h-7 w-7 text-[#0092D1] mt-1 flex-shrink-0"
+          strokeWidth={2.1}
+        />
 
+        <div>
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
+            {item.title}
+          </h3>
+
+          <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-2xl">
+            {item.desc}
+          </p>
         </div>
-
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 mb-2">
-
-          {item.title}
-        </h3>
-
-        <p className="text-base sm:text-xl md:text-2xl text-gray-700 leading-relaxed max-w-[22rem] mx-auto">
-
-          {item.desc}
-        </p>
-      </motion.div>
+      </div>
     ))}
 
-  </motion.div>
+  </div>
 </section>
+
 
 
 

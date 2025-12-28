@@ -70,14 +70,16 @@ const ContactPage = () => {
     }
   };
   return (
-    <div>
+    <div className="overflow-x-hidden">
+  
       {messageSent ? (
         <MessageSentPage />
       ) : (
         <>
         
 {/* Hero Section */}
-<section className="relative py-20 overflow-hidden">
+<section className="relative py-22 md:py-28 min-h-[50vh] md:min-h-[54vh] overflow-hidden">
+
   {/* Background image */}
   <img
     src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766890218/broskii-ski-lesson-instructor-guided-slope.webp_rdonp2.webp"

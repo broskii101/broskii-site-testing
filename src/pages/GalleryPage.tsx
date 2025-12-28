@@ -29,9 +29,12 @@ const GalleryPage = () => {
              min-h-[50vh] sm:min-h-[54vh] md:min-h-[60vh]
              py-20 sm:py-24 md:py-28
              bg-cover bg-center bg-no-repeat"
-  style={{
-    backgroundImage: 'url(https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp)',
-  }}
+  
+             style={{
+              backgroundImage:
+                'url(https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1600/v1766891995/broskii-group-ski-trip-alpine-ridge-gallery-hero.webp)',
+            }}
+            
 >
 
 

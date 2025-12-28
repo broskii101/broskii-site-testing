@@ -392,6 +392,8 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
   }
 };
 
+const clickableCard =
+  "cursor-pointer transition will-change-transform hover:shadow-md hover:-translate-y-[1px] active:translate-y-0";
 
 
 
@@ -453,7 +455,7 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
   return (
     <div className="min-h-screen bg-gray-50">
 {/* Hero Section */}
-<section className="relative h-[45vh] md:h-[55vh] flex items-center justify-center overflow-hidden">
+<section className="relative h-[53vh] md:h-[55vh] flex items-center justify-center overflow-hidden">
   <img
     src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766869280/alpine-skiing-panorama-hero.webp_nhhysp.webp"
     alt="Panoramic view of high-altitude alpine ski terrain with snow-covered mountains under a clear sky."
@@ -943,30 +945,27 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
                         <Plane className="h-6 w-6 text-primary-600" />
                         <span>Travel Plans</span>
                       </h3>
+                      
+
                       <div className="text-gray-600 mb-4 space-y-4">
-                        <p>Our package includes return flights from {departureAirport ?? 'London Heathrow (LHR)'} to {transferAirport ?? 'Geneva (GVA)'}, along with private coach transfers from {transferAirport ?? 'Geneva (GVA)'} to the resort.</p>
+  {trip?.travel_information && (
+    <div
+      className="space-y-4"
+      dangerouslySetInnerHTML={{ __html: trip.travel_information }}
+    />
+  )}
 
-                        <p>If you're travelling from another UK airport or from abroad, you'll need to arrange your own flights. You can still join our private coach transfer from Geneva — we'll share our flight details and transfer timings in advance to help you coordinate.</p>
-
-                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                          <p className="text-blue-800 font-medium mb-2">If you're arranging your own flights and/or transfer:</p>
-                          <p className="text-blue-700">Please only pay the deposit when booking. We will deduct the cost of the flights and/or transfers from your total and send you an adjusted invoice for the remaining balance.</p>
-                        </div>
-
-                        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                          
-                        {trip?.important_notice && (
-  <div
-    className="text-amber-700"
-    dangerouslySetInnerHTML={{ __html: trip.important_notice }}
-  />
-)}
+  {trip?.important_notice && (
+    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-amber-700">
+      <div dangerouslySetInnerHTML={{ __html: trip.important_notice }} />
+    </div>
+  )}
+</div>
 
 
 
 
-                        </div>
-                      </div>
+                      
                       <p className="text-gray-700 font-medium mb-4">How will you be travelling?</p>
                       <div className="space-y-3">
                         <label className="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg hover:bg-white transition-colors cursor-pointer">
@@ -1179,7 +1178,10 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
       <div className="flex flex-col items-center sm:flex-row sm:items-center sm:gap-2">
         <CreditCard className="h-4 w-4" />
         <span>Card</span>
-        <span className="text-[11px] sm:text-xs text-blue-700/80 sm:ml-1 sm:mt-0 mt-0.5">2% fee</span>
+        <span className="text-[11px] sm:text-xs text-slate-500 sm:ml-1 sm:mt-0 mt-0.5">
+  2% fee
+</span>
+
       </div>
       {paymentMethod === 'cardPayment' && <CheckCircle className="h-4 w-4 text-green-600 ml-2" />}
     </button>
@@ -1191,51 +1193,55 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
 {paymentMethod === 'bankTransfer' && (
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
     <button
-      type="button"
-      onClick={() => {
-        setSelectedPaymentAmount('full');
-        setPaymentUrl(monzoLinks.bank.full);
+  type="button"
+  onClick={() => {
+    setSelectedPaymentAmount('full');
+    setPaymentUrl(monzoLinks.bank.full);
+    setShowPaymentModal(true);
+  }}
+  className={`w-full rounded-xl border p-3 sm:p-4 text-left ${clickableCard}
+    ${selectedPaymentAmount === 'full'
+      ? 'border-gray-300 ring-2 ring-gray-200 bg-white'
+      : 'border-gray-200 hover:bg-gray-100/70 bg-white'
+    }`}
+>
+  <div className="font-semibold text-gray-900">Full Payment</div>
 
-        setShowPaymentModal(true);
-      }}
-      className={`w-full rounded-xl border p-3 sm:p-4 text-left transition
-        ${selectedPaymentAmount === 'full'
-          ? 'border-gray-300 ring-2 ring-gray-200 bg-white'
-          : 'border-gray-200 hover:bg-gray-50'
-        }`}
-    >
-      <div className="font-semibold text-gray-900">Full Payment</div>
-      {fullAmount !== null && (
-  <div className="text-sm text-gray-600">£{fullAmount}</div>
-)}
+  {fullAmount !== null && (
+    <div className="text-sm text-gray-600">£{fullAmount}</div>
+  )}
 
-    </button>
+  <div className="text-xs text-gray-400 mt-1">Tap to select</div>
+</button>
 
-    <button
-      type="button"
-      onClick={() => {
-        setSelectedPaymentAmount('deposit');
-        setPaymentUrl(monzoLinks.bank.deposit);
 
-        setShowPaymentModal(true);
-      }}
-      className={`w-full rounded-xl border p-3 sm:p-4 text-left transition
-        ${selectedPaymentAmount === 'deposit'
-          ? 'border-gray-300 ring-2 ring-gray-200 bg-white'
-          : 'border-gray-200 hover:bg-gray-50'
-        }`}
-    >
-      <div className="font-semibold text-gray-900">Deposit</div>
-      {depositAmount !== null && (
-  <div className="text-sm text-gray-600">
-    £{depositAmount}
-    {balanceDueDate ? (
-      <> • Balance due {new Date(balanceDueDate).toLocaleDateString('en-GB')}</>
-    ) : null}
-  </div>
-)}
+<button
+  type="button"
+  onClick={() => {
+    setSelectedPaymentAmount('deposit');
+    setPaymentUrl(monzoLinks.bank.deposit);
+    setShowPaymentModal(true);
+  }}
+  className={`w-full rounded-xl border p-3 sm:p-4 text-left ${clickableCard}
+    ${selectedPaymentAmount === 'deposit'
+      ? 'border-gray-300 ring-2 ring-gray-200 bg-white'
+      : 'border-gray-200 hover:bg-gray-100/70 bg-white'
+    }`}
+>
+  <div className="font-semibold text-gray-900">Deposit</div>
 
-    </button>
+  {depositAmount !== null && (
+    <div className="text-sm text-gray-600">
+      £{depositAmount}
+      {balanceDueDate ? (
+        <> • Balance due {new Date(balanceDueDate).toLocaleDateString('en-GB')}</>
+      ) : null}
+    </div>
+  )}
+
+  <div className="text-xs text-gray-400 mt-1">Tap to select</div>
+</button>
+
   </div>
 )}
 
@@ -1243,53 +1249,58 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
 {paymentMethod === 'cardPayment' && (
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
     <button
-      type="button"
-      onClick={() => {
-        setSelectedPaymentAmount('full');
-        setPaymentUrl(monzoLinks.card.full);
+  type="button"
+  onClick={() => {
+    setSelectedPaymentAmount('full');
+    setPaymentUrl(monzoLinks.card.full);
+    setShowPaymentModal(true);
+  }}
+  className={`w-full rounded-xl border p-3 sm:p-4 text-left ${clickableCard}
+    ${selectedPaymentAmount === 'full'
+      ? 'border-slate-300 ring-2 ring-slate-200 bg-white'
+      : 'border-slate-200 hover:bg-slate-50 bg-white'
+    }`}
+>
+  <div className="font-semibold text-slate-900">Full Payment</div>
 
-        setShowPaymentModal(true);
-      }}
-      className={`w-full rounded-xl border p-3 sm:p-4 text-left transition
-        ${selectedPaymentAmount === 'full'
-          ? 'border-blue-300 ring-2 ring-blue-200 bg-white'
-          : 'border-blue-200 hover:bg-blue-50'
-        }`}
-    >
-      <div className="font-semibold text-blue-900">Full Payment</div>
-      {fullAmountCard !== null && (
-  <div className="text-sm text-blue-700">
-    £{fullAmountCard} (incl. 2% fee)
-  </div>
-)}
+  {fullAmountCard !== null && (
+    <div className="text-sm text-slate-600">
+      £{fullAmountCard} <span className="text-slate-500">(incl. 2% fee)</span>
+    </div>
+  )}
 
-    </button>
+  <div className="text-xs text-gray-400 mt-1">Tap to select</div>
+</button>
 
-    <button
-      type="button"
-      onClick={() => {
-        setSelectedPaymentAmount('deposit');
-        setPaymentUrl(monzoLinks.card.deposit);
 
-        setShowPaymentModal(true);
-      }}
-      className={`w-full rounded-xl border p-3 sm:p-4 text-left transition
-        ${selectedPaymentAmount === 'deposit'
-          ? 'border-blue-300 ring-2 ring-blue-200 bg-white'
-          : 'border-blue-200 hover:bg-blue-50'
-        }`}
-    >
-      <div className="font-semibold text-blue-900">Deposit</div>
-      {depositAmountCard !== null && (
-  <div className="text-sm text-blue-700">
-    £{depositAmountCard} (incl. 2% fee)
-    {balanceDueDate ? (
-      <> • Balance due {new Date(balanceDueDate).toLocaleDateString('en-GB')}</>
-    ) : null}
-  </div>
-)}
+<button
+  type="button"
+  onClick={() => {
+    setSelectedPaymentAmount('deposit');
+    setPaymentUrl(monzoLinks.card.deposit);
+    setShowPaymentModal(true);
+  }}
+  className={`w-full rounded-xl border p-3 sm:p-4 text-left ${clickableCard}
+    ${selectedPaymentAmount === 'deposit'
+      ? 'border-slate-300 ring-2 ring-slate-200 bg-white'
+      : 'border-slate-200 hover:bg-slate-50 bg-white'
+    }`}
+>
+  <div className="font-semibold text-slate-900">Deposit</div>
 
-    </button>
+  {depositAmountCard !== null && (
+    <div className="text-sm text-slate-600">
+      £{depositAmountCard} <span className="text-slate-500">(incl. 2% fee)</span>
+      {balanceDueDate ? (
+        <> • Balance due {new Date(balanceDueDate).toLocaleDateString('en-GB')}</>
+      ) : null}
+    </div>
+  )}
+
+  <div className="text-xs text-gray-400 mt-1">Tap to select</div>
+</button>
+
+
   </div>
 )}
 
@@ -1424,7 +1435,7 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
                 )}
 
                 {/* Navigation Buttons */}
-                <div className="flex justify-between pt-8 border-t">
+                <div className="flex justify-between gap-3 pt-8 border-t">
                   <button
                     type="button"
                     onClick={prevStep}
@@ -1462,15 +1473,16 @@ const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
 ) : (
 
 
+<button
+  type="submit"
+  disabled={isSubmitting}
+  className="flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg font-medium h-11 leading-5 hover:bg-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+>
+  <CheckCircle className="h-4 w-4 mr-2" />
+  {isSubmitting ? 'Submitting...' : 'Complete Booking'}
+</button>
 
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="flex items-center px-6 py-3 bg-green-600 text-white rounded-lg font-medium h-11 leading-5 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      <CheckCircle className="h-4 w-4 mr-2" />
-                      {isSubmitting ? 'Submitting...' : 'Complete Booking'}
-                    </button>
+                    
                   )}
                 </div>
 

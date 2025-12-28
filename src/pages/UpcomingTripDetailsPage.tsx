@@ -156,7 +156,7 @@ const UpcomingTripDetailsPage = () => {
       </Helmet>
 
       {/* Header Section */}
-      <section className="relative overflow-hidden min-h-[25vh] sm:min-h-[38vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[32vh] sm:min-h-[38vh] flex items-center">
 
   {/* Background Image */}
   <div className="absolute inset-0">
@@ -207,9 +207,10 @@ const UpcomingTripDetailsPage = () => {
       transition={{ duration: 0.6, delay: 0.05 }}
       className="text-center mb-8"
     >
-      <p className="text-sm tracking-widest uppercase text-primary-600 font-semibold mb-2">
+   <p className="text-[0.9rem] tracking-widest uppercase text-primary-600 font-semibold mb-2">
   April 2026
 </p>
+
 
       <h2 className="text-3xl font-serif font-bold text-gray-900">
         Tignes, French Alps
@@ -256,7 +257,8 @@ const UpcomingTripDetailsPage = () => {
               "https://res.cloudinary.com/dtx0og5tm/image/upload/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg"
             )
           }
-          className="w-full rounded-2xl shadow-xl cursor-pointer transition-transform duration-300 hover:scale-[0.90] ring-1 ring-black/5"
+          className="w-full rounded-2xl shadow-xl cursor-pointer ring-1 ring-black/5 scale-[0.90]"
+
         />
 
         
@@ -363,9 +365,10 @@ const UpcomingTripDetailsPage = () => {
     {/* JAN 2026 — SOLD OUT (poster only) */}
 <div className="max-w-md mx-auto">
   <div className="text-center mb-6">
-    <p className="text-xs tracking-widest uppercase text-gray-400 font-semibold">
-      January 2026
-    </p>
+  <p className="text-[0.8rem] tracking-widest uppercase text-gray-400 font-semibold">
+  January 2026
+</p>
+
   </div>
 
   <div className="relative">

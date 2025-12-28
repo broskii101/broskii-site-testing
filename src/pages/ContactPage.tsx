@@ -9,7 +9,8 @@ import {
   Instagram
 } from 'lucide-react';
 
-import MessageSentPage from './MessageSentPage'; // Adjust this path if needed
+import ContactSuccessPage from './ContactSuccessPage';
+
 
 interface ContactForm {
   name: string;
@@ -74,8 +75,9 @@ const ContactPage = () => {
   return (
     <div className="overflow-x-hidden">
       {messageSent ? (
-        <MessageSentPage />
-      ) : (
+  <ContactSuccessPage />
+) : (
+
         <>
           {/* Hero Section */}
           <section className="relative py-20 overflow-hidden">

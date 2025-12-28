@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, Mail, MessageCircle } from 'lucide-react';
 
-const ThankYouPage = () => {
+const ContactSuccessPage = () => {
+
   // Always reset scroll on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
@@ -69,4 +70,5 @@ const ThankYouPage = () => {
   );
 };
 
-export default ThankYouPage;
+export default ContactSuccessPage;
+

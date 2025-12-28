@@ -189,7 +189,7 @@ const UpcomingTripDetailsPage = () => {
         Limited spaces
       </p>
 
-      <p className="text-sm text-primary-100/90">
+      <p className="text-1g text-primary-100/90">
         Secure your place with a £300 deposit
       </p>
     </motion.div>

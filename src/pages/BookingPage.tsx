@@ -455,7 +455,7 @@ const clickableCard =
   return (
     <div className="min-h-screen bg-gray-50">
 {/* Hero Section */}
-<section className="relative h-[56vh] md:h-[56vh] flex items-center justify-center overflow-hidden">
+<section className="relative h-[58vh] md:h-[58vh] flex items-center justify-center overflow-hidden">
   <img
     src="https://res.cloudinary.com/dtx0og5tm/image/upload/v1766869280/alpine-skiing-panorama-hero.webp_nhhysp.webp"
     alt="Panoramic view of high-altitude alpine ski terrain with snow-covered mountains under a clear sky."
@@ -473,18 +473,21 @@ const clickableCard =
  {/* increased top margin to move block down */}  
     
       <div className="flex items-center justify-center space-x-3 mb-2 md:mb-4">
-        <h1 className="text-5xl font-serif font-bold text-white drop-shadow-lg">
+      <h1 className="text-4xl md:text-6xl font-serif font-bold text-white leading-[1.1] drop-shadow-lg">
+
         {trip?.title ?? 'Loading trip...'}
 
         </h1>
       </div>
 
-      <p className="text-lg font-semibold text-white/90 max-w-4xl mx-auto drop-shadow-md mb-6">
+      <p className="text-lg md:text-xl font-normal text-white/90 max-w-4xl mx-auto drop-shadow-md mb-5">
+
       {trip?.location ?? ''}
 
       </p>
 
-      <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md mb-7">
+      <p className="text-base md:text-lg text-white/85 max-w-4xl mx-auto leading-relaxed drop-shadow-md mb-6">
+
       {trip?.hero_description ?? ''}
 
       </p>

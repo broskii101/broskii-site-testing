@@ -91,12 +91,14 @@ const AboutPage = () => {
               className="text-center text-white"
               style={{ y: textY, opacity: textOpacity }}
             >
-              <h1 className="text-5xl md:text-7xl font-serif font-black mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1] mb-6">
+
                 <span className="block" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>
                   About Us
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-100 max-w-4xl mx-auto leading-relaxed font-medium" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}>
+              <p className="text-lg md:text-xl text-gray-100 max-w-4xl mx-auto leading-relaxed font-normal" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}>
+
                 Broskii.. we're not just hitting the slopes — we're building something bigger.
               </p>
             </motion.div>

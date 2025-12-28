@@ -399,11 +399,15 @@ For full contact info, check out our <a href='/contact' class='text-primary-600 
           >
             <div className="flex items-center justify-center space-x-3 mb-6">
              
-              <h1 className="text-5xl font-serif font-bold">FAQs — We've Got You Covered</h1>
+            <h1 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1]">
+  FAQs — We've Got You Covered
+</h1>
+
             </div>
-            <p className="text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
-              From booking your spot to hitting the slopes, here's everything you need to know about our Broskii trips.
-            </p>
+            <p className="text-lg md:text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed font-normal">
+  From booking your spot to hitting the slopes, here's everything you need to know about our Broskii trips.
+</p>
+
           </motion.div>
         </div>
       </section>

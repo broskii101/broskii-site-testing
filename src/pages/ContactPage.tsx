@@ -86,11 +86,15 @@ const ContactPage = () => {
               >
                 <div className="flex items-center justify-center space-x-3 mb-6">
                   <MessageCircle className="h-12 w-12 text-primary-200" />
-                  <h1 className="text-5xl font-serif font-bold">Let's Chat</h1>
+                  <h1 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1]">
+  Let's Chat
+</h1>
+
                 </div>
-                <p className="text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
-                  Need help planning your trip? Whether it's your first time on the slopes or your fifth — we'll guide you every step of the way.
-                </p>
+                <p className="text-lg md:text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed font-normal">
+  Need help planning your trip? Whether it's your first time on the slopes or your fifth — we'll guide you every step of the way.
+</p>
+
               </motion.div>
             </div>
           </section>

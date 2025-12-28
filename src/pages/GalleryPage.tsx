@@ -48,10 +48,14 @@ const GalleryPage = () => {
           
 
             <div className="text-center">
-              <h1 className="text-5xl font-serif font-bold mb-6">Captured In Motion</h1>
-              <p className="text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed">
-                An intimate look into the moments that define our passion for the mountains.
-              </p>
+            <h1 className="text-4xl md:text-6xl font-serif font-bold leading-[1.1] mb-6">
+  Captured In Motion
+</h1>
+
+<p className="text-lg md:text-xl text-primary-100 max-w-4xl mx-auto leading-relaxed font-normal">
+  An intimate look into the moments that define our passion for the mountains.
+</p>
+
             </div>
           </motion.div>
         </div>

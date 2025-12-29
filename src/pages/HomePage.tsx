@@ -726,7 +726,7 @@ alt: "Broskii skier descending an Alpine slope while holding padel tennis racket
 
 <h2 className="text-[26px] sm:text-3xl md:text-4xl font-serif font-semibold leading-tight">
 
-                Bringing Muslims to the mountains.
+                Breaking barriers. Building belonging.
               </h2>
 
               <div className="w-16 sm:w-20 h-[2px] bg-gradient-to-r from-[#0092D1] to-[#00A8E8] mt-3 mx-auto" />
@@ -742,10 +742,8 @@ alt: "Broskii skier descending an Alpine slope while holding padel tennis racket
               className="text-base sm:text-xl md:text-2xl text-gray-700 leading-relaxed text-center max-w-[36rem] mx-auto"
 
             >
-              A future where Muslims explore the mountains with confidence and ease —
-where skiing and snowboarding are accessible, natural parts of life,
-where faith is carried without compromise,
-and winter becomes part of who we are.
+              We make skiing and winter travel accessible to people who never thought it was possible.
+              No barriers. No exclusivity. Just unforgettable experiences in the mountains.
             </motion.p>
 
             {/* CTA */}
@@ -849,12 +847,12 @@ and winter becomes part of who we are.
     <div className="w-16 sm:w-24 h-[3px] bg-gradient-to-r from-[#0092D1] via-[#00A8E8] to-[#0092D1] mx-auto rounded-full mt-6" />
   </div>
 
-  {/* BENEFITS LIST */}
+  {/* BENEFITS LIST */} 
   <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
     {[
       {
-        title: "7+ Years Experience",
+        title: "8+ Years Experience",
         desc: "Trusted, tried, and tested by hundreds",
         Icon: Mountain,
       },

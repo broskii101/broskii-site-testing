@@ -345,36 +345,95 @@ const UpcomingTripDetailsPage = () => {
 
     </motion.div>
 
+   
     {/* Divider */}
-    <div className="mt-20 mb-10">
-      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-    </div>
-
-    {/* JAN 2026 — SOLD OUT (poster only) */}
-<div className="max-w-md mx-auto">
-  <div className="text-center mb-6">
-  <p className="text-[0.8rem] tracking-widest uppercase text-gray-400 font-semibold">
-  January 2026
-</p>
-
-  </div>
-
-  <div className="relative">
-    <img
-      src="/1000088456.jpg"
-      alt="January 2026 Val Thorens Ski Trip Poster – Sold Out"
-      onClick={() => openFullScreenImage("/1000088456.jpg")}
-      className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95 scale-[0.90]"
-    />
-
-    {/* SOLD OUT badge */}
-    <div className="absolute top-4 right-4 bg-gray-900/85 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md">
-      SOLD OUT
-    </div>
-  </div>
+<div className="mt-20 mb-10">
+  <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
 </div>
- 
+
+{/* SOLD OUT TRIPS ARCHIVE */}
+<div className="space-y-24">
+
+  {/* JANUARY 2026 — SOLD OUT */}
+  <div className="max-w-md mx-auto">
+    <div className="text-center mb-6">
+      <p className="text-[0.8rem] tracking-widest uppercase text-gray-400 font-semibold">
+        January 2026
+      </p>
+    </div>
+
+    <div className="relative">
+      <img
+        src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/broskii-val-thorens-ski-3-valleys-january-2026-sold-out_ijudjp.jpg"
+        alt="Broskii January 2026 ski trip poster in Val Thorens, French Alps – sold out"
+        onClick={() =>
+          openFullScreenImage(
+            "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/broskii-val-thorens-ski-3-valleys-january-2026-sold-out_ijudjp.jpg"
+          )
+        }
+        className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95 scale-[0.90]"
+      />
+
+      <div className="absolute top-4 right-4 bg-gray-900/85 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md">
+        SOLD OUT
+      </div>
+    </div>
   </div>
+
+  {/* JANUARY 2025 — SOLD OUT */}
+  <div className="max-w-md mx-auto">
+    <div className="text-center mb-6">
+      <p className="text-[0.8rem] tracking-widest uppercase text-gray-400 font-semibold">
+        January 2025
+      </p>
+    </div>
+
+    <div className="relative">
+      <img
+        src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/broskii-val-thorens-ski-3-valleys-january-2025-sold-out_pjrvzr.jpg"
+        alt="Broskii January 2025 ski trip poster in Val Thorens, French Alps – sold out"
+        onClick={() =>
+          openFullScreenImage(
+            "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/broskii-val-thorens-ski-3-valleys-january-2025-sold-out_pjrvzr.jpg"
+          )
+        }
+        className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95 scale-[0.90]"
+      />
+
+      <div className="absolute top-4 right-4 bg-gray-900/85 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md">
+        SOLD OUT
+      </div>
+    </div>
+  </div>
+
+  {/* DECEMBER 2024 — SOLD OUT */}
+  <div className="max-w-md mx-auto">
+    <div className="text-center mb-6">
+      <p className="text-[0.8rem] tracking-widest uppercase text-gray-400 font-semibold">
+        December 2024
+      </p>
+    </div>
+
+    <div className="relative">
+      <img
+        src="https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/broskii-tignes-val-disere-december-2024-sold-out_jlsgmn.jpg"
+        alt="Broskii December 2024 ski trip poster in Tignes and Val d’Isère, French Alps – sold out"
+        onClick={() =>
+          openFullScreenImage(
+            "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/broskii-tignes-val-disere-december-2024-sold-out_jlsgmn.jpg"
+          )
+        }
+        className="w-full rounded-2xl shadow-lg cursor-pointer ring-1 ring-black/5 opacity-95 scale-[0.90]"
+      />
+
+      <div className="absolute top-4 right-4 bg-gray-900/85 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md">
+        SOLD OUT
+      </div>
+    </div>
+    </div>
+
+</div>
+</div>
 </section>
 
 

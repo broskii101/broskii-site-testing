@@ -3,21 +3,20 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-import { 
-  Calendar, 
-  MapPin, 
+import {
+  Calendar,
+  MapPin,
   CheckCircle,
   X,
-  Users, // Added for waitlist icon
-  Mail, // Added for waitlist icon
-  Phone, // Added for waitlist icon
-  Send // Added for waitlist icon
+  Users,
+  Mail,
+  Phone,
+  Send
 } from 'lucide-react';
-import { useForm } from 'react-hook-form'; // Import useForm for the waitlist modal
-import { supabase } from '../lib/supabaseClient'; // Import supabase client
-import toast from 'react-hot-toast'; // Import toast for notifications
+import { useForm } from 'react-hook-form';
+import { supabase } from '../lib/supabaseClient';
+import toast from 'react-hot-toast';
 
-// Define interface for waitlist form data
 interface WaitlistFormInputs {
   fullName: string;
   email: string;
@@ -26,39 +25,25 @@ interface WaitlistFormInputs {
 
 const UpcomingTripDetailsPage = () => {
   const [fullScreenImage, setFullScreenImage] = React.useState<string | null>(null);
-  const [showWaitlistModal, setShowWaitlistModal] = React.useState(false); // State to control modal visibility
-
+  const [showWaitlistModal, setShowWaitlistModal] = React.useState(false);
   const [trip, setTrip] = React.useState<any>(null);
 
-
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<WaitlistFormInputs>(); // Initialize react-hook-form for waitlist
-
-  const openFullScreenImage = (imageUrl: string) => {
-    setFullScreenImage(imageUrl);
-  };
-
-  const closeFullScreenImage = () => {
-    setFullScreenImage(null);
-  };
-
+  const { register, handleSubmit, reset, formState: { errors } } =
+    useForm<WaitlistFormInputs>();
 
   React.useEffect(() => {
     const loadTrip = async () => {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from('trips')
         .select('id, capacity, booked_count, status')
         .eq('id', '648bbce7-7b1f-4b53-aee3-0bfbfb32a1c1')
         .single();
 
-      if (!error) {
-        setTrip(data);
-      }
+      if (data) setTrip(data);
     };
 
     loadTrip();
   }, []);
-
-
 
   const isSoldOut =
     !!trip &&
@@ -69,91 +54,121 @@ const UpcomingTripDetailsPage = () => {
       trip.status === 'full'
     );
 
+    const openFullScreenImage = (src: string) => {
+      setFullScreenImage(src);
+    };
+  
+    const closeFullScreenImage = () => {
+      setFullScreenImage(null);
+    };
+  
+    const premiumReveal = {
+      initial: { opacity: 0, y: 12 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true },
+      transition: { duration: 0.6 }
+    };
+  
 
 
-
-  const premiumReveal = {
-    initial: { opacity: 0, y: 18 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-80px' },
-    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const },
-  };
-
-  const upcomingTrip = {
-    id: '550e8400-e29b-41d4-a716-446655440000', // Valid UUID that matches the trips table
-    title: 'SKI 3 VALLEYS',
-    image: '/1000088456.jpg',
-    dates: '10th - 17th January 2026',
-    location: 'Val Thorens, French Alps',
-    inclusions: [
-      'Return flights with BA from LHR to GVA',
-      'Full 3 Valleys Ski pass (Worth £370)',
-      "4★ Luxury Hotel (L'Oxalys)",
-      'Private Coach Transfer',
-      'Ski in/out access',
-      'Spa Facilities',
-    ]
-  };
-
-  // Function to handle waitlist form submission
-  const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
-    console.log('Submitting waitlist data:', data);
-    console.log('Trip ID:', upcomingTrip.id);
-    
-    try {
-      const insertData = {
-        trip_id: upcomingTrip.id,
-        full_name: data.fullName,
-        email: data.email,
-        phone: data.phone || null,
-      };
-      
-      console.log('Insert data:', insertData);
-      
-      const { data: result, error } = await supabase.from('waitlist').insert([
-        insertData
-      ]);
-
-      console.log('Supabase response:', { result, error });
-      
-      if (error) {
-        console.error('Supabase waitlist insert error:', error);
-        toast.error(`Failed to join waitlist: ${error.message}`);
-      } else {
-        console.log('Successfully inserted waitlist entry');
-        toast.success('Successfully joined the waitlist! We will notify you if a spot opens up.');
-        reset(); // Reset form fields
-        setShowWaitlistModal(false); // Close the modal
+  /* -------------------------------
+     EVENT SCHEMA (GOOGLE ONLY)
+     ------------------------------- */
+  const eventSchema = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: "Broskii Ski Trip – Tignes, French Alps (April 2026)",
+    startDate: "2026-04-11",
+    endDate: "2026-04-18",
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    location: {
+      "@type": "Place",
+      name: "Tignes / Val d’Isère",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "FR"
       }
-    } catch (err) {
-      console.error('Unexpected error during waitlist submission:', err);
-      toast.error(`An unexpected error occurred: ${err instanceof Error ? err.message : 'Unknown error'}`);
+    },
+    image: [
+      "https://res.cloudinary.com/dtx0og5tm/image/upload/f_auto,q_auto,w_1200/v1766871242/broskii-tignes-april-ski-trip-poster.JPG_mu5ffe.jpg"
+    ],
+    organizer: {
+      "@type": "Organization",
+      name: "Broskii",
+      url: "https://broskii.com/"
+    },
+    description:
+      "A premium April ski trip to Tignes in the French Alps, offering high-altitude terrain, ski-in ski-out accommodation, full area ski pass, and a well-paced alpine experience.",
+    
+
+    url: "https://broskii.com/upcoming-trip/",
+    offers: {
+      "@type": "Offer",
+      url: "https://broskii.com/upcoming-trip/",
+      price: "1099",
+      priceCurrency: "GBP",
+      availability: "https://schema.org/InStock"
     }
+  };
+  
 
   
-    
 
+  const onWaitlistSubmit = async (data: WaitlistFormInputs) => {
+    try {
+      const { error } = await supabase.from('waitlist').insert([
+        {
+          trip_id: '648bbce7-7b1f-4b53-aee3-0bfbfb32a1c1',
+          full_name: data.fullName,
+          email: data.email,
+          phone: data.phone || null
+        }
+      ]);
+
+      if (error) {
+        toast.error(error.message);
+      } else {
+        toast.success('Successfully joined the waitlist');
+        reset();
+        setShowWaitlistModal(false);
+      }
+    } catch {
+      toast.error('Unexpected error');
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <>
+      {/* EVENT SCHEMA INJECTION */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(eventSchema)
+        }}
+      />
+
+      <div className="min-h-screen bg-gray-50">
+
+        <Helmet>
+          <title>
+            Tignes Ski Trip, French Alps | April 2026 – Broskii
+          </title>
+
+          <meta
+            name="description"
+            content="Join Broskii on a premium April ski trip to Tignes in the French Alps, featuring ski-in ski-out accommodation, full area ski pass, and high-altitude late-season conditions."
+          />
+
+          <link
+            rel="canonical"
+            href="https://broskii.com/upcoming-trip/"
+          />
+        </Helmet>
 
 
-<Helmet>
-        <title>
-          Muslim Brothers Ski Trip to Tignes | April 2026 – Broskii
-        </title>
 
-        <meta
-          name="description"
-          content="Join Broskii on a Muslim brothers ski trip to Tignes in the French Alps this April, staying ski-in ski-out at one of Europe’s highest resorts, known for snow-sure conditions and incredible terrain."
-        />
 
-        <link
-          rel="canonical"
-          href="https://broskii.com/upcoming-trip"
-        />
-      </Helmet>
 
       {/* Header Section */}
       <section className="relative overflow-hidden min-h-[38vh] sm:min-h-[44vh] flex items-center">
@@ -566,8 +581,10 @@ const UpcomingTripDetailsPage = () => {
           </motion.div>
         </motion.div>
       )}
-    </div>
-  );
+       </div>
+  </>
+);
 };
+
 
 export default UpcomingTripDetailsPage;

@@ -163,26 +163,33 @@ const transferAirport = trip?.transfer_airport ?? null;
     { title: 'Payment Information' }
   ];
 
-const experienceOptions = [
-  {
-    value: 'beginner',
-    label: 'First Time / Beginner',
-    description:
-      "It’s your first ski/snowboard trip, or you’ve only been once and are still learning the basics."
-  },
-  {
-    value: 'intermediate',
-    label: 'Intermediate',
-    description:
-      "You’ve been a couple of times, feel comfortable on blue runs, and have started trying reds."
-  },
-  {
-    value: 'advanced',
-    label: 'Advanced',
-    description:
-      "You’re confident on red/black runs, enjoy challenging terrain, and want to refine advanced skills."
-  }
-];
+  const experienceOptions = [
+    {
+      value: 'first-time',
+      label: 'First Time',
+      description:
+        'You have never skied or snowboarded before. This is your first time on snow. Lessons are mandatory at this level and will be arranged for you.'
+    },
+    {
+      value: 'beginner',
+      label: 'Beginner',
+      description:
+        'You have been skiing or snowboarding once or twice and are still learning the basics. Lessons are highly recommended to build confidence and control.'
+    },
+    {
+      value: 'intermediate',
+      label: 'Intermediate',
+      description:
+        'You are comfortable on blue runs and have started skiing or snowboarding red runs with confidence.'
+    },
+    {
+      value: 'advanced',
+      label: 'Advanced',
+      description:
+        'You are confident on red and black runs and comfortable on steeper or more challenging terrain.'
+    }
+  ];
+  
 
 
 
